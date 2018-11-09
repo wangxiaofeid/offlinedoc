@@ -10,7 +10,7 @@ function deleteDoc(dir) {
         resolve(0);
         return;
       }
-      rimraf(path.resolve(__dirname, `../../.cache/${dir}`), {}, (err) => {
+      rimraf(path.resolve(__dirname, `../../.cache/doc/${dir}`), {}, (err) => {
           if (err) {
             return resolve(0)
           }

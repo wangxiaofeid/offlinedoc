@@ -3,10 +3,10 @@ const createService = require('./service');
 
 function createWindow () {
   // 创建浏览器窗口
-  win = new BrowserWindow({ width: 800, height: 600 })
-
+  mainWindow = new BrowserWindow({ width: 1024, height: 768 })
+  mainWindow.setFullScreen(true)
   // 然后加载应用的 index.html。
-  win.loadURL('http://localhost:3232/')
+  mainWindow.loadURL('http://localhost:3232/')
 }
 
 app.on('ready', createWindow)

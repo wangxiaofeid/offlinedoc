@@ -21,7 +21,7 @@ const store = new Vuex.Store({
     },
     changeMenus (state, menus) {
       state.menus = menus.map(i => ({
-        key: `/${i.dir}/${i.entry}`,
+        key: `/doc/${i.dir}/${i.entry}`,
         name: i.name,
         dir: i.dir
       }))
