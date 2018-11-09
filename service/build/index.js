@@ -8,7 +8,7 @@ const b64_md5 = require('../util').b64_md5;
 const { insert } = require('../db');
 
 function isImage(url = '') {
-  return url.endsWith('jpg') || url.endsWith('png') || url.endsWith('jpeg') || url.endsWith('gif') || url.endsWith('webp') || url.endsWith('svg')
+  return url.endsWith('jpg') || url.endsWith('png') || url.endsWith('jpeg') || url.endsWith('gif') || url.endsWith('webp') || url.endsWith('svg') || url.endsWith('eot') || url.endsWith('woff') || url.endsWith('ttf')
 }
 
 class build {
@@ -89,7 +89,7 @@ class build {
       } else if (isImg) {
         data.pipe(fs.createWriteStream(path.join(this.dirpath, fileName)))
       } else if (url.endsWith('.css')) {
-        data = data.replace(/url\(['"]*([a-zA-Z0-9&#\?=_:./]+)['"]*\)/g, (match, group) => {
+        data = data.replace(/url\(['"]*([a-zA-Z0-9\-&#\?=_:./]+)['"]*\)/g, (match, group) => {
           const link = this.addNewUrl(url, group);
           if (link) {
             return `url(${this.getFileName(link)})`
