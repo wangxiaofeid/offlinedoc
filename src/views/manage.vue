@@ -1,6 +1,6 @@
 <template>
   <div class="manage">
-    <div style="margin-bottom: 10px">
+    <div style="margin-bottom: 20px">
       <el-button type="primary" @click="dialogVisible=true">新建文档</el-button>
     </div>
     <el-table

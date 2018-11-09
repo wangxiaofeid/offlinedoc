@@ -15,6 +15,7 @@ class build {
   constructor(entry, rule, cookie = '', replace) {
     this.waitList = [entry];
     this.pathMap = {};
+    this.errorMap = {};
     this.config = {
       dir: b64_md5(entry).slice(0, 22),
       name: entry
@@ -23,7 +24,7 @@ class build {
     this.rule = rule || entry || '';
     this.cookie = cookie;
     this.replace = replace;
-    this.dirpath = path.resolve(__dirname, `../../.cache/${this.config.dir}`);
+    this.dirpath = path.resolve(__dirname, `../../.cache/doc/${this.config.dir}`);
   }
 
   /**
@@ -88,7 +89,7 @@ class build {
       } else if (isImg) {
         data.pipe(fs.createWriteStream(path.join(this.dirpath, fileName)))
       } else if (url.endsWith('.css')) {
-        data = data.replace(/url\(([a-zA-Z0-9#\?=_:./]+)\)/g, (match, group) => {
+        data = data.replace(/url\(['"]*([a-zA-Z0-9&#\?=_:./]+)['"]*\)/g, (match, group) => {
           const link = this.addNewUrl(url, group);
           if (link) {
             return `url(${this.getFileName(link)})`
@@ -100,6 +101,7 @@ class build {
       await this.saveFile(fileName, data);
       return this.pathMap[url] = fileName;
     } catch (error) {
+      this.errorMap[url] = this.errorMap[url] ? (this.errorMap[url] + 1) : 1;
       console.log(error, url);
       return
     }
@@ -170,7 +172,9 @@ class build {
     if (b && abLink.indexOf(this.rule) == -1) {
       return false
     }
-    this.waitList.push(abLink);
+    if (!this.waitList.includes(abLink) && !(this.errorMap[abLink] && this.errorMap[abLink] > 2)) {
+      this.waitList.push(abLink);
+    }
     return abLink
   }
   

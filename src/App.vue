@@ -32,6 +32,9 @@ export default {
     ...mapMutations(['changeSelectUrl']),
     handleCommand (command) {
       this.changeSelectUrl(command)
+      if (this.$route.name == 'manage') {
+        this.$router.push('/');
+      }
     }
   },
   async created() {
