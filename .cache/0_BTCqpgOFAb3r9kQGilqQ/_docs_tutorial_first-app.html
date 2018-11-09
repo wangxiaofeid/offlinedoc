@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="#2f3241" name="theme-color">
+
+  <meta property="og:type" content="website">
+
+    <title>&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528; | Electron</title>
+    <meta property="og:title" content="&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528; | Electron">
+    <meta name="twitter:title" value="&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528; | Electron">
+
+    <meta property="og:url" content="/docs/tutorial/first-app">
+    <meta name="twitter:url" value="/docs/tutorial/first-app">
+
+
+    <meta name="twitter:card" content="summary">
+
+  <!-- consumed by scripts/get-localized-strings -->
+  <meta name="localized.clipboard.copy" content="Copy">
+  <meta name="localized.clipboard.copy_to_clipboard" content="&#x590D;&#x5236;&#x5230;&#x526A;&#x8D34;&#x677F;">
+  <meta name="localized.clipboard.copied" content="&#x5DF2;&#x590D;&#x5236;">
+
+  <meta name="twitter:site" content="@ElectronJS">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Electron Blog" href="https://electronjs.org/blog.xml">
+  <link rel="alternate" type="application/rss+xml" title="Electron Releases" href="https://electronjs.org/releases.xml">
+  <link rel="stylesheet" href="_styles_index.css">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-3769691-57', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+  <body>
+    <header class="site-header">
+  <div class="container">
+
+    <a class="site-header-logo no-underline-hover" href="/">
+      <svg class="site-header-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="none" fill="none" fill-rule="evenodd">
+          <path class="svg-stroke" d="M11.7014354,7.72646259 C7.91761319,7.04380371 4.81334929,7.69369948 3.61536899,9.74908711 C2.72656361,11.27402 3.03878853,13.3122813 4.27551338,15.4489979 M6.32642733,18.1886712 C7.89193828,19.8928217 9.9666792,21.548102 12.4120986,22.9466461 C18.2414315,26.2804624 24.2930499,27.0779063 27.1669222,25.1368228 M29.8456419,24.0565148 C29.8456419,23.1971812 29.1423799,22.5005537 28.2748621,22.5005537 C27.4073444,22.5005537 26.7040823,23.1971812 26.7040823,24.0565148 C26.7040823,24.9158484 27.4073444,25.612476 28.2748621,25.612476 C29.1423799,25.612476 29.8456419,24.9158484 29.8456419,24.0565148 L29.8456419,24.0565148 Z"/>
+          <path class="svg-stroke" d="M26.1017264,17.699802 C28.5790274,14.8008665 29.5563892,11.8210699 28.3609038,9.7699627 C27.4866535,8.27000212 25.5971843,7.51855661 23.1692624,7.48727915 M19.6970573,7.86083838 C17.4054295,8.34719767 14.8948834,9.30454988 12.424266,10.7175048 C6.42288792,14.1497143 2.65401611,19.1281832 3.16552768,22.580522 M3.68501877,25.612476 C4.5525365,25.612476 5.25579857,24.9158484 5.25579857,24.0565148 C5.25579857,23.1971812 4.5525365,22.5005537 3.68501877,22.5005537 C2.81750104,22.5005537 2.11423897,23.1971812 2.11423897,24.0565148 C2.11423897,24.9158484 2.81750104,25.612476 3.68501877,25.612476 L3.68501877,25.612476 L3.68501877,25.612476 Z"/>
+          <path class="svg-stroke" d="M10.1856596,25.0699995 C11.480995,28.6529192 13.5999849,30.9876144 15.99422,30.9876144 C17.7292778,30.9876144 19.3197869,29.7615184 20.5570359,27.7228112 M22.0509221,24.3364015 C22.7373456,22.1635452 23.1341282,19.5948285 23.1341282,16.8425133 C23.1341282,10.0879866 20.7444131,4.43922457 17.5485944,3.03357113 M15.99422,4.25337326 C16.8617378,4.25337326 17.5649998,3.55674574 17.5649998,2.69741214 C17.5649998,1.83807854 16.8617378,1.14145101 15.99422,1.14145101 C15.1267023,1.14145101 14.4234402,1.83807854 14.4234402,2.69741214 C14.4234402,3.55674574 15.1267023,4.25337326 15.99422,4.25337326 Z"/>
+          <path class="svg-fill" d="M16.2975137,18.2334955 C15.5219407,18.3994908 14.7578457,17.9112502 14.5899415,17.142994 C14.4226932,16.3747378 14.9152558,15.6178512 15.6908287,15.451531 C16.4664016,15.2855357 17.2304967,15.7737763 17.3984009,16.5420325 C17.5659771,17.3102887 17.0730866,18.0671753 16.2975137,18.2334955 Z"/>
+        </g>
+      </svg>
+      <svg class="vertical-middle" width="156px" height="18px" viewBox="0 0 156 18" xmlns="http://www.w3.org/2000/svg">
+        <title>Electron</title>
+        <path stroke="none" fill="currentColor" fill-rule="evenodd" d="M0.93602403,17.0884387 L11.4962951,17.0884387 C11.9763075,17.0884387 12.3603173,16.7044288 12.3603173,16.2244165 C12.3603173,15.7444042 11.9763075,15.3603943 11.4962951,15.3603943 L1.89604868,15.3603943 L1.89604868,9.48024338 L10.2962643,9.48024338 C10.7762767,9.48024338 11.1602865,9.09623352 11.1602865,8.6162212 C11.1602865,8.16020949 10.7762767,7.75219902 10.2962643,7.75219902 L1.89604868,7.75219902 L1.89604868,2.01605176 L11.3762921,2.01605176 C11.8563044,2.01605176 12.2403142,1.6320419 12.2403142,1.15202958 C12.2403142,0.672017252 11.8563044,0.288007394 11.3762921,0.288007394 L0.93602403,0.288007394 C0.432011091,0.288007394 0,0.720018485 0,1.24803204 L0,16.1284141 C0,16.6564276 0.432011091,17.0884387 0.93602403,17.0884387 L0.93602403,17.0884387 Z M19.0804898,16.1284141 C19.0804898,16.6564276 19.5125009,17.0884387 20.0165139,17.0884387 L29.6887622,17.0884387 C30.1687745,17.0884387 30.5527844,16.7044288 30.5527844,16.2244165 C30.5527844,15.7444042 30.1687745,15.3363937 29.6887622,15.3363937 L20.9765385,15.3363937 L20.9765385,1.12802896 C20.9765385,0.600015404 20.5445274,0.168004313 20.0165139,0.168004313 C19.5125009,0.168004313 19.0804898,0.600015404 19.0804898,1.12802896 L19.0804898,16.1284141 Z M37.8729723,17.0884387 L48.4332434,17.0884387 C48.9132557,17.0884387 49.2972656,16.7044288 49.2972656,16.2244165 C49.2972656,15.7444042 48.9132557,15.3603943 48.4332434,15.3603943 L38.8329969,15.3603943 L38.8329969,9.48024338 L47.2332126,9.48024338 C47.7132249,9.48024338 48.0972348,9.09623352 48.0972348,8.6162212 C48.0972348,8.16020949 47.7132249,7.75219902 47.2332126,7.75219902 L38.8329969,7.75219902 L38.8329969,2.01605176 L48.3132403,2.01605176 C48.7932526,2.01605176 49.1772625,1.6320419 49.1772625,1.15202958 C49.1772625,0.672017252 48.7932526,0.288007394 48.3132403,0.288007394 L37.8729723,0.288007394 C37.3689593,0.288007394 36.9369483,0.720018485 36.9369483,1.24803204 L36.9369483,16.1284141 C36.9369483,16.6564276 37.3689593,17.0884387 37.8729723,17.0884387 L37.8729723,17.0884387 Z M63.6976353,17.3764461 C66.4577061,17.3764461 68.2817529,16.4164214 69.9377955,14.9043826 C70.1057998,14.7603789 70.2498035,14.5203728 70.2498035,14.2323654 C70.2498035,13.7523531 69.8177924,13.320342 69.3377801,13.320342 C69.0977739,13.320342 68.8817684,13.440345 68.7377647,13.5843487 C67.2977277,14.9043826 65.8336901,15.6244011 63.7456365,15.6244011 C60.0495416,15.6244011 57.2414695,12.5763229 57.2414695,8.68822305 L57.2414695,8.64022181 C57.2414695,4.77612261 60.025541,1.75204498 63.7456365,1.75204498 C65.8096895,1.75204498 67.2737271,2.5200647 68.5697603,3.67209427 C68.713764,3.76809674 68.9297696,3.88809982 69.1937764,3.88809982 C69.6977893,3.88809982 70.153801,3.45608873 70.153801,2.95207579 C70.153801,2.61606716 69.9617961,2.35206038 69.7697911,2.18405607 C68.2097511,0.888022798 66.4817067,0 63.7696371,0 C58.8255102,0 55.273419,3.93610105 55.273419,8.68822305 L55.273419,8.73622428 C55.273419,13.5603481 58.8495108,17.3764461 63.6976353,17.3764461 L63.6976353,17.3764461 Z M81.1700838,16.2484171 C81.1700838,16.7764307 81.6020949,17.2084418 82.1301085,17.2084418 C82.658122,17.2084418 83.0901331,16.7764307 83.0901331,16.2484171 L83.0901331,2.04005237 L87.9622582,2.04005237 C88.4422705,2.04005237 88.850281,1.65604251 88.850281,1.17603019 C88.850281,0.696017868 88.4422705,0.288007394 87.9622582,0.288007394 L76.2979587,0.288007394 C75.8179464,0.288007394 75.4099359,0.696017868 75.4099359,1.17603019 C75.4099359,1.65604251 75.8179464,2.04005237 76.2979587,2.04005237 L81.1700838,2.04005237 L81.1700838,16.2484171 Z M95.2824461,16.2484171 C95.2824461,16.7764307 95.7144572,17.2084418 96.2184701,17.2084418 C96.7464837,17.2084418 97.1784948,16.7764307 97.1784948,16.2484171 L97.1784948,10.5602711 L102.002619,10.5602711 L106.73074,16.7044288 C106.946746,16.9924362 107.234753,17.2084418 107.618763,17.2084418 C108.098775,17.2084418 108.578787,16.7764307 108.578787,16.2724177 C108.578787,16.008411 108.458784,15.7924054 108.266779,15.5763999 L104.090672,10.2002619 C106.706739,9.69624892 108.578787,8.08820764 108.578787,5.32813679 L108.578787,5.28013555 C108.578787,3.96010166 108.098775,2.78407147 107.282754,1.96805052 C106.226727,0.912023414 104.570685,0.288007394 102.506632,0.288007394 L96.2184701,0.288007394 C95.7144572,0.288007394 95.2824461,0.720018485 95.2824461,1.24803204 L95.2824461,16.2484171 Z M97.1784948,8.85622736 L97.1784948,2.04005237 L102.362628,2.04005237 C105.074698,2.04005237 106.658738,3.28808441 106.658738,5.3521374 L106.658738,5.40013863 C106.658738,7.56019409 104.858692,8.85622736 102.338627,8.85622736 L97.1784948,8.85622736 Z M123.435169,17.3764461 C128.5473,17.3764461 132.027389,13.320342 132.027389,8.68822305 L132.027389,8.64022181 C132.027389,4.0081029 128.595301,0 123.48317,0 C118.371039,0 114.89095,4.05610413 114.89095,8.68822305 L114.89095,8.73622428 C114.89095,13.3683432 118.323038,17.3764461 123.435169,17.3764461 L123.435169,17.3764461 Z M123.48317,15.6244011 C119.643072,15.6244011 116.859,12.504321 116.859,8.68822305 L116.859,8.64022181 C116.859,4.82412385 119.59507,1.75204498 123.435169,1.75204498 C127.275267,1.75204498 130.059339,4.87212508 130.059339,8.68822305 L130.059339,8.73622428 C130.059339,12.5523222 127.323269,15.6244011 123.48317,15.6244011 L123.48317,15.6244011 Z M139.035569,16.2724177 C139.035569,16.7764307 139.44358,17.2084418 139.947593,17.2084418 C140.475606,17.2084418 140.883617,16.7764307 140.883617,16.2724177 L140.883617,3.2640838 L151.299884,16.5844258 C151.587892,16.9204344 151.875899,17.1604405 152.283909,17.1604405 L152.379912,17.1604405 C152.883925,17.1604405 153.243934,16.7764307 153.243934,16.2724177 L153.243934,1.10402834 C153.243934,0.600015404 152.835924,0.168004313 152.331911,0.168004313 C151.803897,0.168004313 151.395887,0.600015404 151.395887,1.10402834 L151.395887,13.7763537 L141.195625,0.768019717 C140.931618,0.432011091 140.667611,0.216005545 140.2356,0.216005545 L139.971593,0.216005545 C139.46758,0.216005545 139.035569,0.648016636 139.035569,1.15202958 L139.035569,16.2724177 Z"/>
+      </svg>
+    </a>
+
+    <nav class="site-header-nav">
+      <a class="site-header-nav-item" href="/donors">&#x6350;&#x8D60;&#x8005;</a>
+      <a class="site-header-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="site-header-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="site-header-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="site-header-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <!-- <a class="site-header-nav-item" href="/userland">用户生态</a> -->
+      <a class="site-header-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <input id="search-input" class="nav-search" placeholder="&#x641C;&#x7D22;" aria-label="search-box">
+      <!-- <img id="search-hint" alt="image of backslash shorcut" src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" /> -->
+      <!-- <dialog id="search-hint-dialog" open>
+        <div class="dialog-text">Search for Electron APIs, tutorials, npm packages, and apps.</div>
+        <button class="dialog-button">OK</button>
+      </dialog> -->
+      <a class="site-header-nav-item octicon" href="https://github.com/electron" title="Github Organization">
+        <span class="mega-octicon octicon-mark-github vertical-middle"></span>
+      </a>
+      <a class="site-header-nav-item bordered" href="/languages">&#x4E2D;&#x6587;</a>
+    </nav>
+  </div>
+</header>
+    
+<div class="subtron text-left">
+  <div class="container-narrow">
+    <h1>
+      <span class="mr-3 mr-lg-4">Electron &#x6587;&#x6863;</span>
+      <!-- <span class="docs-version">3.0.7</span> -->
+    </h1>      
+  </div>
+  
+  <div class="container-narrow mt-2">
+
+    <h4 class="docs-breadcrumbs">
+      <a href="_docs.html">Docs</a> /
+          <a href="_docs_tutorial.html">Guides</a>
+          / 
+        <a href="_docs_tutorial_first-app.html">&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528;</a>
+
+          <a href="_docs_tutorial_first-app_history.html">
+            <span class="docs-version">
+                <span>electron@master (c42201)</span>
+            </span>
+          </a>
+
+        
+
+    </h4>
+  </div>
+</div>
+
+<section class="page-section docs strong-headers">
+  <div class="container-narrow">
+      <div class="sub-section position-relative" data-name="-&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;-electron-&#x5E94;&#x7528;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h1 id="&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;-electron-&#x5E94;&#x7528;"><a href="_docs.html#%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-electron-%E5%BA%94%E7%94%A8">&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528;</a></h1>
+<p>Electron &#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x4F7F;&#x7528;&#x7EAF; JavaScript &#x8C03;&#x7528;&#x4E30;&#x5BCC;&#x7684;&#x539F;&#x751F;(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;) APIs &#x6765;&#x521B;&#x9020;&#x684C;&#x9762;&#x5E94;&#x7528;&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x770B;&#x4F5C;&#x4E00;&#x4E2A;&#x4E13;&#x6CE8;&#x4E8E;&#x684C;&#x9762;&#x5E94;&#x7528;&#x7684; Node. js &#x7684;&#x53D8;&#x4F53;&#xFF0C;&#x800C;&#x4E0D;&#x662F; Web &#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x8FD9;&#x4E0D;&#x610F;&#x5473;&#x7740; Electron &#x662F;&#x67D0;&#x4E2A;&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#xFF08;GUI&#xFF09;&#x5E93;&#x7684; JavaScript &#x7248;&#x672C;&#x3002; &#x76F8;&#x53CD;&#xFF0C;Electron &#x4F7F;&#x7528; web &#x9875;&#x9762;&#x4F5C;&#x4E3A;&#x5B83;&#x7684; GUI&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x80FD;&#x628A;&#x5B83;&#x770B;&#x4F5C;&#x6210;&#x4E00;&#x4E2A;&#x88AB; JavaScript &#x63A7;&#x5236;&#x7684;&#xFF0C;&#x7CBE;&#x7B80;&#x7248;&#x7684; Chromium &#x6D4F;&#x89C8;&#x5668;&#x3002;</p>
+<p><strong> &#x6CE8;&#x610F; </strong>: &#x83B7;&#x53D6;&#x8BE5;&#x793A;&#x4F8B;&#x7684;&#x4EE3;&#x7801;&#x4ED3;&#x5E93;: <a href="_docs.html#trying-this-example"> &#x7ACB;&#x5373;&#x4E0B;&#x8F7D;&#x5E76;&#x8FD0;&#x884C; </a>&#x3002;</p>
+<p>&#x4ECE;&#x5F00;&#x53D1;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;, Electron application &#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x4E2A; Node. js &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002; &#x4E0E; Node.js &#x6A21;&#x5757;&#x76F8;&#x540C;&#xFF0C;&#x5E94;&#x7528;&#x7684;&#x5165;&#x53E3;&#x662F; <code>package.json</code> &#x6587;&#x4EF6;&#x3002; &#x4E00;&#x4E2A;&#x6700;&#x57FA;&#x672C;&#x7684; Electron &#x5E94;&#x7528;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x4F1A;&#x6709;&#x5982;&#x4E0B;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code class="hljs language-text">your-app/
+&#x251C;&#x2500;&#x2500; package<span class="hljs-selector-class">.json</span>
+&#x251C;&#x2500;&#x2500; main<span class="hljs-selector-class">.js</span>
+&#x2514;&#x2500;&#x2500; index.html</code></pre>
+<p>&#x4E3A;&#x4F60;&#x7684;&#x65B0;Electron&#x5E94;&#x7528;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7A7A;&#x6587;&#x4EF6;&#x5939;&#x3002; &#x6253;&#x5F00;&#x4F60;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x8BE5;&#x6587;&#x4EF6;&#x5939;&#x8FD0;&#x884C;<code>npm init</code></p>
+<pre><code class="hljs language-sh">npm init</code></pre>
+<p>npm &#x4F1A;&#x5E2E;&#x52A9;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684; <code>package.json</code> &#x6587;&#x4EF6;&#x3002; &#x5176;&#x4E2D;&#x7684; <code>main</code> &#x5B57;&#x6BB5;&#x6240;&#x8868;&#x793A;&#x7684;&#x811A;&#x672C;&#x4E3A;&#x5E94;&#x7528;&#x7684;&#x542F;&#x52A8;&#x811A;&#x672C;&#xFF0C;&#x5B83;&#x5C06;&#x4F1A;&#x5728;&#x4E3B;&#x8FDB;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x3002; &#x5982;&#x4E0B;&#x7247;&#x6BB5;&#x662F;&#x4E00;&#x4E2A; <code>package.json</code> &#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>
+}</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x5982;&#x679C; <code>main</code> &#x5B57;&#x6BB5;&#x6CA1;&#x6709;&#x5728; <code>package.json</code> &#x4E2D;&#x51FA;&#x73B0;&#xFF0C;&#x90A3;&#x4E48; Electron &#x5C06;&#x4F1A;&#x5C1D;&#x8BD5;&#x52A0;&#x8F7D; <code>index.js</code> &#x6587;&#x4EF6;&#xFF08;&#x5C31;&#x50CF; Node.js &#x81EA;&#x8EAB;&#x90A3;&#x6837;&#xFF09;&#x3002; &#x5982;&#x679C;&#x4F60;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; Node &#x5E94;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; <code>start</code> &#x811A;&#x672C;&#x6765;&#x6307;&#x5F15; <code>node</code> &#x53BB;&#x6267;&#x884C;&#x5F53;&#x524D;&#x7684; package&#xFF1A;</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>,
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;node .&quot;</span>
+  }
+}</code></pre>
+<p>&#x628A;&#x8FD9;&#x4E2A; Node &#x5E94;&#x7528;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A; Electron &#x5E94;&#x7528;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x4E0D;&#x8FC7;&#x662F;&#x628A; <code>node</code> &#x8FD0;&#x884C;&#x65F6;&#x66FF;&#x6362;&#x6210;&#x4E86; <code>electron</code> &#x8FD0;&#x884C;&#x65F6;&#x3002;</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>,
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;electron .&quot;</span>
+  }
+}</code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x6253;&#x9020;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;-electron-&#x5E94;&#x7528;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h1 id="writing-your-first-electron-app"><a href="_docs.html#writing-your-first-electron-app">Writing Your First Electron App</a></h1>
+<p>Electron enables you to create desktop applications with pure JavaScript by
+providing a runtime with rich native (operating system) APIs. You could see it
+as a variant of the Node.js runtime that is focused on desktop applications
+instead of web servers.</p>
+<p>This doesn&apos;t mean Electron is a JavaScript binding to graphical user interface
+(GUI) libraries. Instead, Electron uses web pages as its GUI, so you could also
+see it as a minimal Chromium browser, controlled by JavaScript.</p>
+<p><strong>Note</strong>: This example is also available as a repository you can
+<a href="_docs.html#trying-this-example">download and run immediately</a>.</p>
+<p>As far as development is concerned, an Electron application is essentially a
+Node.js application. The starting point is a <code>package.json</code> that is identical
+to that of a Node.js module. A most basic Electron app would have the following
+folder structure:</p>
+<pre><code class="hljs language-text">your-app/
+&#x251C;&#x2500;&#x2500; package<span class="hljs-selector-class">.json</span>
+&#x251C;&#x2500;&#x2500; main<span class="hljs-selector-class">.js</span>
+&#x2514;&#x2500;&#x2500; index.html</code></pre>
+<p>Create a new empty folder for your new Electron application. Open up your
+command line client and run <code>npm init</code> from that very folder.</p>
+<pre><code class="hljs language-sh">npm init</code></pre>
+<p>npm will guide you through creating a basic <code>package.json</code> file. The script
+specified by the <code>main</code> field is the startup script of your app, which will
+run the main process. An example of your <code>package.json</code> might look like this:</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>
+}</code></pre>
+<p><strong>Note</strong>: If the <code>main</code> field is not present in <code>package.json</code>, Electron will
+attempt to load an <code>index.js</code> (as Node.js does). If this was actually
+a simple Node application, you would add a <code>start</code> script that instructs <code>node</code>
+to execute the current package:</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>,
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;node .&quot;</span>
+  }
+}</code></pre>
+<p>Turning this Node application into an Electron application is quite simple - we
+merely replace the <code>node</code> runtime with the <code>electron</code> runtime.</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;your-app&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;main.js&quot;</span>,
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;electron .&quot;</span>
+  }
+}</code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5B89;&#x88C5;-electron" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x5B89;&#x88C5;-electron"><a href="_docs.html#%E5%AE%89%E8%A3%85-electron">&#x5B89;&#x88C5; Electron</a></h2>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x5B89;&#x88C5;<code>electron</code>&#x3002; &#x6211;&#x4EEC;&#x63A8;&#x8350;&#x7684;&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x662F;&#x628A;&#x5B83;&#x4F5C;&#x4E3A;&#x60A8; app &#x4E2D;&#x7684;&#x5F00;&#x53D1;&#x4F9D;&#x8D56;&#x9879;&#xFF0C;&#x8FD9;&#x4F7F;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x7684; app &#x4E2D;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684; Electron &#x7248;&#x672C;&#x3002; &#x5728;&#x60A8;&#x7684;app&#x6240;&#x5728;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code class="hljs language-sh">npm install --save-dev electron</code></pre>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x4E5F;&#x6709;&#x5176;&#x4ED6;&#x5B89;&#x88C5; Electron &#x7684;&#x9014;&#x5F84;&#x3002; &#x8BF7;&#x54A8;&#x8BE2;<a href="_docs_tutorial_installation.html">&#x5B89;&#x88C5;&#x6307;&#x5357;</a>&#x6765;&#x4E86;&#x89E3;&#x5982;&#x4F55;&#x7528;&#x4EE3;&#x7406;&#x3001;&#x955C;&#x50CF;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x7F13;&#x5B58;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5B89;&#x88C5;-electron" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="installing-electron"><a href="_docs.html#installing-electron">Installing Electron</a></h2>
+<p>At this point, you&apos;ll need to install <code>electron</code> itself. The recommended way
+of doing so is to install it as a development dependency in your app, which
+allows you to work on multiple apps with different Electron versions. To do so,
+run the following command from your app&apos;s directory:</p>
+<pre><code class="hljs language-sh">npm install --save-dev electron</code></pre>
+<p>Other means for installing Electron exist. Please consult the
+<a href="_docs_tutorial_installation.html">installation guide</a> to learn about use with proxies, mirrors,
+and custom caches.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;-electron" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;-electron"><a href="_docs.html#%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84-electron">&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684; Electron</a></h2>
+<p>Electron apps &#x4F7F;&#x7528;JavaScript&#x5F00;&#x53D1;&#xFF0C;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x548C;&#x65B9;&#x6CD5;&#x4E0E;Node.js &#x5F00;&#x53D1;&#x76F8;&#x540C;&#x3002; <code>electron</code>&#x6A21;&#x5757;&#x5305;&#x542B;&#x4E86;Electron&#x63D0;&#x4F9B;&#x7684;&#x6240;&#x6709;API&#x548C;&#x529F;&#x80FD;&#xFF0C;&#x5F15;&#x5165;&#x65B9;&#x6CD5;&#x548C;&#x666E;&#x901A;Node.js&#x6A21;&#x5757;&#x4E00;&#x6837;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> electron = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)</code></pre>
+<p><code>electron</code> &#x6A21;&#x5757;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x66B4;&#x9732;&#x51FA;&#x6765;&#x7684;&#x3002; &#x6BD4;&#x5982;&#x8BF4;&#xFF1A; <code>electron.app</code>&#x8D1F;&#x8D23;&#x7BA1;&#x7406;Electron &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C; <code>electron.BrowserWindow</code>&#x7C7B;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x7A97;&#x53E3;&#x3002; &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;<code>main.js</code>&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x5C06;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app, BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createWindow</span> (<span class="hljs-params"></span>) </span>{   
+  <span class="hljs-comment">// &#x521B;&#x5EFA;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;</span>
+  win = <span class="hljs-keyword">new</span> BrowserWindow({ <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> })
+
+  <span class="hljs-comment">// &#x7136;&#x540E;&#x52A0;&#x8F7D;&#x5E94;&#x7528;&#x7684; index.html&#x3002;</span>
+  win.loadFile(<span class="hljs-string">&apos;index.html&apos;</span>)
+}
+
+app.on(<span class="hljs-string">&apos;ready&apos;</span>, createWindow)</code></pre>
+<p>&#x60A8;&#x5E94;&#x5F53;&#x5728; <code>main.js</code> &#x4E2D;&#x521B;&#x5EFA;&#x7A97;&#x53E3;&#xFF0C;&#x5E76;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E2D;&#x53EF;&#x80FD;&#x9047;&#x5230;&#x7684;&#x6240;&#x6709;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x3002; &#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C06;&#x5B8C;&#x5584;&#x4E0A;&#x8FF0;&#x4F8B;&#x5B50;&#xFF0C;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x529F;&#x80FD;&#xFF1A;&#x6253;&#x5F00;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x3001;&#x5904;&#x7406;&#x7A97;&#x53E3;&#x5173;&#x95ED;&#x4E8B;&#x4EF6;&#x3001;&#x5728;macOS&#x7528;&#x6237;&#x70B9;&#x51FB;dock&#x4E0A;&#x56FE;&#x6807;&#x65F6;&#x91CD;&#x5EFA;&#x7A97;&#x53E3;&#xFF0C;&#x6DFB;&#x52A0;&#x540E;&#xFF0C;main. js &#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app, BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-comment">// Keep a global reference of the window object, if you don&apos;t, the window will</span>
+<span class="hljs-comment">// be closed automatically when the JavaScript object is garbage collected.</span>
+<span class="hljs-keyword">let</span> win
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createWindow</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// &#x521B;&#x5EFA;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x3002;</span>
+  win = <span class="hljs-keyword">new</span> BrowserWindow({ <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> })
+
+  <span class="hljs-comment">// &#x7136;&#x540E;&#x52A0;&#x8F7D;&#x5E94;&#x7528;&#x7684; index.html&#x3002;</span>
+  win.loadFile(<span class="hljs-string">&apos;index.html&apos;</span>)
+
+  <span class="hljs-comment">// &#x6253;&#x5F00;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;</span>
+  win.webContents.openDevTools()
+
+  <span class="hljs-comment">// &#x5F53; window &#x88AB;&#x5173;&#x95ED;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x4F1A;&#x88AB;&#x89E6;&#x53D1;&#x3002;</span>
+  win.on(<span class="hljs-string">&apos;closed&apos;</span>, () =&gt; {
+    <span class="hljs-comment">// &#x53D6;&#x6D88;&#x5F15;&#x7528; window &#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x652F;&#x6301;&#x591A;&#x7A97;&#x53E3;&#x7684;&#x8BDD;&#xFF0C;</span>
+    <span class="hljs-comment">// &#x901A;&#x5E38;&#x4F1A;&#x628A;&#x591A;&#x4E2A; window &#x5BF9;&#x8C61;&#x5B58;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;&#x9762;&#xFF0C;</span>
+    <span class="hljs-comment">// &#x4E0E;&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x5220;&#x9664;&#x76F8;&#x5E94;&#x7684;&#x5143;&#x7D20;&#x3002;</span>
+    win = <span class="hljs-literal">null</span>
+  })
+}
+
+<span class="hljs-comment">// Electron &#x4F1A;&#x5728;&#x521D;&#x59CB;&#x5316;&#x540E;&#x5E76;&#x51C6;&#x5907;</span>
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;</span>
+<span class="hljs-comment">// &#x90E8;&#x5206; API &#x5728; ready &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x540E;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</span>
+app.on(<span class="hljs-string">&apos;ready&apos;</span>, createWindow)
+
+<span class="hljs-comment">// &#x5F53;&#x5168;&#x90E8;&#x7A97;&#x53E3;&#x5173;&#x95ED;&#x65F6;&#x9000;&#x51FA;&#x3002;</span>
+app.on(<span class="hljs-string">&apos;window-all-closed&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// &#x5728; macOS &#x4E0A;&#xFF0C;&#x9664;&#x975E;&#x7528;&#x6237;&#x7528; Cmd + Q &#x786E;&#x5B9A;&#x5730;&#x9000;&#x51FA;&#xFF0C;</span>
+  <span class="hljs-comment">// &#x5426;&#x5219;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x5E94;&#x7528;&#x53CA;&#x5176;&#x83DC;&#x5355;&#x680F;&#x4F1A;&#x4FDD;&#x6301;&#x6FC0;&#x6D3B;&#x3002;</span>
+  <span class="hljs-keyword">if</span> (process.platform !== <span class="hljs-string">&apos;darwin&apos;</span>) {
+    app.quit()
+  }
+})
+
+app.on(<span class="hljs-string">&apos;activate&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// &#x5728;macOS&#x4E0A;&#xFF0C;&#x5F53;&#x5355;&#x51FB;dock&#x56FE;&#x6807;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7A97;&#x53E3;&#x6253;&#x5F00;&#x65F6;&#xFF0C;</span>
+  <span class="hljs-comment">// &#x901A;&#x5E38;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x3002;</span>
+  <span class="hljs-keyword">if</span> (win === <span class="hljs-literal">null</span>) {
+    createWindow()
+  }
+})
+
+<span class="hljs-comment">// &#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7EED;&#x5199;&#x5E94;&#x7528;&#x5269;&#x4E0B;&#x4E3B;&#x8FDB;&#x7A0B;&#x4EE3;&#x7801;&#x3002;</span>
+<span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x7528; require &#x5BFC;&#x5165;&#x3002;</span></code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x4F60;&#x60F3;&#x5C55;&#x793A;&#x7684; <code>index.html</code>&#xFF1A;</p>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    We are using node <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.node)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    Chrome <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.chrome)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    and Electron <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.electron)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;-electron" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="electron-development-in-a-nutshell"><a href="_docs.html#electron-development-in-a-nutshell">Electron Development in a Nutshell</a></h2>
+<p>Electron apps are developed in JavaScript using the same principles and methods
+found in Node.js development. All APIs and features found in Electron are
+accessible through the <code>electron</code> module, which can be required like any other
+Node.js module:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> electron = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)</code></pre>
+<p>The <code>electron</code> module exposes features in namespaces. As examples, the lifecycle
+of the application is managed through <code>electron.app</code>, windows can be created
+using the <code>electron.BrowserWindow</code> class. A simple <code>main.js</code> file might wait
+for the application to be ready and open a window:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app, BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createWindow</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Create the browser window.</span>
+  win = <span class="hljs-keyword">new</span> BrowserWindow({ <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> })
+
+  <span class="hljs-comment">// and load the index.html of the app.</span>
+  win.loadFile(<span class="hljs-string">&apos;index.html&apos;</span>)
+}
+
+app.on(<span class="hljs-string">&apos;ready&apos;</span>, createWindow)</code></pre>
+<p>The <code>main.js</code> should create windows and handle all the system events your
+application might encounter. A more complete version of the above example
+might open developer tools, handle the window being closed, or re-create
+windows on macOS if the user clicks on the app&apos;s icon in the dock.</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app, BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-comment">// Keep a global reference of the window object, if you don&apos;t, the window will</span>
+<span class="hljs-comment">// be closed automatically when the JavaScript object is garbage collected.</span>
+<span class="hljs-keyword">let</span> win
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createWindow</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Create the browser window.</span>
+  win = <span class="hljs-keyword">new</span> BrowserWindow({ <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> })
+
+  <span class="hljs-comment">// and load the index.html of the app.</span>
+  win.loadFile(<span class="hljs-string">&apos;index.html&apos;</span>)
+
+  <span class="hljs-comment">// Open the DevTools.</span>
+  win.webContents.openDevTools()
+
+  <span class="hljs-comment">// Emitted when the window is closed.</span>
+  win.on(<span class="hljs-string">&apos;closed&apos;</span>, () =&gt; {
+    <span class="hljs-comment">// Dereference the window object, usually you would store windows</span>
+    <span class="hljs-comment">// in an array if your app supports multi windows, this is the time</span>
+    <span class="hljs-comment">// when you should delete the corresponding element.</span>
+    win = <span class="hljs-literal">null</span>
+  })
+}
+
+<span class="hljs-comment">// This method will be called when Electron has finished</span>
+<span class="hljs-comment">// initialization and is ready to create browser windows.</span>
+<span class="hljs-comment">// Some APIs can only be used after this event occurs.</span>
+app.on(<span class="hljs-string">&apos;ready&apos;</span>, createWindow)
+
+<span class="hljs-comment">// Quit when all windows are closed.</span>
+app.on(<span class="hljs-string">&apos;window-all-closed&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// On macOS it is common for applications and their menu bar</span>
+  <span class="hljs-comment">// to stay active until the user quits explicitly with Cmd + Q</span>
+  <span class="hljs-keyword">if</span> (process.platform !== <span class="hljs-string">&apos;darwin&apos;</span>) {
+    app.quit()
+  }
+})
+
+app.on(<span class="hljs-string">&apos;activate&apos;</span>, () =&gt; {
+  <span class="hljs-comment">// On macOS it&apos;s common to re-create a window in the app when the</span>
+  <span class="hljs-comment">// dock icon is clicked and there are no other windows open.</span>
+  <span class="hljs-keyword">if</span> (win === <span class="hljs-literal">null</span>) {
+    createWindow()
+  }
+})
+
+<span class="hljs-comment">// In this file you can include the rest of your app&apos;s specific main process</span>
+<span class="hljs-comment">// code. You can also put them in separate files and require them here.</span></code></pre>
+<p>Finally the <code>index.html</code> is the web page you want to show:</p>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    We are using node <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.node)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    Chrome <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.chrome)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    and Electron <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.write(process.versions.electron)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x542F;&#x52A8;&#x4F60;&#x7684;&#x5E94;&#x7528;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x542F;&#x52A8;&#x4F60;&#x7684;&#x5E94;&#x7528;"><a href="_docs.html#%E5%90%AF%E5%8A%A8%E4%BD%A0%E7%9A%84%E5%BA%94%E7%94%A8">&#x542F;&#x52A8;&#x4F60;&#x7684;&#x5E94;&#x7528;</a></h2>
+<p>&#x5728;&#x521B;&#x5EFA;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210; <code>main.js</code>&#x3001; <code>index.html</code>&#x548C;<code>package.json</code>&#x4E4B;&#x540E;&#xFF0C;&#x60A8;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5F53;&#x524D;&#x5DE5;&#x7A0B;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x6267;&#x884C; <code>npm start</code> &#x547D;&#x4EE4;&#x6765;&#x542F;&#x52A8;&#x521A;&#x521A;&#x7F16;&#x5199;&#x597D;&#x7684;Electron&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x542F;&#x52A8;&#x4F60;&#x7684;&#x5E94;&#x7528;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="running-your-app"><a href="_docs.html#running-your-app">Running Your App</a></h2>
+<p>Once you&apos;ve created your initial <code>main.js</code>, <code>index.html</code>, and <code>package.json</code>
+files, you can try your app by running <code>npm start</code> from your application&apos;s
+directory.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5C1D;&#x8BD5;&#x6B64;&#x4F8B;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x5C1D;&#x8BD5;&#x6B64;&#x4F8B;"><a href="_docs.html#%E5%B0%9D%E8%AF%95%E6%AD%A4%E4%BE%8B">&#x5C1D;&#x8BD5;&#x6B64;&#x4F8B;</a></h2>
+<p>&#x590D;&#x5236;&#x5E76;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x5E93; <a href="https://github.com/electron/electron-quick-start"><code>electron/electron-quick-start</code></a>&#x3002;</p>
+<p><strong>Note</strong>: Running this requires <a href="https://git-scm.com">Git</a> and <a href="https://www.npmjs.com/">npm</a>.</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># &#x514B;&#x9686;&#x8FD9;&#x4ED3;&#x5E93;</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/electron/electron-quick-start
+<span class="hljs-comment"># &#x8FDB;&#x5165;&#x4ED3;&#x5E93;</span>
+$ <span class="hljs-built_in">cd</span> electron-quick-start
+<span class="hljs-comment"># &#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#x5E93;</span>
+$ npm install
+<span class="hljs-comment"># &#x8FD0;&#x884C;&#x5E94;&#x7528;</span>
+$ npm start</code></pre>
+<p>&#x542F;&#x52A8;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x7684;&#x6709;&#x5173;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x548C;&#x5DE5;&#x5177;&#x5217;&#x8868;, &#x8BF7;&#x53C2;&#x9605;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x548C; CLI &#x6587;&#x6863; &#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5C1D;&#x8BD5;&#x6B64;&#x4F8B;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="trying-this-example"><a href="_docs.html#trying-this-example">Trying this Example</a></h2>
+<p>Clone and run the code in this tutorial by using the
+<a href="https://github.com/electron/electron-quick-start"><code>electron/electron-quick-start</code></a> repository.</p>
+<p><strong>Note</strong>: Running this requires <a href="https://git-scm.com">Git</a> and <a href="https://www.npmjs.com/">npm</a>.</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Clone the repository</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/electron/electron-quick-start
+<span class="hljs-comment"># Go into the repository</span>
+$ <span class="hljs-built_in">cd</span> electron-quick-start
+<span class="hljs-comment"># Install dependencies</span>
+$ npm install
+<span class="hljs-comment"># Run the app</span>
+$ npm start</code></pre>
+<p>For a list of boilerplates and tools to kick-start your development process,
+see the <a href="_docs_tutorial_boilerplates-and-clis.html">Boilerplates and CLIs documentation</a>.</p>
+
+    </div>
+
+    <hr>
+
+    <div class="doc-actions text-center">
+      <a class="mr-4 propose-change" href="https://github.com/electron/electron/tree/master/docs/tutorial/first-app.md">
+        <span class="octicon octicon-mark-github"></span>
+        &#x6539;&#x8FDB;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4 translate-on-crowdin" href="https://crowdin.com/translate/electron/169/en-zhcn">
+        <span class="octicon octicon-globe"></span>
+        &#x7FFB;&#x8BD1;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4" href="_docs_tutorial_first-app_history.html">
+        <span class="octicon octicon-history"></span>
+        &#x7248;&#x672C;&#x5386;&#x53F2;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+    <div id="hits">
+      <div class="hits-container" id="api-hits" title="APIs"></div>
+      <div class="hits-container" id="tutorial-hits" title="Tutorials"></div>
+      <div class="hits-container" id="package-hits" title="Packages"></div>
+      <div class="hits-container" id="app-hits" title="Apps"></div>
+    </div>
+    <div id="refinement-list"></div>
+    <footer class="footer">
+  <div class="container">
+    <nav class="footer-nav">
+      <a class="footer-nav-item" href="/">Electron</a>
+      <a class="footer-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="footer-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="footer-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <a class="footer-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="footer-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <a class="footer-nav-item" href="https://github.com/electron/electron/tree/master/CODE_OF_CONDUCT.md">&#x884C;&#x4E3A;&#x51C6;&#x5219;</a>
+      <a class="footer-nav-item" href="/languages">&#x8BED;&#x8A00;</a>
+      <a class="footer-nav-item" href="/contact">&#x8054;&#x7CFB;&#x6211;&#x4EEC;</a>
+    </nav>
+
+    <span class="footer-social">
+      <a class="footer-nav-item icon" href="https://github.com/electron" title="Github Organization"><i class="devicon-github-plain vertical-middle"></i></a>
+      <a class="footer-nav-item icon" href="https://twitter.com/electronjs" title="@electronjs on Twitter"><i class="devicon-twitter-plain vertical-middle"></i></a>
+    </span>
+  </div>
+</footer>
+    <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class='octicon octicon-link'></span>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+    <script>
+    if ('serviceWorker' in navigator && !window.Cypress) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+    </script>
+    <script src="_scripts_index.js"></script>
+  
+</body></html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>&#x7528;&#x6CD5;&#x4E0E;&#x4F8B;&#x5B50; | Node.js API &#x82F1;&#x6587;&#x6587;&#x6863;</title>
+  <link rel="icon" sizes="32x32" type="image/png" href="//static.nodejs.cn/_static/img/favicon.png">
+  <script>
+    document.write('<link href="' + (location.port ? '' : '//static.nodejs.cn') + '/_static/css/api.css?1540915604318" rel="stylesheet">')
+  </script>
+</head>
+<body class="alt apidoc lang_en" id="page_api_en">
+  <div id="api-section-synopsis">
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/">
+            Node.js &#x4E2D;&#x6587;&#x7F51;
+          </a>
+        </div>
+        <ul>
+<li><a href="_api_en_documentation.html" class="nav-documentation">About these Docs</a></li>
+<li><a href="_api_en_synopsis.html" class="nav-synopsis active">Usage &amp; Example</a></li>
+</ul>
+<div class="line"></div>
+<ul>
+<li><a href="_api_en_assert.html" class="nav-assert">Assertion Testing</a></li>
+<li><a href="_api_en_async_hooks.html" class="nav-async_hooks">Async Hooks</a></li>
+<li><a href="_api_en_buffer.html" class="nav-buffer">Buffer</a></li>
+<li><a href="_api_en_addons.html" class="nav-addons">C++ Addons</a></li>
+<li><a href="_api_en_n-api.html" class="nav-n-api">C/C++ Addons - N-API</a></li>
+<li><a href="_api_en_child_process.html" class="nav-child_process">Child Processes</a></li>
+<li><a href="_api_en_cluster.html" class="nav-cluster">Cluster</a></li>
+<li><a href="_api_en_cli.html" class="nav-cli">Command Line Options</a></li>
+<li><a href="_api_en_console.html" class="nav-console">Console</a></li>
+<li><a href="_api_en_crypto.html" class="nav-crypto">Crypto</a></li>
+<li><a href="_api_en_debugger.html" class="nav-debugger">Debugger</a></li>
+<li><a href="_api_en_deprecations.html" class="nav-deprecations">Deprecated APIs</a></li>
+<li><a href="_api_en_dns.html" class="nav-dns">DNS</a></li>
+<li><a href="_api_en_domain.html" class="nav-domain">Domain</a></li>
+<li><a href="_api_en_esm.html" class="nav-esm">ECMAScript Modules</a></li>
+<li><a href="_api_en_errors.html" class="nav-errors">Errors</a></li>
+<li><a href="_api_en_events.html" class="nav-events">Events</a></li>
+<li><a href="_api_en_fs.html" class="nav-fs">File System</a></li>
+<li><a href="_api_en_globals.html" class="nav-globals">Globals</a></li>
+<li><a href="_api_en_http.html" class="nav-http">HTTP</a></li>
+<li><a href="_api_en_http2.html" class="nav-http2">HTTP/2</a></li>
+<li><a href="_api_en_https.html" class="nav-https">HTTPS</a></li>
+<li><a href="_api_en_inspector.html" class="nav-inspector">Inspector</a></li>
+<li><a href="_api_en_intl.html" class="nav-intl">Internationalization</a></li>
+<li><a href="_api_en_modules.html" class="nav-modules">Modules</a></li>
+<li><a href="_api_en_net.html" class="nav-net">Net</a></li>
+<li><a href="_api_en_os.html" class="nav-os">OS</a></li>
+<li><a href="_api_en_path.html" class="nav-path">Path</a></li>
+<li><a href="_api_en_perf_hooks.html" class="nav-perf_hooks">Performance Hooks</a></li>
+<li><a href="_api_en_process.html" class="nav-process">Process</a></li>
+<li><a href="_api_en_punycode.html" class="nav-punycode">Punycode</a></li>
+<li><a href="_api_en_querystring.html" class="nav-querystring">Query Strings</a></li>
+<li><a href="_api_en_readline.html" class="nav-readline">Readline</a></li>
+<li><a href="_api_en_repl.html" class="nav-repl">REPL</a></li>
+<li><a href="_api_en_stream.html" class="nav-stream">Stream</a></li>
+<li><a href="_api_en_string_decoder.html" class="nav-string_decoder">String Decoder</a></li>
+<li><a href="_api_en_timers.html" class="nav-timers">Timers</a></li>
+<li><a href="_api_en_tls.html" class="nav-tls">TLS/SSL</a></li>
+<li><a href="_api_en_tracing.html" class="nav-tracing">Trace Events</a></li>
+<li><a href="_api_en_tty.html" class="nav-tty">TTY</a></li>
+<li><a href="_api_en_dgram.html" class="nav-dgram">UDP/Datagram</a></li>
+<li><a href="_api_en_url.html" class="nav-url">URL</a></li>
+<li><a href="_api_en_util.html" class="nav-util">Utilities</a></li>
+<li><a href="_api_en_v8.html" class="nav-v8">V8</a></li>
+<li><a href="_api_en_vm.html" class="nav-vm">VM</a></li>
+<li><a href="_api_en_worker_threads.html" class="nav-worker_threads">Worker Threads</a></li>
+<li><a href="_api_en_zlib.html" class="nav-zlib">ZLIB</a></li>
+</ul>
+<div class="line"></div>
+<ul>
+<li><a href="https://github.com/nodejs/node" class="nav-https-github-com-nodejs-node">GitHub Repo &amp; Issue Tracker</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/nodejs" class="nav-https-groups-google-com-forum-forum-nodejs">Mailing List</a></li>
+</ul>
+      </div>
+  
+      <div id="column1" data-id="synopsis" class="interior">
+        <header>
+          <h1>Node.js v10.13.0 &#x82F1;&#x6587;&#x6587;&#x6863;</h1>
+          <div id="gtoc">
+            <p>
+              <a href="_api_en_index.html" name="toc">&#x8FD4;&#x56DE;&#x6587;&#x6863;&#x9996;&#x9875;</a> |
+              <!--<a href="all.html">View on single page</a> |-->
+              <!--<a href="synopsis.json">View as JSON</a> |-->
+              <a href="_api_synopsis.html">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a>
+            </p>
+          </div>
+          <hr>
+        </header>
+
+        <div id="adWrap"></div>
+  
+        <div id="toc">
+          <h2>&#x76EE;&#x5F55;</h2>
+          <ul>
+<li>
+<p><a href="_api_en_synopsis.html#synopsis_usage">Usage</a></p>
+<ul>
+<li><a href="_api_en_synopsis.html#synopsis_example">Example</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+  
+        <div id="apicontent">
+          <h1>Usage<span><a class="mark" href="_api_en_synopsis.html#synopsis_usage" id="synopsis_usage">#</a></span></h1><p class="link_cn_wrap"><a href="_api_synopsis.html#synopsis_usage" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<!--introduced_in=v0.10.0-->
+<!--type=misc-->
+<p><code>node [options] [V8 options] [script.js | -e &quot;script&quot; | - ] [arguments]</code></p>
+<p>Please see the <a href="_api_en_cli.html#cli_command_line_options">Command Line Options</a> document for information about
+different options and ways to run scripts with Node.js.</p>
+<h2>Example<span><a class="mark" href="_api_en_synopsis.html#synopsis_example" id="synopsis_example">#</a></span></h2><p class="link_cn_wrap"><a href="_api_synopsis.html#synopsis_example" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<p>An example of a <a href="_api_en_http.html">web server</a> written with Node.js which responds with
+<code>&apos;Hello, World!&apos;</code>:</p>
+<p>Commands displayed in this document are shown starting with <code>$</code> or <code>&gt;</code>
+to replicate how they would appear in a user&apos;s terminal.
+Do not include the <code>$</code> and <code>&gt;</code> character they are there to
+indicate the start of each command.</p>
+<p>There are many tutorials and examples that follow this
+convention: <code>$</code> or <code>&gt;</code> for commands run as a regular user, and <code>#</code>
+for commands that should be executed as an administrator.</p>
+<p>Lines that don&#x2019;t start with <code>$</code> or <code>&gt;</code> character are typically showing
+the output of the previous command.</p>
+<p>Firstly, make sure to have downloaded and installed Node.js.
+See <a href="https://nodejs.org/en/download/package-manager/">this guide</a> for further install information.</p>
+<p>Now, create an empty project folder called <code>projects</code>, navigate into it:
+Project folder can be named base on user&apos;s current project title but
+this example will use <code>projects</code> as the project folder.</p>
+<p>Linux and Mac:</p>
+<pre><code class="language-console">$ mkdir ~/projects
+$ cd ~/projects
+</code></pre>
+<p>Windows CMD:</p>
+<pre><code class="language-console">&gt; mkdir %USERPROFILE%\projects
+&gt; cd %USERPROFILE%\projects
+</code></pre>
+<p>Windows PowerShell:</p>
+<pre><code class="language-console">&gt; mkdir $env:USERPROFILE\projects
+&gt; cd $env:USERPROFILE\projects
+</code></pre>
+<p>Next, create a new source file in the <code>projects</code>
+folder and call it <code>hello-world.js</code>.</p>
+<p>In Node.js it is considered good style to use
+hyphens (<code>-</code>) or underscores (<code>_</code>) to separate
+multiple words in filenames.</p>
+<p>Open <code>hello-world.js</code> in any preferred text editor and
+paste in the following content.</p>
+<pre><code class="language-js">const http = require(&apos;http&apos;);
+
+const hostname = &apos;127.0.0.1&apos;;
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);
+  res.end(&apos;Hello, World!\n&apos;);
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre>
+<p>Save the file, go back to the terminal window enter the following command:</p>
+<pre><code class="language-console">$ node hello-world.js
+</code></pre>
+<p>An output like this should appear in the terminal to indicate Node.js
+server is running:</p>
+<pre><code class="language-console">Server running at http://127.0.0.1:3000/
+</code></pre>
+<p>Now, open any preferred web browser and visit <code>http://127.0.0.1:3000</code>.</p>
+<p>If the browser displays the string <code>Hello, World!</code>, that indicates
+the server is working.</p>
+<p>Many of the examples in the documentation can be run similarly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.write('<script src="api.js?1540915604318"><\/script>');
+  </script>
+
+<script src="../lib/backtop.js"></script></body></html>

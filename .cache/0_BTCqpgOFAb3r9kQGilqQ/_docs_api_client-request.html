@@ -1,0 +1,719 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="#2f3241" name="theme-color">
+
+  <meta property="og:type" content="website">
+
+    <title>&#x7C7B;: ClientRequest | Electron</title>
+    <meta property="og:title" content="&#x7C7B;: ClientRequest | Electron">
+    <meta name="twitter:title" value="&#x7C7B;: ClientRequest | Electron">
+
+    <meta property="og:url" content="/docs/api/client-request">
+    <meta name="twitter:url" value="/docs/api/client-request">
+
+    <meta property="og:description" content="&#x53D1;&#x8D77;HTTP/HTTPS&#x8BF7;&#x6C42;.">
+    <meta name="twitter:description" value="&#x53D1;&#x8D77;HTTP/HTTPS&#x8BF7;&#x6C42;.">
+
+    <meta name="twitter:card" content="summary">
+
+  <!-- consumed by scripts/get-localized-strings -->
+  <meta name="localized.clipboard.copy" content="Copy">
+  <meta name="localized.clipboard.copy_to_clipboard" content="&#x590D;&#x5236;&#x5230;&#x526A;&#x8D34;&#x677F;">
+  <meta name="localized.clipboard.copied" content="&#x5DF2;&#x590D;&#x5236;">
+
+  <meta name="twitter:site" content="@ElectronJS">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Electron Blog" href="https://electronjs.org/blog.xml">
+  <link rel="alternate" type="application/rss+xml" title="Electron Releases" href="https://electronjs.org/releases.xml">
+  <link rel="stylesheet" href="_styles_index.css">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-3769691-57', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+  <body>
+    <header class="site-header">
+  <div class="container">
+
+    <a class="site-header-logo no-underline-hover" href="/">
+      <svg class="site-header-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="none" fill="none" fill-rule="evenodd">
+          <path class="svg-stroke" d="M11.7014354,7.72646259 C7.91761319,7.04380371 4.81334929,7.69369948 3.61536899,9.74908711 C2.72656361,11.27402 3.03878853,13.3122813 4.27551338,15.4489979 M6.32642733,18.1886712 C7.89193828,19.8928217 9.9666792,21.548102 12.4120986,22.9466461 C18.2414315,26.2804624 24.2930499,27.0779063 27.1669222,25.1368228 M29.8456419,24.0565148 C29.8456419,23.1971812 29.1423799,22.5005537 28.2748621,22.5005537 C27.4073444,22.5005537 26.7040823,23.1971812 26.7040823,24.0565148 C26.7040823,24.9158484 27.4073444,25.612476 28.2748621,25.612476 C29.1423799,25.612476 29.8456419,24.9158484 29.8456419,24.0565148 L29.8456419,24.0565148 Z"/>
+          <path class="svg-stroke" d="M26.1017264,17.699802 C28.5790274,14.8008665 29.5563892,11.8210699 28.3609038,9.7699627 C27.4866535,8.27000212 25.5971843,7.51855661 23.1692624,7.48727915 M19.6970573,7.86083838 C17.4054295,8.34719767 14.8948834,9.30454988 12.424266,10.7175048 C6.42288792,14.1497143 2.65401611,19.1281832 3.16552768,22.580522 M3.68501877,25.612476 C4.5525365,25.612476 5.25579857,24.9158484 5.25579857,24.0565148 C5.25579857,23.1971812 4.5525365,22.5005537 3.68501877,22.5005537 C2.81750104,22.5005537 2.11423897,23.1971812 2.11423897,24.0565148 C2.11423897,24.9158484 2.81750104,25.612476 3.68501877,25.612476 L3.68501877,25.612476 L3.68501877,25.612476 Z"/>
+          <path class="svg-stroke" d="M10.1856596,25.0699995 C11.480995,28.6529192 13.5999849,30.9876144 15.99422,30.9876144 C17.7292778,30.9876144 19.3197869,29.7615184 20.5570359,27.7228112 M22.0509221,24.3364015 C22.7373456,22.1635452 23.1341282,19.5948285 23.1341282,16.8425133 C23.1341282,10.0879866 20.7444131,4.43922457 17.5485944,3.03357113 M15.99422,4.25337326 C16.8617378,4.25337326 17.5649998,3.55674574 17.5649998,2.69741214 C17.5649998,1.83807854 16.8617378,1.14145101 15.99422,1.14145101 C15.1267023,1.14145101 14.4234402,1.83807854 14.4234402,2.69741214 C14.4234402,3.55674574 15.1267023,4.25337326 15.99422,4.25337326 Z"/>
+          <path class="svg-fill" d="M16.2975137,18.2334955 C15.5219407,18.3994908 14.7578457,17.9112502 14.5899415,17.142994 C14.4226932,16.3747378 14.9152558,15.6178512 15.6908287,15.451531 C16.4664016,15.2855357 17.2304967,15.7737763 17.3984009,16.5420325 C17.5659771,17.3102887 17.0730866,18.0671753 16.2975137,18.2334955 Z"/>
+        </g>
+      </svg>
+      <svg class="vertical-middle" width="156px" height="18px" viewBox="0 0 156 18" xmlns="http://www.w3.org/2000/svg">
+        <title>Electron</title>
+        <path stroke="none" fill="currentColor" fill-rule="evenodd" d="M0.93602403,17.0884387 L11.4962951,17.0884387 C11.9763075,17.0884387 12.3603173,16.7044288 12.3603173,16.2244165 C12.3603173,15.7444042 11.9763075,15.3603943 11.4962951,15.3603943 L1.89604868,15.3603943 L1.89604868,9.48024338 L10.2962643,9.48024338 C10.7762767,9.48024338 11.1602865,9.09623352 11.1602865,8.6162212 C11.1602865,8.16020949 10.7762767,7.75219902 10.2962643,7.75219902 L1.89604868,7.75219902 L1.89604868,2.01605176 L11.3762921,2.01605176 C11.8563044,2.01605176 12.2403142,1.6320419 12.2403142,1.15202958 C12.2403142,0.672017252 11.8563044,0.288007394 11.3762921,0.288007394 L0.93602403,0.288007394 C0.432011091,0.288007394 0,0.720018485 0,1.24803204 L0,16.1284141 C0,16.6564276 0.432011091,17.0884387 0.93602403,17.0884387 L0.93602403,17.0884387 Z M19.0804898,16.1284141 C19.0804898,16.6564276 19.5125009,17.0884387 20.0165139,17.0884387 L29.6887622,17.0884387 C30.1687745,17.0884387 30.5527844,16.7044288 30.5527844,16.2244165 C30.5527844,15.7444042 30.1687745,15.3363937 29.6887622,15.3363937 L20.9765385,15.3363937 L20.9765385,1.12802896 C20.9765385,0.600015404 20.5445274,0.168004313 20.0165139,0.168004313 C19.5125009,0.168004313 19.0804898,0.600015404 19.0804898,1.12802896 L19.0804898,16.1284141 Z M37.8729723,17.0884387 L48.4332434,17.0884387 C48.9132557,17.0884387 49.2972656,16.7044288 49.2972656,16.2244165 C49.2972656,15.7444042 48.9132557,15.3603943 48.4332434,15.3603943 L38.8329969,15.3603943 L38.8329969,9.48024338 L47.2332126,9.48024338 C47.7132249,9.48024338 48.0972348,9.09623352 48.0972348,8.6162212 C48.0972348,8.16020949 47.7132249,7.75219902 47.2332126,7.75219902 L38.8329969,7.75219902 L38.8329969,2.01605176 L48.3132403,2.01605176 C48.7932526,2.01605176 49.1772625,1.6320419 49.1772625,1.15202958 C49.1772625,0.672017252 48.7932526,0.288007394 48.3132403,0.288007394 L37.8729723,0.288007394 C37.3689593,0.288007394 36.9369483,0.720018485 36.9369483,1.24803204 L36.9369483,16.1284141 C36.9369483,16.6564276 37.3689593,17.0884387 37.8729723,17.0884387 L37.8729723,17.0884387 Z M63.6976353,17.3764461 C66.4577061,17.3764461 68.2817529,16.4164214 69.9377955,14.9043826 C70.1057998,14.7603789 70.2498035,14.5203728 70.2498035,14.2323654 C70.2498035,13.7523531 69.8177924,13.320342 69.3377801,13.320342 C69.0977739,13.320342 68.8817684,13.440345 68.7377647,13.5843487 C67.2977277,14.9043826 65.8336901,15.6244011 63.7456365,15.6244011 C60.0495416,15.6244011 57.2414695,12.5763229 57.2414695,8.68822305 L57.2414695,8.64022181 C57.2414695,4.77612261 60.025541,1.75204498 63.7456365,1.75204498 C65.8096895,1.75204498 67.2737271,2.5200647 68.5697603,3.67209427 C68.713764,3.76809674 68.9297696,3.88809982 69.1937764,3.88809982 C69.6977893,3.88809982 70.153801,3.45608873 70.153801,2.95207579 C70.153801,2.61606716 69.9617961,2.35206038 69.7697911,2.18405607 C68.2097511,0.888022798 66.4817067,0 63.7696371,0 C58.8255102,0 55.273419,3.93610105 55.273419,8.68822305 L55.273419,8.73622428 C55.273419,13.5603481 58.8495108,17.3764461 63.6976353,17.3764461 L63.6976353,17.3764461 Z M81.1700838,16.2484171 C81.1700838,16.7764307 81.6020949,17.2084418 82.1301085,17.2084418 C82.658122,17.2084418 83.0901331,16.7764307 83.0901331,16.2484171 L83.0901331,2.04005237 L87.9622582,2.04005237 C88.4422705,2.04005237 88.850281,1.65604251 88.850281,1.17603019 C88.850281,0.696017868 88.4422705,0.288007394 87.9622582,0.288007394 L76.2979587,0.288007394 C75.8179464,0.288007394 75.4099359,0.696017868 75.4099359,1.17603019 C75.4099359,1.65604251 75.8179464,2.04005237 76.2979587,2.04005237 L81.1700838,2.04005237 L81.1700838,16.2484171 Z M95.2824461,16.2484171 C95.2824461,16.7764307 95.7144572,17.2084418 96.2184701,17.2084418 C96.7464837,17.2084418 97.1784948,16.7764307 97.1784948,16.2484171 L97.1784948,10.5602711 L102.002619,10.5602711 L106.73074,16.7044288 C106.946746,16.9924362 107.234753,17.2084418 107.618763,17.2084418 C108.098775,17.2084418 108.578787,16.7764307 108.578787,16.2724177 C108.578787,16.008411 108.458784,15.7924054 108.266779,15.5763999 L104.090672,10.2002619 C106.706739,9.69624892 108.578787,8.08820764 108.578787,5.32813679 L108.578787,5.28013555 C108.578787,3.96010166 108.098775,2.78407147 107.282754,1.96805052 C106.226727,0.912023414 104.570685,0.288007394 102.506632,0.288007394 L96.2184701,0.288007394 C95.7144572,0.288007394 95.2824461,0.720018485 95.2824461,1.24803204 L95.2824461,16.2484171 Z M97.1784948,8.85622736 L97.1784948,2.04005237 L102.362628,2.04005237 C105.074698,2.04005237 106.658738,3.28808441 106.658738,5.3521374 L106.658738,5.40013863 C106.658738,7.56019409 104.858692,8.85622736 102.338627,8.85622736 L97.1784948,8.85622736 Z M123.435169,17.3764461 C128.5473,17.3764461 132.027389,13.320342 132.027389,8.68822305 L132.027389,8.64022181 C132.027389,4.0081029 128.595301,0 123.48317,0 C118.371039,0 114.89095,4.05610413 114.89095,8.68822305 L114.89095,8.73622428 C114.89095,13.3683432 118.323038,17.3764461 123.435169,17.3764461 L123.435169,17.3764461 Z M123.48317,15.6244011 C119.643072,15.6244011 116.859,12.504321 116.859,8.68822305 L116.859,8.64022181 C116.859,4.82412385 119.59507,1.75204498 123.435169,1.75204498 C127.275267,1.75204498 130.059339,4.87212508 130.059339,8.68822305 L130.059339,8.73622428 C130.059339,12.5523222 127.323269,15.6244011 123.48317,15.6244011 L123.48317,15.6244011 Z M139.035569,16.2724177 C139.035569,16.7764307 139.44358,17.2084418 139.947593,17.2084418 C140.475606,17.2084418 140.883617,16.7764307 140.883617,16.2724177 L140.883617,3.2640838 L151.299884,16.5844258 C151.587892,16.9204344 151.875899,17.1604405 152.283909,17.1604405 L152.379912,17.1604405 C152.883925,17.1604405 153.243934,16.7764307 153.243934,16.2724177 L153.243934,1.10402834 C153.243934,0.600015404 152.835924,0.168004313 152.331911,0.168004313 C151.803897,0.168004313 151.395887,0.600015404 151.395887,1.10402834 L151.395887,13.7763537 L141.195625,0.768019717 C140.931618,0.432011091 140.667611,0.216005545 140.2356,0.216005545 L139.971593,0.216005545 C139.46758,0.216005545 139.035569,0.648016636 139.035569,1.15202958 L139.035569,16.2724177 Z"/>
+      </svg>
+    </a>
+
+    <nav class="site-header-nav">
+      <a class="site-header-nav-item" href="/donors">&#x6350;&#x8D60;&#x8005;</a>
+      <a class="site-header-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="site-header-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="site-header-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="site-header-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <!-- <a class="site-header-nav-item" href="/userland">用户生态</a> -->
+      <a class="site-header-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <input id="search-input" class="nav-search" placeholder="&#x641C;&#x7D22;" aria-label="search-box">
+      <!-- <img id="search-hint" alt="image of backslash shorcut" src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" /> -->
+      <!-- <dialog id="search-hint-dialog" open>
+        <div class="dialog-text">Search for Electron APIs, tutorials, npm packages, and apps.</div>
+        <button class="dialog-button">OK</button>
+      </dialog> -->
+      <a class="site-header-nav-item octicon" href="https://github.com/electron" title="Github Organization">
+        <span class="mega-octicon octicon-mark-github vertical-middle"></span>
+      </a>
+      <a class="site-header-nav-item bordered" href="/languages">&#x4E2D;&#x6587;</a>
+    </nav>
+  </div>
+</header>
+    
+<div class="subtron text-left">
+  <div class="container-narrow">
+    <h1>
+      <span class="mr-3 mr-lg-4">Electron &#x6587;&#x6863;</span>
+      <!-- <span class="docs-version">3.0.7</span> -->
+    </h1>      
+  </div>
+  
+  <div class="container-narrow mt-2">
+
+    <h4 class="docs-breadcrumbs">
+      <a href="_docs.html">Docs</a> /
+          <a href="_docs_api.html">API</a>
+          / 
+        <a href="_docs_api_client-request.html">&#x7C7B;: ClientRequest</a>
+
+          <a href="_docs_api_client-request_history.html">
+            <span class="docs-version">
+                v3.0.7
+            </span>
+          </a>
+
+        
+
+    </h4>
+  </div>
+</div>
+
+<section class="page-section docs strong-headers">
+  <div class="container-narrow">
+      <div class="sub-section position-relative" data-name="-&#x7C7B;-clientrequest" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x7C7B;-clientrequest"><a href="_docs.html#%E7%B1%BB-clientrequest">&#x7C7B;: ClientRequest</a></h2>
+<blockquote>
+<p>&#x53D1;&#x8D77;HTTP/HTTPS&#x8BF7;&#x6C42;.</p>
+</blockquote>
+<p>&#x7EBF;&#x7A0B;&#xFF1A;<a href="_docs_glossary.html#main-process">&#x4E3B;&#x7EBF;&#x7A0B;</a></p>
+<p><code>ClientRequest</code>&#x5B9E;&#x73B0;&#x4E86;<a href="https://nodejs.org/api/stream.html#stream_writable_streams">Writable Stream</a>&#x63A5;&#x53E3;, &#x56E0;&#x6B64;&#x662F;&#x4E00;&#x4E2A;<a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a>&#x7C7B;&#x578B;.</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x7C7B;-clientrequest" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="class-clientrequest"><a href="_docs.html#class-clientrequest">Class: ClientRequest</a></h2>
+<blockquote>
+<p>Make HTTP/HTTPS requests.</p>
+</blockquote>
+<p>Process: <a href="_docs_glossary.html#main-process">Main</a></p>
+<p><code>ClientRequest</code> implements the <a href="https://nodejs.org/api/stream.html#stream_writable_streams">Writable Stream</a>
+interface and is therefore an <a href="https://nodejs.org/api/events.html#events_class_eventemitter">EventEmitter</a>.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-new-clientrequestoptions" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h3 id="new-clientrequestoptions"><a href="_docs.html#new-clientrequestoptions"><code>new ClientRequest(options)</code></a></h3>
+<ul>
+<li>
+<p><code>&#x53C2;&#x6570;</code> (Object | String) -&#x5982;&#x679C; <code>&#x9009;&#x9879;</code> &#x662F;&#x4E00;&#x4E2A;String&#x7C7B;&#x578B;, &#x5B83;&#x88AB;&#x89E3;&#x91CA;&#x4E3A;&#x8BF7;&#x6C42;&#x7684;URL. &#x5982;&#x679C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;Object&#x7C7B;&#x578B;, &#x90A3;&#x4E48;&#x5B83;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;HTTP&#x8BF7;&#x6C42;: </p>
+<ul>
+<li><code>method</code> String (&#x53EF;&#x9009;) - HTTP&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;. &#x9ED8;&#x8BA4;&#x4E3A;GET&#x65B9;&#x6CD5;.</li>
+<li><code>url</code> String (&#x53EF;&#x9009;) - &#x8BF7;&#x6C42;&#x7684;URL. &#x5FC5;&#x987B;&#x5728;&#x6307;&#x5B9A;&#x4E86;http&#x6216;https&#x7684;&#x534F;&#x8BAE;&#x65B9;&#x6848;&#x7684;&#x72EC;&#x7ACB;&#x8868;&#x5355;&#x4E2D;&#x63D0;&#x4F9B;.</li>
+<li><code>session</code> Object (&#x53EF;&#x9009;) - &#x4E0E;&#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x8054;&#x7684;<a href="_docs_api_session.html"><code>Session</code></a>&#x5B9E;&#x4F8B;.</li>
+<li><code>partition</code> String (&#x53EF;&#x9009;) - &#x4E0E;&#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x8054;&#x7684;<a href="_docs_api_session.html"><code>partition</code></a>&#x540D;&#x79F0;. &#x9ED8;&#x8BA4;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;. <code>session</code>&#x9009;&#x9879;&#x4F18;&#x5148;&#x4E8E;<code>partition</code>&#x9009;&#x9879;. &#x56E0;&#x6B64;, &#x5982;&#x679C;<code>session</code>&#x662F;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x7684;, &#x5219;<code>partition</code>&#x5C06;&#x88AB;&#x5FFD;&#x7565;.</li>
+<li><code>protocol</code> String (&#x53EF;&#x9009;) - &#x5728;&quot;scheme:&quot;&#x8868;&#x5355;&#x4E2D;&#x7684;&#x534F;&#x8BAE;&#x65B9;&#x6848;. &#x76EE;&#x524D;&#x652F;&#x6301;&#x7684;&#x503C;&#x4E3A;&apos;http:&apos; &#x6216;&#x8005;&apos;https:&apos;. &#x9ED8;&#x8BA4;&#x4E3A;&apos;http:&apos;.</li>
+<li><code>host</code> String (&#x53EF;&#x9009;) - &#x4F5C;&#x4E3A;&#x8FDE;&#x63A5;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E3B;&#x673A;,&#x4E3B;&#x673A;&#x540D;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&apos;hostname:port&apos;.</li>
+<li><code>hostname</code> String (&#x53EF;&#x9009;) - &#x670D;&#x52A1;&#x5668;&#x4E3B;&#x673A;&#x540D;.</li>
+<li><code>port</code> Integer (&#x53EF;&#x9009;) - &#x670D;&#x52A1;&#x5668;&#x4FA6;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x53F7;.</li>
+<li><code>path</code> String (&#x53EF;&#x9009;) - &#x8BF7;&#x6C42;URL&#x7684;&#x8DEF;&#x5F84;&#x90E8;&#x5206;.</li>
+<li><code>redirect</code> String (&#x53EF;&#x9009;) - &#x8BF7;&#x6C42;&#x7684;&#x91CD;&#x5B9A;&#x5411;&#x6A21;&#x5F0F;. &#x53EF;&#x9009;&#x503C;&#x4E3A; <code>follow</code>, <code>error</code> &#x6216; <code>manual</code>. &#x9ED8;&#x8BA4;&#x503C;&#x4E3A; <code>follow</code>. &#x5F53;&#x6A21;&#x5F0F;&#x4E3A;<code>error</code>&#x65F6;, &#x91CD;&#x5B9A;&#x5411;&#x5C06;&#x88AB;&#x7EC8;&#x6B62;. &#x5F53;&#x6A21;&#x5F0F;&#x4E3A; <code>manual</code>&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x5EF6;&#x8FDF;&#x91CD;&#x5B9A;&#x5411;&#x76F4;&#x5230;&#x8C03;&#x7528;&#x4E86; <a href="_docs.html#requestfollowredirect"><code>request.followRedirect</code></a>&#x3002; &#x5728;&#x6B64;&#x6A21;&#x5F0F;&#x4E2D;&#x4FA6;&#x542C; <a href="_docs.html#event-redirect"><code>redirect</code></a>&#x4E8B;&#x4EF6;&#xFF0C;&#x4EE5;&#x83B7;&#x5F97;&#x5173;&#x4E8E;&#x91CD;&#x5B9A;&#x5411;&#x8BF7;&#x6C42;&#x7684;&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<p><code>options</code> &#x5C5E;&#x6027;&#xFF0C;&#x5982; <code>protocol</code>, <code>host</code>, <code>hostname</code>, <code>port</code> &#x548C; <code>path</code>&#xFF0C;&#x5728; <a href="https://nodejs.org/api/url.html">URL</a> &#x6A21;&#x5757;&#x4E2D;&#x4F1A;&#x4E25;&#x683C;&#x9075;&#x5FAA; Node.js &#x7684;&#x6A21;&#x5F0F;</p>
+<p>&#x4F8B;&#x5982;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E0E;github.com&#x76F8;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x5982;&#x4E0B;:</p>
+<pre><code class="hljs language-JavaScript"><span class="hljs-keyword">const</span> request = net.request({
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&apos;GET&apos;</span>,
+  <span class="hljs-attr">protocol</span>: <span class="hljs-string">&apos;https:&apos;</span>,
+  <span class="hljs-attr">hostname</span>: <span class="hljs-string">&apos;github.com&apos;</span>,
+  <span class="hljs-attr">port</span>: <span class="hljs-number">443</span>,
+  <span class="hljs-attr">path</span>: <span class="hljs-string">&apos;/&apos;</span>
+})</code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-new-clientrequestoptions" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h3 id="new-clientrequestoptions"><a href="_docs.html#new-clientrequestoptions"><code>new ClientRequest(options)</code></a></h3>
+<ul>
+<li>
+<p><code>options</code> (Object | String) - If <code>options</code> is a String, it is interpreted as
+the request URL. If it is an object, it is expected to fully specify an HTTP request via the
+following properties:</p>
+<ul>
+<li><code>method</code> String (optional) - The HTTP request method. Defaults to the GET
+method.</li>
+<li><code>url</code> String (optional) - The request URL. Must be provided in the absolute
+form with the protocol scheme specified as http or https.</li>
+<li><code>session</code> Object (optional) - The <a href="_docs_api_session.html"><code>Session</code></a> instance with
+which the request is associated.</li>
+<li><code>partition</code> String (optional) - The name of the <a href="_docs_api_session.html"><code>partition</code></a>
+with which the request is associated. Defaults to the empty string. The
+<code>session</code> option prevails on <code>partition</code>. Thus if a <code>session</code> is explicitly
+specified, <code>partition</code> is ignored.</li>
+<li><code>protocol</code> String (optional) - The protocol scheme in the form &apos;scheme:&apos;.
+Currently supported values are &apos;http:&apos; or &apos;https:&apos;. Defaults to &apos;http:&apos;.</li>
+<li><code>host</code> String (optional) - The server host provided as a concatenation of
+the hostname and the port number &apos;hostname:port&apos;.</li>
+<li><code>hostname</code> String (optional) - The server host name.</li>
+<li><code>port</code> Integer (optional) - The server&apos;s listening port number.</li>
+<li><code>path</code> String (optional) - The path part of the request URL.</li>
+<li><code>redirect</code> String (optional) - The redirect mode for this request. Should be
+one of <code>follow</code>, <code>error</code> or <code>manual</code>. Defaults to <code>follow</code>. When mode is <code>error</code>,
+any redirection will be aborted. When mode is <code>manual</code> the redirection will be
+deferred until <a href="_docs.html#requestfollowredirect"><code>request.followRedirect</code></a> is invoked. Listen for the <a href="_docs.html#event-redirect"><code>redirect</code></a> event in
+this mode to get more details about the redirect request.</li>
+</ul>
+</li>
+</ul>
+<p><code>options</code> properties such as <code>protocol</code>, <code>host</code>, <code>hostname</code>, <code>port</code> and <code>path</code>
+strictly follow the Node.js model as described in the
+<a href="https://nodejs.org/api/url.html">URL</a> module.</p>
+<p>For instance, we could have created the same request to &apos;github.com&apos; as follows:</p>
+<pre><code class="hljs language-JavaScript"><span class="hljs-keyword">const</span> request = net.request({
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&apos;GET&apos;</span>,
+  <span class="hljs-attr">protocol</span>: <span class="hljs-string">&apos;https:&apos;</span>,
+  <span class="hljs-attr">hostname</span>: <span class="hljs-string">&apos;github.com&apos;</span>,
+  <span class="hljs-attr">port</span>: <span class="hljs-number">443</span>,
+  <span class="hljs-attr">path</span>: <span class="hljs-string">&apos;/&apos;</span>
+})</code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5B9E;&#x4F8B;&#x4E8B;&#x4EF6;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h3 id="&#x5B9E;&#x4F8B;&#x4E8B;&#x4EF6;"><a href="_docs.html#%E5%AE%9E%E4%BE%8B%E4%BA%8B%E4%BB%B6">&#x5B9E;&#x4F8B;&#x4E8B;&#x4EF6;</a></h3>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5B9E;&#x4F8B;&#x4E8B;&#x4EF6;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h3 id="instance-events"><a href="_docs.html#instance-events">Instance Events</a></h3>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-event-response" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="event-response"><a href="_docs.html#event-response">Event: &apos;response&apos;</a></h4>
+<p>&#x8FD4;&#x56DE;:</p>
+<ul>
+<li><code>response</code> &#x6536;&#x5230;&#x7684;&#x6D88;&#x606F; - &#x8868;&#x793A;HTTP&#x54CD;&#x5E94;&#x6D88;&#x606F;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-event-response" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-response"><a href="_docs.html#event-response">Event: &apos;response&apos;</a></h4>
+<p>Returns:</p>
+<ul>
+<li><code>response</code> IncomingMessage - An object representing the HTTP response message.</li>
+</ul>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x4E8B;&#x4EF6;-login" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="&#x4E8B;&#x4EF6;-login"><a href="_docs.html#%E4%BA%8B%E4%BB%B6-login">&#x4E8B;&#x4EF6;: &quot;login&quot;</a></h4>
+<p>&#x8FD4;&#x56DE;:</p>
+<ul>
+<li>
+<p><code>authInfo</code> Object </p>
+<ul>
+<li><code>isProxy</code> Boolean</li>
+<li><code>scheme</code> String</li>
+<li><code>host</code> String</li>
+<li><code>port</code> Integer</li>
+<li><code>realm</code> String</li>
+</ul>
+</li>
+<li>
+<p><code>callback</code> Function - &#x56DE;&#x8C03;&#x51FD;&#x6570; </p>
+<ul>
+<li><code>username</code> String</li>
+<li><code>password</code> String</li>
+</ul>
+</li>
+</ul>
+<p>&#x5F53;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x4EE3;&#x7406;&#x8BF7;&#x6C42;&#x7528;&#x6237;&#x8BA4;&#x8BC1;&#x65F6;&#x89E6;&#x53D1;</p>
+<p>&#x7528;&#x6237;&#x8BC1;&#x4E66;&#x4F1A;&#x8C03;&#x7528; <code>callback</code>&#x65B9;&#x6CD5;:</p>
+<ul>
+<li><code>username</code> String</li>
+<li><code>password</code> String</li>
+</ul>
+<pre><code class="hljs language-JavaScript">request.on(<span class="hljs-string">&apos;login&apos;</span>, (authInfo, callback) =&gt; {
+  callback(<span class="hljs-string">&apos;username&apos;</span>, <span class="hljs-string">&apos;password&apos;</span>)
+})</code></pre>
+<p>&#x63D0;&#x4F9B;&#x7A7A;&#x7684;&#x51ED;&#x8BC1;&#x5C06;&#x53D6;&#x6D88;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x5728;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;&#x4E0A;&#x62A5;&#x544A;&#x4E00;&#x4E2A;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x9519;&#x8BEF;:</p>
+<pre><code class="hljs language-JavaScript">request.on(<span class="hljs-string">&apos;response&apos;</span>, (response) =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`STATUS: <span class="hljs-subst">${response.statusCode}</span>`</span>);
+  response.on(<span class="hljs-string">&apos;error&apos;</span>, (error) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`ERROR: <span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(error)}</span>`</span>)
+  })
+})
+request.on(<span class="hljs-string">&apos;login&apos;</span>, (authInfo, callback) =&gt; {
+  callback()
+})</code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x4E8B;&#x4EF6;-login" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-login"><a href="_docs.html#event-login">Event: &apos;login&apos;</a></h4>
+<p>Returns:</p>
+<ul>
+<li>
+<p><code>authInfo</code> Object</p>
+<ul>
+<li><code>isProxy</code> Boolean</li>
+<li><code>scheme</code> String</li>
+<li><code>host</code> String</li>
+<li><code>port</code> Integer</li>
+<li><code>realm</code> String</li>
+</ul>
+</li>
+<li>
+<p><code>callback</code> Function</p>
+<ul>
+<li><code>username</code> String</li>
+<li><code>password</code> String</li>
+</ul>
+</li>
+</ul>
+<p>Emitted when an authenticating proxy is asking for user credentials.</p>
+<p>The <code>callback</code> function is expected to be called back with user credentials:</p>
+<ul>
+<li><code>username</code> String</li>
+<li><code>password</code> String</li>
+</ul>
+<pre><code class="hljs language-JavaScript">request.on(<span class="hljs-string">&apos;login&apos;</span>, (authInfo, callback) =&gt; {
+  callback(<span class="hljs-string">&apos;username&apos;</span>, <span class="hljs-string">&apos;password&apos;</span>)
+})</code></pre>
+<p>Providing empty credentials will cancel the request and report an authentication
+error on the response object:</p>
+<pre><code class="hljs language-JavaScript">request.on(<span class="hljs-string">&apos;response&apos;</span>, (response) =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`STATUS: <span class="hljs-subst">${response.statusCode}</span>`</span>);
+  response.on(<span class="hljs-string">&apos;error&apos;</span>, (error) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`ERROR: <span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(error)}</span>`</span>)
+  })
+})
+request.on(<span class="hljs-string">&apos;login&apos;</span>, (authInfo, callback) =&gt; {
+  callback()
+})</code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-event-finish" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="event-finish"><a href="_docs.html#event-finish">Event: &apos;finish&apos;</a></h4>
+<p>&#x5728; <code>request</code> &#x6700;&#x7EC8;&#x7684; chunk &#x6570;&#x636E;&#x540E;&#x5199;&#x5165; <code>request</code> &#x540E;&#x89E6;&#x53D1;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-event-finish" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-finish"><a href="_docs.html#event-finish">Event: &apos;finish&apos;</a></h4>
+<p>Emitted just after the last chunk of the <code>request</code>&apos;s data has been written into
+the <code>request</code> object.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-event-abort" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="event-abort"><a href="_docs.html#event-abort">Event: &apos;abort&apos;</a></h4>
+<p>&#x5F53; <code>request</code>&#x8BF7;&#x6C42;&#x88AB;&#x4E2D;&#x6B62;&#x65F6;&#x53D1;&#x51FA;&#x3002;&#x5982;&#x679C;<code>request</code> &#x8BF7;&#x6C42;&#x5DF2;&#x7ECF;&#x5173;&#x95ED;&#xFF0C; <code>abort</code>&#x4E2D;&#x6B62;&#x4E8B;&#x4EF6;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x89E6;&#x53D1;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-event-abort" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-abort"><a href="_docs.html#event-abort">Event: &apos;abort&apos;</a></h4>
+<p>Emitted when the <code>request</code> is aborted. The <code>abort</code> event will not be fired if
+the <code>request</code> is already closed.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-event-error" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="event-error"><a href="_docs.html#event-error">Event: &apos;error&apos;</a></h4>
+<p>&#x8FD4;&#x56DE;:</p>
+<ul>
+<li><code>error</code> Error -&#x63D0;&#x4F9B;&#x5931;&#x8D25;&#x4FE1;&#x606F;&#x7684;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<p>&#x5F53; <code>net</code>&#x7F51;&#x7EDC;&#x6A21;&#x5757;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x65F6;&#x4F1A;&#x89E6;&#x53D1;&#x3002; &#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53; <code>request</code>&#x8BF7;&#x6C42;&#x5BF9;&#x8C61;&#x53D1;&#x51FA;&#x4E00;&#x4E2A; <code>error</code>&#x9519;&#x8BEF;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x4E00;&#x4E2A; <code>close</code>&#x5173;&#x95ED;&#x4E8B;&#x4EF6;&#x4F1A;&#x968F;&#x4E4B;&#x53D1;&#x751F;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x4F1A;&#x63D0;&#x4F9B;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-event-error" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-error"><a href="_docs.html#event-error">Event: &apos;error&apos;</a></h4>
+<p>Returns:</p>
+<ul>
+<li><code>error</code> Error - an error object providing some information about the failure.</li>
+</ul>
+<p>Emitted when the <code>net</code> module fails to issue a network request. Typically when
+the <code>request</code> object emits an <code>error</code> event, a <code>close</code> event will subsequently
+follow and no response object will be provided.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x4E8B;&#x4EF6;&#xFF1A;-close" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="&#x4E8B;&#x4EF6;&#xFF1A;-close"><a href="_docs.html#%E4%BA%8B%E4%BB%B6%EF%BC%9A-close">&#x4E8B;&#x4EF6;&#xFF1A; &apos;close&apos;</a></h4>
+<p>&#x4F5C;&#x4E3A;HTTP &#x7684; request-response &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x53D1;&#x51FA;&#x3002; <code>close</code>&#x4E8B;&#x4EF6;&#x8868;&#x660E;&#xFF0C;&#x5728;<code>request</code>&#x6216;<code>response</code> &#x5BF9;&#x8C61;&#x4E2D;&#x4E0D;&#x4F1A;&#x53D1;&#x51FA;&#x66F4;&#x591A;&#x7684;&#x4E8B;&#x4EF6;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x4E8B;&#x4EF6;&#xFF1A;-close" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-close"><a href="_docs.html#event-close">Event: &apos;close&apos;</a></h4>
+<p>Emitted as the last event in the HTTP request-response transaction. The <code>close</code>
+event indicates that no more events will be emitted on either the <code>request</code> or
+<code>response</code> objects.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-event-redirect" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="event-redirect"><a href="_docs.html#event-redirect">Event: &apos;redirect&apos;</a></h4>
+<p>&#x8FD4;&#x56DE;:</p>
+<ul>
+<li><code>statusCode</code> Integer</li>
+<li><code>method</code> String</li>
+<li><code>redirectUrl</code> String</li>
+<li><code>responseHeaders</code> Object</li>
+</ul>
+<p>&#x5F53;&#x53D1;&#x51FA;&#x91CD;&#x5B9A;&#xFF0C;&#x5E76;&#x4E14;&#x6A21;&#x5F0F;&#x4E3A; <code>manuals(&#x624B;&#x52A8;)</code>&#x65F6;&#x89E6;&#x53D1;&#x3002;&#x8C03;&#x7528;<a href="_docs.html#requestfollowredirect"><code>request.followRedirect</code></a> &#x5C06;&#x6301;&#x7EED;&#x91CD;&#x5B9A;&#x5411;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-event-redirect" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="event-redirect"><a href="_docs.html#event-redirect">Event: &apos;redirect&apos;</a></h4>
+<p>Returns:</p>
+<ul>
+<li><code>statusCode</code> Integer</li>
+<li><code>method</code> String</li>
+<li><code>redirectUrl</code> String</li>
+<li><code>responseHeaders</code> Object</li>
+</ul>
+<p>Emitted when there is redirection and the mode is <code>manual</code>. Calling
+<a href="_docs.html#requestfollowredirect"><code>request.followRedirect</code></a> will continue with the redirection.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h3 id="&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;"><a href="_docs.html#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7">&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;</a></h3>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h3 id="instance-properties"><a href="_docs.html#instance-properties">Instance Properties</a></h3>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestchunkedencoding" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestchunkedencoding"><a href="_docs.html#requestchunkedencoding"><code>request.chunkedEncoding</code></a></h4>
+<p>&#x4E00;&#x4E2A;<code>Boolean</code>&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x6307;&#x5B9A;&#x8BF7;&#x6C42;&#x662F;&#x5426;&#x5C06;&#x4F7F;&#x7528; HTTP &#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x3002; &#x9ED8;&#x8BA4;&#x503C;&#x4E3A; false. &#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x53EF;&#x8BFB;&#x5199;&#x7684;, &#x4F46;&#x5B83;&#x53EA;&#x80FD;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD8;&#x6CA1;&#x6709;&#x5199;&#x5165; HTTP &#x5934;&#x3002; &#x5728;&#x7B2C;&#x4E00;&#x5199;&#x5165;&#x540E;&#x5982;&#x679C;&#x8BBE;&#x7F6E;<code>chunkedEncoding</code>&#x5C5E;&#x6027;&#x5C06;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x5982;&#x679C; request &#x7684; body &#x662F;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5757;&#x7F16;&#x7801;&#x3002;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x5C06;&#x4EE5;&#x5C0F;&#x5757;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x4F20;&#x8F93;, &#x800C;&#x4E0D;&#x662F;&#x5728; Electron &#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E2D;&#x5185;&#x90E8;&#x7F13;&#x51B2;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestchunkedencoding" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestchunkedencoding"><a href="_docs.html#requestchunkedencoding"><code>request.chunkedEncoding</code></a></h4>
+<p>A <code>Boolean</code> specifying whether the request will use HTTP chunked transfer encoding
+or not. Defaults to false. The property is readable and writable, however it can
+be set only before the first write operation as the HTTP headers are not yet put
+on the wire. Trying to set the <code>chunkedEncoding</code> property after the first write
+will throw an error.</p>
+<p>Using chunked encoding is strongly recommended if you need to send a large
+request body as data will be streamed in small chunks instead of being
+internally buffered inside Electron process memory.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h3 id="&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;"><a href="_docs.html#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</a></h3>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h3 id="instance-methods"><a href="_docs.html#instance-methods">Instance Methods</a></h3>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestsetheadername-value" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestsetheadername-value"><a href="_docs.html#requestsetheadername-value"><code>request.setHeader(name, value)</code></a></h4>
+<ul>
+<li><code>name</code> String - &#x989D;&#x5916;&#x7684; HTTP &#x5934;&#x540D;&#x79F0;.</li>
+<li><code>value</code> Object - &#x989D;&#x5916;&#x7684; HTTP &#x5934;&#x7684;&#x503C;.</li>
+</ul>
+<p>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684; HTTP &#x5934;&#x3002; &#x5934;&#x540D;&#x79F0;&#x53D1;&#x51FA;&#x65F6;&#x662F;&#x5927;&#x5199;&#x7684;. &#x5B83;&#x53EA;&#x80FD;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002; &#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x540E;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x5C06;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x3002; &#x5982;&#x679C;&#x4F20;&#x9012;&#x7684;&#x503C;&#x4E0D;&#x662F; <code>String</code>, &#x5219;&#x4F1A;&#x8C03;&#x7528; <code>toString ()</code> &#x65B9;&#x6CD5;&#x6765;&#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x503C;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestsetheadername-value" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestsetheadername-value"><a href="_docs.html#requestsetheadername-value"><code>request.setHeader(name, value)</code></a></h4>
+<ul>
+<li><code>name</code> String - An extra HTTP header name.</li>
+<li><code>value</code> Object - An extra HTTP header value.</li>
+</ul>
+<p>Adds an extra HTTP header. The header name will issued as it is without
+lowercasing. It can be called only before first write. Calling this method after
+the first write will throw an error. If the passed value is not a <code>String</code>, its
+<code>toString()</code> method will be called to obtain the final value.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestgetheadername" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestgetheadername"><a href="_docs.html#requestgetheadername"><code>request.getHeader(name)</code></a></h4>
+<ul>
+<li><code>name</code> String - &#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x5934;&#x540D;&#x79F0;.</li>
+</ul>
+<p>&#x8FD4;&#x56DE; <code>Object</code>-&#x4EE5;&#x524D;&#x8BBE;&#x7F6E;&#x7684;&#x989D;&#x5916;&#x6807;&#x5934;&#x540D;&#x79F0;&#x7684;&#x503C;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestgetheadername" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestgetheadername"><a href="_docs.html#requestgetheadername"><code>request.getHeader(name)</code></a></h4>
+<ul>
+<li><code>name</code> String - Specify an extra header name.</li>
+</ul>
+<p>Returns <code>Object</code> - The value of a previously set extra header name.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestremoveheadername" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestremoveheadername"><a href="_docs.html#requestremoveheadername"><code>request.removeHeader(name)</code></a></h4>
+<ul>
+<li><code>name</code> String - &#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x5934;&#x540D;&#x79F0;.</li>
+</ul>
+<p>&#x5220;&#x9664;&#x4EE5;&#x524D;&#x8BBE;&#x7F6E;&#x7684;&#x989D;&#x5916;&#x5934;&#x540D;&#x79F0;&#x3002;&#x6B64;&#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x5728;&#x9996;&#x6B21;&#x5199;&#x5165;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002;&#x5C1D;&#x8BD5;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x540E;&#x8C03;&#x7528;&#x5B83;&#x4F1A;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestremoveheadername" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestremoveheadername"><a href="_docs.html#requestremoveheadername"><code>request.removeHeader(name)</code></a></h4>
+<ul>
+<li><code>name</code> String - Specify an extra header name.</li>
+</ul>
+<p>Removes a previously set extra header name. This method can be called only
+before first write. Trying to call it after the first write will throw an error.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestwritechunk-encoding-callback" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestwritechunk-encoding-callback"><a href="_docs.html#requestwritechunk-encoding-callback"><code>request.write(chunk[, encoding][, callback])</code></a></h4>
+<ul>
+<li><code>chunk</code> (String | Buffer) - &#x8BF7;&#x6C42;&#x4E3B;&#x4F53;&#x6570;&#x636E;&#x7684;&#x4E00;&#x4E2A;&#x5757;&#x3002;&#x5982;&#x679C;&#x662F;&#x5B57;&#x7B26;&#x4E32;, &#x5B83;&#x5C06;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x7F16;&#x7801;&#x8F6C;&#x6362;Buffer&#x3002;</li>
+<li><code>encoding</code>String(&#x53EF;&#x9009;)-&#x7528;&#x4E8E;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x5757;&#x8F6C;&#x6362;&#x4E3A;Buffer&#x5BF9;&#x8C61;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; &quot;utf-8&quot;&#x3002;</li>
+<li><code>callback</code> Function (&#x53EF;&#x9009;)-&#x5728;&#x5199;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x540E;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<p><code>callback</code> &#x5B9E;&#x8D28;&#x4E0A;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x4E0E; Node.js API &#x7684;&#x76F8;&#x4F3C;&#x6027;&#x800C;&#x5F15;&#x5165;&#x7684;&#x865A;&#x62DF;&#x51FD;&#x6570;&#x3002; &#x5728;&#x5C06; <code>chunk</code> &#x5185;&#x5BB9;&#x4F20;&#x9012;&#x5230; Chromium &#x7F51;&#x7EDC;&#x5C42;&#x4E4B;&#x540E;, &#x5728;&#x4E0B;&#x4E00;&#x4E2A; tick &#x4E2D;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x3002; &#x4E0E; Node.js &#x5B9E;&#x73B0;&#x76F8;&#x53CD;, &#x4E0D;&#x4FDD;&#x8BC1; <code>chunk</code> &#x5185;&#x5BB9;&#x5728;&#x8C03;&#x7528; <code>callback</code> &#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x88AB;&#x5237;&#x65B0;&#x3002;</p>
+<p>&#x5411;&#x8BF7;&#x6C42;&#x6B63;&#x6587;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5757;&#x3002; &#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5728;&#x7EBF;&#x8DEF;&#x4E0A;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#x5934;&#x3002; &#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#x540E;, &#x4E0D;&#x5141;&#x8BB8;&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x81EA;&#x5B9A;&#x4E49;&#x6807;&#x5934;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestwritechunk-encoding-callback" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestwritechunk-encoding-callback"><a href="_docs.html#requestwritechunk-encoding-callback"><code>request.write(chunk[, encoding][, callback])</code></a></h4>
+<ul>
+<li><code>chunk</code> (String | Buffer) - A chunk of the request body&apos;s data. If it is a
+string, it is converted into a Buffer using the specified encoding.</li>
+<li><code>encoding</code> String (optional) - Used to convert string chunks into Buffer
+objects. Defaults to &apos;utf-8&apos;.</li>
+<li><code>callback</code> Function (optional) - Called after the write operation ends.</li>
+</ul>
+<p><code>callback</code> is essentially a dummy function introduced in the purpose of keeping
+similarity with the Node.js API. It is called asynchronously in the next tick
+after <code>chunk</code> content have been delivered to the Chromium networking layer.
+Contrary to the Node.js implementation, it is not guaranteed that <code>chunk</code>
+content have been flushed on the wire before <code>callback</code> is called.</p>
+<p>Adds a chunk of data to the request body. The first write operation may cause
+the request headers to be issued on the wire. After the first write operation,
+it is not allowed to add or remove a custom header.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestendchunk-encoding-callback" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestendchunk-encoding-callback"><a href="_docs.html#requestendchunk-encoding-callback"><code>request.end([chunk][, encoding][, callback])</code></a></h4>
+<ul>
+<li><code>chunk</code> (String | Buffer) (&#x53EF;&#x9009;)</li>
+<li><code>encoding</code> String (&#x53EF;&#x9009;)</li>
+<li><code>callback</code> Function (&#x53EF;&#x9009;)</li>
+</ul>
+<p>&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5757;&#x3002;&#x5C06;&#x4E0D;&#x5141;&#x8BB8;&#x540E;&#x7EED;&#x7684;&#x5199;&#x5165;&#x6216;&#x7ED3;&#x675F;&#x64CD;&#x4F5C;&#x3002;<code>finish</code> &#x4E8B;&#x4EF6;&#x5C06;&#x5728;&#x7ED3;&#x675F;&#x64CD;&#x4F5C;&#x540E;&#x53D1;&#x51FA;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestendchunk-encoding-callback" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestendchunk-encoding-callback"><a href="_docs.html#requestendchunk-encoding-callback"><code>request.end([chunk][, encoding][, callback])</code></a></h4>
+<ul>
+<li><code>chunk</code> (String | Buffer) (optional)</li>
+<li><code>encoding</code> String (optional)</li>
+<li><code>callback</code> Function (optional)</li>
+</ul>
+<p>Sends the last chunk of the request data. Subsequent write or end operations
+will not be allowed. The <code>finish</code> event is emitted just after the end operation.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestabort" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestabort"><a href="_docs.html#requestabort"><code>request.abort()</code></a></h4>
+<p>&#x53D6;&#x6D88;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x7684; HTTP &#x4E8B;&#x52A1;&#x3002; &#x5982;&#x679C;&#x8BF7;&#x6C42;&#x5DF2;&#x53D1;&#x51FA; <code>close</code> &#x4E8B;&#x4EF6;, &#x5219;&#x4E2D;&#x6B62;&#x64CD;&#x4F5C;&#x5C06;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;&#x3002; &#x5426;&#x5219;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x7684;&#x4E8B;&#x4EF6;&#x5C06;&#x53D1;&#x51FA; <code>abort</code> &#x548C; <code>close</code> &#x4E8B;&#x4EF6;&#x3002; &#x6B64;&#x5916;, &#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x7684;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;, &#x5B83;&#x5C06;&#x53D1;&#x51FA; <code>aborted</code> &#x4E8B;&#x4EF6;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestabort" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestabort"><a href="_docs.html#requestabort"><code>request.abort()</code></a></h4>
+<p>Cancels an ongoing HTTP transaction. If the request has already emitted the
+<code>close</code> event, the abort operation will have no effect. Otherwise an ongoing
+event will emit <code>abort</code> and <code>close</code> events. Additionally, if there is an ongoing
+response object,it will emit the <code>aborted</code> event.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestfollowredirect" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestfollowredirect"><a href="_docs.html#requestfollowredirect"><code>request.followRedirect()</code></a></h4>
+<p>&#x5F53;&#x91CD;&#x5B9A;&#x5411;&#x6A21;&#x5F0F;&#x4E3A; <code>manual &#x624B;&#x52A8;</code> &#x65F6;, &#x5C06;&#x7EE7;&#x7EED;&#x5EF6;&#x8FDF;&#x7684;&#x91CD;&#x5B9A;&#x5411;&#x8BF7;&#x6C42;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestfollowredirect" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestfollowredirect"><a href="_docs.html#requestfollowredirect"><code>request.followRedirect()</code></a></h4>
+<p>Continues any deferred redirection request when the redirection mode is <code>manual</code>.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-requestgetuploadprogress" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h4 id="requestgetuploadprogress"><a href="_docs.html#requestgetuploadprogress"><code>request.getUploadProgress()</code></a></h4>
+<p>&#x8FD4;&#x56DE; <code>Object</code>:</p>
+<ul>
+<li><code>active</code> Boolean - Whether the request is currently active. If this is false no other properties will be set</li>
+<li><code>started</code> Boolean - Whether the upload has started. If this is false both <code>current</code> and <code>total</code> will be set to 0.</li>
+<li><code>current</code> Integer - The number of bytes that have been uploaded so far</li>
+<li><code>total</code> Integer - The number of bytes that will be uploaded this request</li>
+</ul>
+<p>You can use this method in conjunction with <code>POST</code> requests to get the progress of a file upload or other data transfer.</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-requestgetuploadprogress" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h4 id="requestgetuploadprogress"><a href="_docs.html#requestgetuploadprogress"><code>request.getUploadProgress()</code></a></h4>
+<p>Returns <code>Object</code>:</p>
+<ul>
+<li><code>active</code> Boolean - Whether the request is currently active. If this is false
+no other properties will be set</li>
+<li><code>started</code> Boolean - Whether the upload has started. If this is false both
+<code>current</code> and <code>total</code> will be set to 0.</li>
+<li><code>current</code> Integer - The number of bytes that have been uploaded so far</li>
+<li><code>total</code> Integer - The number of bytes that will be uploaded this request</li>
+</ul>
+<p>You can use this method in conjunction with <code>POST</code> requests to get the progress
+of a file upload or other data transfer.</p>
+
+    </div>
+
+    <hr>
+
+    <div class="doc-actions text-center">
+      <a class="mr-4 propose-change" href="https://github.com/electron/electron/tree/master/docs/api/client-request.md">
+        <span class="octicon octicon-mark-github"></span>
+        &#x6539;&#x8FDB;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4 translate-on-crowdin" href="https://crowdin.com/translate/electron/70/en-zhcn">
+        <span class="octicon octicon-globe"></span>
+        &#x7FFB;&#x8BD1;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4" href="_docs_api_client-request_history.html">
+        <span class="octicon octicon-history"></span>
+        &#x7248;&#x672C;&#x5386;&#x53F2;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+    <div id="hits">
+      <div class="hits-container" id="api-hits" title="APIs"></div>
+      <div class="hits-container" id="tutorial-hits" title="Tutorials"></div>
+      <div class="hits-container" id="package-hits" title="Packages"></div>
+      <div class="hits-container" id="app-hits" title="Apps"></div>
+    </div>
+    <div id="refinement-list"></div>
+    <footer class="footer">
+  <div class="container">
+    <nav class="footer-nav">
+      <a class="footer-nav-item" href="/">Electron</a>
+      <a class="footer-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="footer-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="footer-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <a class="footer-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="footer-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <a class="footer-nav-item" href="https://github.com/electron/electron/tree/master/CODE_OF_CONDUCT.md">&#x884C;&#x4E3A;&#x51C6;&#x5219;</a>
+      <a class="footer-nav-item" href="/languages">&#x8BED;&#x8A00;</a>
+      <a class="footer-nav-item" href="/contact">&#x8054;&#x7CFB;&#x6211;&#x4EEC;</a>
+    </nav>
+
+    <span class="footer-social">
+      <a class="footer-nav-item icon" href="https://github.com/electron" title="Github Organization"><i class="devicon-github-plain vertical-middle"></i></a>
+      <a class="footer-nav-item icon" href="https://twitter.com/electronjs" title="@electronjs on Twitter"><i class="devicon-twitter-plain vertical-middle"></i></a>
+    </span>
+  </div>
+</footer>
+    <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class='octicon octicon-link'></span>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+    <script>
+    if ('serviceWorker' in navigator && !window.Cypress) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+    </script>
+    <script src="_scripts_index.js"></script>
+  
+</body></html>

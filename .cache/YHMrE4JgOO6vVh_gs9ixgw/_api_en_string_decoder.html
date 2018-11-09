@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>string decoder | Node.js API &#x82F1;&#x6587;&#x6587;&#x6863;</title>
+  <link rel="icon" sizes="32x32" type="image/png" href="//static.nodejs.cn/_static/img/favicon.png">
+  <script>
+    document.write('<link href="' + (location.port ? '' : '//static.nodejs.cn') + '/_static/css/api.css?1540915604071" rel="stylesheet">')
+  </script>
+</head>
+<body class="alt apidoc lang_en" id="page_api_en">
+  <div id="api-section-string_decoder">
+    <div id="content" class="clearfix">
+      <div id="column2" class="interior">
+        <div id="intro" class="interior">
+          <a href="/">
+            Node.js &#x4E2D;&#x6587;&#x7F51;
+          </a>
+        </div>
+        <ul>
+<li><a href="_api_en_documentation.html" class="nav-documentation">About these Docs</a></li>
+<li><a href="_api_en_synopsis.html" class="nav-synopsis">Usage &amp; Example</a></li>
+</ul>
+<div class="line"></div>
+<ul>
+<li><a href="_api_en_assert.html" class="nav-assert">Assertion Testing</a></li>
+<li><a href="_api_en_async_hooks.html" class="nav-async_hooks">Async Hooks</a></li>
+<li><a href="_api_en_buffer.html" class="nav-buffer">Buffer</a></li>
+<li><a href="_api_en_addons.html" class="nav-addons">C++ Addons</a></li>
+<li><a href="_api_en_n-api.html" class="nav-n-api">C/C++ Addons - N-API</a></li>
+<li><a href="_api_en_child_process.html" class="nav-child_process">Child Processes</a></li>
+<li><a href="_api_en_cluster.html" class="nav-cluster">Cluster</a></li>
+<li><a href="_api_en_cli.html" class="nav-cli">Command Line Options</a></li>
+<li><a href="_api_en_console.html" class="nav-console">Console</a></li>
+<li><a href="_api_en_crypto.html" class="nav-crypto">Crypto</a></li>
+<li><a href="_api_en_debugger.html" class="nav-debugger">Debugger</a></li>
+<li><a href="_api_en_deprecations.html" class="nav-deprecations">Deprecated APIs</a></li>
+<li><a href="_api_en_dns.html" class="nav-dns">DNS</a></li>
+<li><a href="_api_en_domain.html" class="nav-domain">Domain</a></li>
+<li><a href="_api_en_esm.html" class="nav-esm">ECMAScript Modules</a></li>
+<li><a href="_api_en_errors.html" class="nav-errors">Errors</a></li>
+<li><a href="_api_en_events.html" class="nav-events">Events</a></li>
+<li><a href="_api_en_fs.html" class="nav-fs">File System</a></li>
+<li><a href="_api_en_globals.html" class="nav-globals">Globals</a></li>
+<li><a href="_api_en_http.html" class="nav-http">HTTP</a></li>
+<li><a href="_api_en_http2.html" class="nav-http2">HTTP/2</a></li>
+<li><a href="_api_en_https.html" class="nav-https">HTTPS</a></li>
+<li><a href="_api_en_inspector.html" class="nav-inspector">Inspector</a></li>
+<li><a href="_api_en_intl.html" class="nav-intl">Internationalization</a></li>
+<li><a href="_api_en_modules.html" class="nav-modules">Modules</a></li>
+<li><a href="_api_en_net.html" class="nav-net">Net</a></li>
+<li><a href="_api_en_os.html" class="nav-os">OS</a></li>
+<li><a href="_api_en_path.html" class="nav-path">Path</a></li>
+<li><a href="_api_en_perf_hooks.html" class="nav-perf_hooks">Performance Hooks</a></li>
+<li><a href="_api_en_process.html" class="nav-process">Process</a></li>
+<li><a href="_api_en_punycode.html" class="nav-punycode">Punycode</a></li>
+<li><a href="_api_en_querystring.html" class="nav-querystring">Query Strings</a></li>
+<li><a href="_api_en_readline.html" class="nav-readline">Readline</a></li>
+<li><a href="_api_en_repl.html" class="nav-repl">REPL</a></li>
+<li><a href="_api_en_stream.html" class="nav-stream">Stream</a></li>
+<li><a href="_api_en_string_decoder.html" class="nav-string_decoder active">String Decoder</a></li>
+<li><a href="_api_en_timers.html" class="nav-timers">Timers</a></li>
+<li><a href="_api_en_tls.html" class="nav-tls">TLS/SSL</a></li>
+<li><a href="_api_en_tracing.html" class="nav-tracing">Trace Events</a></li>
+<li><a href="_api_en_tty.html" class="nav-tty">TTY</a></li>
+<li><a href="_api_en_dgram.html" class="nav-dgram">UDP/Datagram</a></li>
+<li><a href="_api_en_url.html" class="nav-url">URL</a></li>
+<li><a href="_api_en_util.html" class="nav-util">Utilities</a></li>
+<li><a href="_api_en_v8.html" class="nav-v8">V8</a></li>
+<li><a href="_api_en_vm.html" class="nav-vm">VM</a></li>
+<li><a href="_api_en_worker_threads.html" class="nav-worker_threads">Worker Threads</a></li>
+<li><a href="_api_en_zlib.html" class="nav-zlib">ZLIB</a></li>
+</ul>
+<div class="line"></div>
+<ul>
+<li><a href="https://github.com/nodejs/node" class="nav-https-github-com-nodejs-node">GitHub Repo &amp; Issue Tracker</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/nodejs" class="nav-https-groups-google-com-forum-forum-nodejs">Mailing List</a></li>
+</ul>
+      </div>
+  
+      <div id="column1" data-id="string_decoder" class="interior">
+        <header>
+          <h1>Node.js v10.13.0 &#x82F1;&#x6587;&#x6587;&#x6863;</h1>
+          <div id="gtoc">
+            <p>
+              <a href="_api_en_index.html" name="toc">&#x8FD4;&#x56DE;&#x6587;&#x6863;&#x9996;&#x9875;</a> |
+              <!--<a href="all.html">View on single page</a> |-->
+              <!--<a href="string_decoder.json">View as JSON</a> |-->
+              <a href="_api_string_decoder.html">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a>
+            </p>
+          </div>
+          <hr>
+        </header>
+
+        <div id="adWrap"></div>
+  
+        <div id="toc">
+          <h2>&#x76EE;&#x5F55;</h2>
+          <ul>
+<li>
+<p><span class="stability_2"><a href="_api_en_string_decoder.html#string_decoder_string_decoder">String Decoder</a></span></p>
+<ul>
+<li>
+<p><a href="_api_en_string_decoder.html#string_decoder_class_stringdecoder">Class: StringDecoder</a></p>
+<ul>
+<li><a href="_api_en_string_decoder.html#string_decoder_new_stringdecoder_encoding">new StringDecoder([encoding])</a></li>
+<li><a href="_api_en_string_decoder.html#string_decoder_stringdecoder_end_buffer">stringDecoder.end([buffer])</a></li>
+<li><a href="_api_en_string_decoder.html#string_decoder_stringdecoder_write_buffer">stringDecoder.write(buffer)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+        </div>
+  
+        <div id="apicontent">
+          <h1>String Decoder<span><a class="mark" href="_api_en_string_decoder.html#string_decoder_string_decoder" id="string_decoder_string_decoder">#</a></span></h1><p class="link_cn_wrap"><a href="_api_string_decoder.html#string_decoder_string_decoder" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<!--introduced_in=v0.10.0-->
+<p></p><div class="api_stability api_stability_2"><a href="_api_en_documentation.html#documentation_stability_index">Stability: 2</a> - Stable</div><p></p>
+<p>The <code>string_decoder</code> module provides an API for decoding <code>Buffer</code> objects into
+strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16
+characters. It can be accessed using:</p>
+<pre><code class="language-js">const { StringDecoder } = require(&apos;string_decoder&apos;);
+</code></pre>
+<p>The following example shows the basic use of the <code>StringDecoder</code> class.</p>
+<pre><code class="language-js">const { StringDecoder } = require(&apos;string_decoder&apos;);
+const decoder = new StringDecoder(&apos;utf8&apos;);
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro));
+</code></pre>
+<p>When a <code>Buffer</code> instance is written to the <code>StringDecoder</code> instance, an
+internal buffer is used to ensure that the decoded string does not contain
+any incomplete multibyte characters. These are held in the buffer until the
+next call to <code>stringDecoder.write()</code> or until <code>stringDecoder.end()</code> is called.</p>
+<p>In the following example, the three UTF-8 encoded bytes of the European Euro
+symbol (<code>&#x20AC;</code>) are written over three separate operations:</p>
+<pre><code class="language-js">const { StringDecoder } = require(&apos;string_decoder&apos;);
+const decoder = new StringDecoder(&apos;utf8&apos;);
+
+decoder.write(Buffer.from([0xE2]));
+decoder.write(Buffer.from([0x82]));
+console.log(decoder.end(Buffer.from([0xAC])));
+</code></pre>
+<h2>Class: StringDecoder<span><a class="mark" href="_api_en_string_decoder.html#string_decoder_class_stringdecoder" id="string_decoder_class_stringdecoder">#</a></span></h2>
+<h3>new StringDecoder([encoding])<span><a class="mark" href="_api_en_string_decoder.html#string_decoder_new_stringdecoder_encoding" id="string_decoder_new_stringdecoder_encoding">#</a></span></h3><p class="link_cn_wrap"><a href="_api_string_decoder.html#string_decoder_new_stringdecoder_encoding" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<div class="api_metadata">
+<span>Added in: v0.1.99</span>
+</div>
+<ul>
+<li><code>encoding</code> <a href="/s/_moz/Data_structures#String_type" class="type">&lt;string&gt;</a> The character encoding the <code>StringDecoder</code> will use.
+<strong>Default:</strong> <code>&apos;utf8&apos;</code>.</li>
+</ul>
+<p>Creates a new <code>StringDecoder</code> instance.</p>
+<h3>stringDecoder.end([buffer])<span><a class="mark" href="_api_en_string_decoder.html#string_decoder_stringdecoder_end_buffer" id="string_decoder_stringdecoder_end_buffer">#</a></span></h3><p class="link_cn_wrap"><a href="_api_string_decoder.html#string_decoder_stringdecoder_end_buffer" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<div class="api_metadata">
+<span>Added in: v0.9.3</span>
+</div>
+<ul>
+<li><code>buffer</code> <a href="_api_en_buffer.html#buffer_class_buffer" class="type">&lt;Buffer&gt;</a> | <a href="/s/_moz/Reference/Global_Objects/TypedArray" class="type">&lt;TypedArray&gt;</a> | <a href="/s/_moz/Reference/Global_Objects/DataView" class="type">&lt;DataView&gt;</a> A <code>Buffer</code>, or <code>TypedArray</code>, or
+<code>DataView</code> containing the bytes to decode.</li>
+<li>Returns: <a href="/s/_moz/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
+</ul>
+<p>Returns any remaining input stored in the internal buffer as a string. Bytes
+representing incomplete UTF-8 and UTF-16 characters will be replaced with
+substitution characters appropriate for the character encoding.</p>
+<p>If the <code>buffer</code> argument is provided, one final call to <code>stringDecoder.write()</code>
+is performed before returning the remaining input.</p>
+<h3>stringDecoder.write(buffer)<span><a class="mark" href="_api_en_string_decoder.html#string_decoder_stringdecoder_write_buffer" id="string_decoder_stringdecoder_write_buffer">#</a></span></h3><p class="link_cn_wrap"><a href="_api_string_decoder.html#string_decoder_stringdecoder_write_buffer" class="link_cn_text">&#x67E5;&#x770B;&#x4E2D;&#x6587;&#x7248;</a></p>
+<div class="api_metadata">
+<details class="changelog"><summary>History</summary>
+<table>
+<tbody><tr><th>Version</th><th>Changes</th></tr>
+<tr><td>v8.0.0</td>
+<td><p>Each invalid character is now replaced by a single replacement character instead of one for each individual byte.</p></td></tr>
+<tr><td>v0.1.99</td>
+<td><p><span>Added in: v0.1.99</span></p></td></tr>
+</tbody></table>
+</details>
+</div>
+<ul>
+<li><code>buffer</code> <a href="_api_en_buffer.html#buffer_class_buffer" class="type">&lt;Buffer&gt;</a> | <a href="/s/_moz/Reference/Global_Objects/TypedArray" class="type">&lt;TypedArray&gt;</a> | <a href="/s/_moz/Reference/Global_Objects/DataView" class="type">&lt;DataView&gt;</a> A <code>Buffer</code>, or <code>TypedArray</code>, or
+<code>DataView</code> containing the bytes to decode.</li>
+<li>Returns: <a href="/s/_moz/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
+</ul>
+<p>Returns a decoded string, ensuring that any incomplete multibyte characters at
+the end of the <code>Buffer</code>, or <code>TypedArray</code>, or <code>DataView</code> are omitted from the
+returned string and stored in an internal buffer for the next call to
+<code>stringDecoder.write()</code> or <code>stringDecoder.end()</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.write('<script src="api.js?1540915604071"><\/script>');
+  </script>
+
+<script src="../lib/backtop.js"></script></body></html>

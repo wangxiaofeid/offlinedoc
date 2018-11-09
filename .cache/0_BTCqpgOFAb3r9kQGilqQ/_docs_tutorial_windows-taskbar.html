@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="#2f3241" name="theme-color">
+
+  <meta property="og:type" content="website">
+
+    <title>Windows &#x4EFB;&#x52A1;&#x680F; | Electron</title>
+    <meta property="og:title" content="Windows &#x4EFB;&#x52A1;&#x680F; | Electron">
+    <meta name="twitter:title" value="Windows &#x4EFB;&#x52A1;&#x680F; | Electron">
+
+    <meta property="og:url" content="/docs/tutorial/windows-taskbar">
+    <meta name="twitter:url" value="/docs/tutorial/windows-taskbar">
+
+    <meta property="og:description" content="&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;tasks&#x5E94;&#x8BE5;&#x662F;&#x57FA;&#x4E8E;&#x7A0B;&#x5E8F;&#x7684;&#x529F;&#x80FD;&#x548C;&#x7528;&#x6237;&#x80FD;&#x7528;&#x5B83;&#x505A;&#x4E00;&#x4E9B;&#x7684;&#x5173;&#x952E;&#x6027;&#x4E8B;&#x60C5;&#x6765;&#x5236;&#x5B9A;&#x7684;&#x3002; &#x4EFB;&#x52A1;&#x5E94;&#x5F53;&#x662F;&#x4E0A;&#x4E0B;&#x6587;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x9700;&#x8981;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5C31;&#x53EF;&#x4EE5;&#x5DE5;&#x4F5C; &#x800C;&#x4E14;&#x4ED6;&#x4EEC;&#x5E94;&#x8BE5;&#x662F;&#x7EDF;&#x8BA1;&#x4E0A;&#x7528;&#x6237;&#x5728;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x4E0A;&#x6700;&#x591A;&#x7684;&#x884C;&#x4E3A;&#x4F8B;&#x5982;: &#x64B0;&#x5199;&#x4E00;&#x5C01;&#x90AE;&#x4EF6;&#x6216;&#x8005;&#x5728;&#x90AE;&#x4EF6;&#x7A0B;&#x5E8F;&#x91CC;&#x6253;&#x5F00;&#x65E5;&#x5386;&#xFF0C;word&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#xFF0C;&#x4EE5;&#x67D0;&#x4E00;&#x79CD;&#x6A21;&#x5F0F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x67D0;&#x4E9B;&#x5B50;&#x547D;&#x4EE4;&#x3002; &#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x5E94;&#x5F53;&#x628A;&#x83DC;&#x5355;&#x7528;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x7684;&#x6216;&#x8005;&#x53EA;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x7684;&#x52A8;&#x4F5C;&#x4F8B;&#x5982;&#x6CE8;&#x518C;&#x7ED9;&#x5F04;&#x5F97;&#x6742;&#x4E71;&#x65E0;&#x7AE0;&#x3002; &#x4E0D;&#x8981;&#x5C06;tasks&#x529F;&#x80FD;&#x7528;&#x4E8E;&#x5E7F;&#x544A;&#x9879;&#x76EE;&#x4F8B;&#x5982;&#x5347;&#x7EA7;&#x6216;&#x8005;&#x7279;&#x4EF7;&#x4EA7;&#x54C1;&#x4E4B;&#x7C7B;&#x3002;
+&#x5F3A;&#x70C8;&#x63A8;&#x8350;task&#x5217;&#x8868;&#x5185;&#x5BB9;&#x662F;&#x9759;&#x6001;&#x7684;&#x3002; &#x4E0D;&#x7BA1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#x6216;&#x60C5;&#x5F62;&#xFF0C;&#x5B83;&#x90FD;&#x5E94;&#x8BE5;&#x662F;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x7684;&#x3002; &#x5C3D;&#x7BA1;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x662F;&#x52A8;&#x6001;&#x53EF;&#x53D8;&#x7684;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x8003;&#x8651;&#x5230;&#x6CA1;&#x60F3;&#x8FC7;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x4F1A;&#x53D8;&#x7684;&#x7528;&#x6237;&#x4F1A;&#x88AB;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x641E;&#x7CCA;&#x6D82;&#x3002;">
+    <meta name="twitter:description" value="&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;tasks&#x5E94;&#x8BE5;&#x662F;&#x57FA;&#x4E8E;&#x7A0B;&#x5E8F;&#x7684;&#x529F;&#x80FD;&#x548C;&#x7528;&#x6237;&#x80FD;&#x7528;&#x5B83;&#x505A;&#x4E00;&#x4E9B;&#x7684;&#x5173;&#x952E;&#x6027;&#x4E8B;&#x60C5;&#x6765;&#x5236;&#x5B9A;&#x7684;&#x3002; &#x4EFB;&#x52A1;&#x5E94;&#x5F53;&#x662F;&#x4E0A;&#x4E0B;&#x6587;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x9700;&#x8981;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5C31;&#x53EF;&#x4EE5;&#x5DE5;&#x4F5C; &#x800C;&#x4E14;&#x4ED6;&#x4EEC;&#x5E94;&#x8BE5;&#x662F;&#x7EDF;&#x8BA1;&#x4E0A;&#x7528;&#x6237;&#x5728;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x4E0A;&#x6700;&#x591A;&#x7684;&#x884C;&#x4E3A;&#x4F8B;&#x5982;: &#x64B0;&#x5199;&#x4E00;&#x5C01;&#x90AE;&#x4EF6;&#x6216;&#x8005;&#x5728;&#x90AE;&#x4EF6;&#x7A0B;&#x5E8F;&#x91CC;&#x6253;&#x5F00;&#x65E5;&#x5386;&#xFF0C;word&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#xFF0C;&#x4EE5;&#x67D0;&#x4E00;&#x79CD;&#x6A21;&#x5F0F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x67D0;&#x4E9B;&#x5B50;&#x547D;&#x4EE4;&#x3002; &#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x5E94;&#x5F53;&#x628A;&#x83DC;&#x5355;&#x7528;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x7684;&#x6216;&#x8005;&#x53EA;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x7684;&#x52A8;&#x4F5C;&#x4F8B;&#x5982;&#x6CE8;&#x518C;&#x7ED9;&#x5F04;&#x5F97;&#x6742;&#x4E71;&#x65E0;&#x7AE0;&#x3002; &#x4E0D;&#x8981;&#x5C06;tasks&#x529F;&#x80FD;&#x7528;&#x4E8E;&#x5E7F;&#x544A;&#x9879;&#x76EE;&#x4F8B;&#x5982;&#x5347;&#x7EA7;&#x6216;&#x8005;&#x7279;&#x4EF7;&#x4EA7;&#x54C1;&#x4E4B;&#x7C7B;&#x3002;
+&#x5F3A;&#x70C8;&#x63A8;&#x8350;task&#x5217;&#x8868;&#x5185;&#x5BB9;&#x662F;&#x9759;&#x6001;&#x7684;&#x3002; &#x4E0D;&#x7BA1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#x6216;&#x60C5;&#x5F62;&#xFF0C;&#x5B83;&#x90FD;&#x5E94;&#x8BE5;&#x662F;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x7684;&#x3002; &#x5C3D;&#x7BA1;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x662F;&#x52A8;&#x6001;&#x53EF;&#x53D8;&#x7684;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x8003;&#x8651;&#x5230;&#x6CA1;&#x60F3;&#x8FC7;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x4F1A;&#x53D8;&#x7684;&#x7528;&#x6237;&#x4F1A;&#x88AB;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x641E;&#x7CCA;&#x6D82;&#x3002;">
+
+    <meta name="twitter:card" content="summary">
+
+  <!-- consumed by scripts/get-localized-strings -->
+  <meta name="localized.clipboard.copy" content="Copy">
+  <meta name="localized.clipboard.copy_to_clipboard" content="&#x590D;&#x5236;&#x5230;&#x526A;&#x8D34;&#x677F;">
+  <meta name="localized.clipboard.copied" content="&#x5DF2;&#x590D;&#x5236;">
+
+  <meta name="twitter:site" content="@ElectronJS">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Electron Blog" href="https://electronjs.org/blog.xml">
+  <link rel="alternate" type="application/rss+xml" title="Electron Releases" href="https://electronjs.org/releases.xml">
+  <link rel="stylesheet" href="_styles_index.css">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-3769691-57', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+  <body>
+    <header class="site-header">
+  <div class="container">
+
+    <a class="site-header-logo no-underline-hover" href="/">
+      <svg class="site-header-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="none" fill="none" fill-rule="evenodd">
+          <path class="svg-stroke" d="M11.7014354,7.72646259 C7.91761319,7.04380371 4.81334929,7.69369948 3.61536899,9.74908711 C2.72656361,11.27402 3.03878853,13.3122813 4.27551338,15.4489979 M6.32642733,18.1886712 C7.89193828,19.8928217 9.9666792,21.548102 12.4120986,22.9466461 C18.2414315,26.2804624 24.2930499,27.0779063 27.1669222,25.1368228 M29.8456419,24.0565148 C29.8456419,23.1971812 29.1423799,22.5005537 28.2748621,22.5005537 C27.4073444,22.5005537 26.7040823,23.1971812 26.7040823,24.0565148 C26.7040823,24.9158484 27.4073444,25.612476 28.2748621,25.612476 C29.1423799,25.612476 29.8456419,24.9158484 29.8456419,24.0565148 L29.8456419,24.0565148 Z"/>
+          <path class="svg-stroke" d="M26.1017264,17.699802 C28.5790274,14.8008665 29.5563892,11.8210699 28.3609038,9.7699627 C27.4866535,8.27000212 25.5971843,7.51855661 23.1692624,7.48727915 M19.6970573,7.86083838 C17.4054295,8.34719767 14.8948834,9.30454988 12.424266,10.7175048 C6.42288792,14.1497143 2.65401611,19.1281832 3.16552768,22.580522 M3.68501877,25.612476 C4.5525365,25.612476 5.25579857,24.9158484 5.25579857,24.0565148 C5.25579857,23.1971812 4.5525365,22.5005537 3.68501877,22.5005537 C2.81750104,22.5005537 2.11423897,23.1971812 2.11423897,24.0565148 C2.11423897,24.9158484 2.81750104,25.612476 3.68501877,25.612476 L3.68501877,25.612476 L3.68501877,25.612476 Z"/>
+          <path class="svg-stroke" d="M10.1856596,25.0699995 C11.480995,28.6529192 13.5999849,30.9876144 15.99422,30.9876144 C17.7292778,30.9876144 19.3197869,29.7615184 20.5570359,27.7228112 M22.0509221,24.3364015 C22.7373456,22.1635452 23.1341282,19.5948285 23.1341282,16.8425133 C23.1341282,10.0879866 20.7444131,4.43922457 17.5485944,3.03357113 M15.99422,4.25337326 C16.8617378,4.25337326 17.5649998,3.55674574 17.5649998,2.69741214 C17.5649998,1.83807854 16.8617378,1.14145101 15.99422,1.14145101 C15.1267023,1.14145101 14.4234402,1.83807854 14.4234402,2.69741214 C14.4234402,3.55674574 15.1267023,4.25337326 15.99422,4.25337326 Z"/>
+          <path class="svg-fill" d="M16.2975137,18.2334955 C15.5219407,18.3994908 14.7578457,17.9112502 14.5899415,17.142994 C14.4226932,16.3747378 14.9152558,15.6178512 15.6908287,15.451531 C16.4664016,15.2855357 17.2304967,15.7737763 17.3984009,16.5420325 C17.5659771,17.3102887 17.0730866,18.0671753 16.2975137,18.2334955 Z"/>
+        </g>
+      </svg>
+      <svg class="vertical-middle" width="156px" height="18px" viewBox="0 0 156 18" xmlns="http://www.w3.org/2000/svg">
+        <title>Electron</title>
+        <path stroke="none" fill="currentColor" fill-rule="evenodd" d="M0.93602403,17.0884387 L11.4962951,17.0884387 C11.9763075,17.0884387 12.3603173,16.7044288 12.3603173,16.2244165 C12.3603173,15.7444042 11.9763075,15.3603943 11.4962951,15.3603943 L1.89604868,15.3603943 L1.89604868,9.48024338 L10.2962643,9.48024338 C10.7762767,9.48024338 11.1602865,9.09623352 11.1602865,8.6162212 C11.1602865,8.16020949 10.7762767,7.75219902 10.2962643,7.75219902 L1.89604868,7.75219902 L1.89604868,2.01605176 L11.3762921,2.01605176 C11.8563044,2.01605176 12.2403142,1.6320419 12.2403142,1.15202958 C12.2403142,0.672017252 11.8563044,0.288007394 11.3762921,0.288007394 L0.93602403,0.288007394 C0.432011091,0.288007394 0,0.720018485 0,1.24803204 L0,16.1284141 C0,16.6564276 0.432011091,17.0884387 0.93602403,17.0884387 L0.93602403,17.0884387 Z M19.0804898,16.1284141 C19.0804898,16.6564276 19.5125009,17.0884387 20.0165139,17.0884387 L29.6887622,17.0884387 C30.1687745,17.0884387 30.5527844,16.7044288 30.5527844,16.2244165 C30.5527844,15.7444042 30.1687745,15.3363937 29.6887622,15.3363937 L20.9765385,15.3363937 L20.9765385,1.12802896 C20.9765385,0.600015404 20.5445274,0.168004313 20.0165139,0.168004313 C19.5125009,0.168004313 19.0804898,0.600015404 19.0804898,1.12802896 L19.0804898,16.1284141 Z M37.8729723,17.0884387 L48.4332434,17.0884387 C48.9132557,17.0884387 49.2972656,16.7044288 49.2972656,16.2244165 C49.2972656,15.7444042 48.9132557,15.3603943 48.4332434,15.3603943 L38.8329969,15.3603943 L38.8329969,9.48024338 L47.2332126,9.48024338 C47.7132249,9.48024338 48.0972348,9.09623352 48.0972348,8.6162212 C48.0972348,8.16020949 47.7132249,7.75219902 47.2332126,7.75219902 L38.8329969,7.75219902 L38.8329969,2.01605176 L48.3132403,2.01605176 C48.7932526,2.01605176 49.1772625,1.6320419 49.1772625,1.15202958 C49.1772625,0.672017252 48.7932526,0.288007394 48.3132403,0.288007394 L37.8729723,0.288007394 C37.3689593,0.288007394 36.9369483,0.720018485 36.9369483,1.24803204 L36.9369483,16.1284141 C36.9369483,16.6564276 37.3689593,17.0884387 37.8729723,17.0884387 L37.8729723,17.0884387 Z M63.6976353,17.3764461 C66.4577061,17.3764461 68.2817529,16.4164214 69.9377955,14.9043826 C70.1057998,14.7603789 70.2498035,14.5203728 70.2498035,14.2323654 C70.2498035,13.7523531 69.8177924,13.320342 69.3377801,13.320342 C69.0977739,13.320342 68.8817684,13.440345 68.7377647,13.5843487 C67.2977277,14.9043826 65.8336901,15.6244011 63.7456365,15.6244011 C60.0495416,15.6244011 57.2414695,12.5763229 57.2414695,8.68822305 L57.2414695,8.64022181 C57.2414695,4.77612261 60.025541,1.75204498 63.7456365,1.75204498 C65.8096895,1.75204498 67.2737271,2.5200647 68.5697603,3.67209427 C68.713764,3.76809674 68.9297696,3.88809982 69.1937764,3.88809982 C69.6977893,3.88809982 70.153801,3.45608873 70.153801,2.95207579 C70.153801,2.61606716 69.9617961,2.35206038 69.7697911,2.18405607 C68.2097511,0.888022798 66.4817067,0 63.7696371,0 C58.8255102,0 55.273419,3.93610105 55.273419,8.68822305 L55.273419,8.73622428 C55.273419,13.5603481 58.8495108,17.3764461 63.6976353,17.3764461 L63.6976353,17.3764461 Z M81.1700838,16.2484171 C81.1700838,16.7764307 81.6020949,17.2084418 82.1301085,17.2084418 C82.658122,17.2084418 83.0901331,16.7764307 83.0901331,16.2484171 L83.0901331,2.04005237 L87.9622582,2.04005237 C88.4422705,2.04005237 88.850281,1.65604251 88.850281,1.17603019 C88.850281,0.696017868 88.4422705,0.288007394 87.9622582,0.288007394 L76.2979587,0.288007394 C75.8179464,0.288007394 75.4099359,0.696017868 75.4099359,1.17603019 C75.4099359,1.65604251 75.8179464,2.04005237 76.2979587,2.04005237 L81.1700838,2.04005237 L81.1700838,16.2484171 Z M95.2824461,16.2484171 C95.2824461,16.7764307 95.7144572,17.2084418 96.2184701,17.2084418 C96.7464837,17.2084418 97.1784948,16.7764307 97.1784948,16.2484171 L97.1784948,10.5602711 L102.002619,10.5602711 L106.73074,16.7044288 C106.946746,16.9924362 107.234753,17.2084418 107.618763,17.2084418 C108.098775,17.2084418 108.578787,16.7764307 108.578787,16.2724177 C108.578787,16.008411 108.458784,15.7924054 108.266779,15.5763999 L104.090672,10.2002619 C106.706739,9.69624892 108.578787,8.08820764 108.578787,5.32813679 L108.578787,5.28013555 C108.578787,3.96010166 108.098775,2.78407147 107.282754,1.96805052 C106.226727,0.912023414 104.570685,0.288007394 102.506632,0.288007394 L96.2184701,0.288007394 C95.7144572,0.288007394 95.2824461,0.720018485 95.2824461,1.24803204 L95.2824461,16.2484171 Z M97.1784948,8.85622736 L97.1784948,2.04005237 L102.362628,2.04005237 C105.074698,2.04005237 106.658738,3.28808441 106.658738,5.3521374 L106.658738,5.40013863 C106.658738,7.56019409 104.858692,8.85622736 102.338627,8.85622736 L97.1784948,8.85622736 Z M123.435169,17.3764461 C128.5473,17.3764461 132.027389,13.320342 132.027389,8.68822305 L132.027389,8.64022181 C132.027389,4.0081029 128.595301,0 123.48317,0 C118.371039,0 114.89095,4.05610413 114.89095,8.68822305 L114.89095,8.73622428 C114.89095,13.3683432 118.323038,17.3764461 123.435169,17.3764461 L123.435169,17.3764461 Z M123.48317,15.6244011 C119.643072,15.6244011 116.859,12.504321 116.859,8.68822305 L116.859,8.64022181 C116.859,4.82412385 119.59507,1.75204498 123.435169,1.75204498 C127.275267,1.75204498 130.059339,4.87212508 130.059339,8.68822305 L130.059339,8.73622428 C130.059339,12.5523222 127.323269,15.6244011 123.48317,15.6244011 L123.48317,15.6244011 Z M139.035569,16.2724177 C139.035569,16.7764307 139.44358,17.2084418 139.947593,17.2084418 C140.475606,17.2084418 140.883617,16.7764307 140.883617,16.2724177 L140.883617,3.2640838 L151.299884,16.5844258 C151.587892,16.9204344 151.875899,17.1604405 152.283909,17.1604405 L152.379912,17.1604405 C152.883925,17.1604405 153.243934,16.7764307 153.243934,16.2724177 L153.243934,1.10402834 C153.243934,0.600015404 152.835924,0.168004313 152.331911,0.168004313 C151.803897,0.168004313 151.395887,0.600015404 151.395887,1.10402834 L151.395887,13.7763537 L141.195625,0.768019717 C140.931618,0.432011091 140.667611,0.216005545 140.2356,0.216005545 L139.971593,0.216005545 C139.46758,0.216005545 139.035569,0.648016636 139.035569,1.15202958 L139.035569,16.2724177 Z"/>
+      </svg>
+    </a>
+
+    <nav class="site-header-nav">
+      <a class="site-header-nav-item" href="/donors">&#x6350;&#x8D60;&#x8005;</a>
+      <a class="site-header-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="site-header-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="site-header-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="site-header-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <!-- <a class="site-header-nav-item" href="/userland">用户生态</a> -->
+      <a class="site-header-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <input id="search-input" class="nav-search" placeholder="&#x641C;&#x7D22;" aria-label="search-box">
+      <!-- <img id="search-hint" alt="image of backslash shorcut" src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" /> -->
+      <!-- <dialog id="search-hint-dialog" open>
+        <div class="dialog-text">Search for Electron APIs, tutorials, npm packages, and apps.</div>
+        <button class="dialog-button">OK</button>
+      </dialog> -->
+      <a class="site-header-nav-item octicon" href="https://github.com/electron" title="Github Organization">
+        <span class="mega-octicon octicon-mark-github vertical-middle"></span>
+      </a>
+      <a class="site-header-nav-item bordered" href="/languages">&#x4E2D;&#x6587;</a>
+    </nav>
+  </div>
+</header>
+    
+<div class="subtron text-left">
+  <div class="container-narrow">
+    <h1>
+      <span class="mr-3 mr-lg-4">Electron &#x6587;&#x6863;</span>
+      <!-- <span class="docs-version">3.0.7</span> -->
+    </h1>      
+  </div>
+  
+  <div class="container-narrow mt-2">
+
+    <h4 class="docs-breadcrumbs">
+      <a href="_docs.html">Docs</a> /
+          <a href="_docs_tutorial.html">Guides</a>
+          / 
+        <a href="_docs_tutorial_windows-taskbar.html">Windows &#x4EFB;&#x52A1;&#x680F;</a>
+
+          <a href="_docs_tutorial_windows-taskbar_history.html">
+            <span class="docs-version">
+                <span>electron@master (c42201)</span>
+            </span>
+          </a>
+
+        
+
+    </h4>
+  </div>
+</div>
+
+<section class="page-section docs strong-headers">
+  <div class="container-narrow">
+      <div class="sub-section position-relative" data-name="-windows-&#x4EFB;&#x52A1;&#x680F;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h1 id="windows-&#x4EFB;&#x52A1;&#x680F;"><a href="_docs.html#windows-%E4%BB%BB%E5%8A%A1%E6%A0%8F">Windows &#x4EFB;&#x52A1;&#x680F;</a></h1>
+<p>Electron&#x6709;API&#x6765;&#x914D;&#x7F6E;Windows&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x56FE;&#x6807;&#x3002; &#x652F;&#x6301;&#x7684;&#x6709; <a href="_docs.html#jumplist">&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>&#x5F39;&#x51FA;&#x5217;&#x8868;</code></a>, <a href="_docs.html#thumbnail-toolbars">&#x81EA;&#x5B9A;&#x4E49;&#x7F29;&#x7565;&#x56FE;&#x548C;&#x5DE5;&#x5177;&#x680F;</a>, <a href="_docs.html#icon-overlays-in-taskbar">&#x56FE;&#x6807;&#x53E0;&#x52A0;</a>, &#x548C;&#x6240;&#x8C13;&#x7684; <a href="_docs.html#flash-frame">&quot;&#x95EA;&#x70C1;&#x6846;&quot; &#x6548;&#x679C;</a>, &#x800C;&#x4E14; Electron &#x8FD8;&#x4F7F;&#x7528;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; dock &#x56FE;&#x6807;&#x6765;&#x5B9E;&#x73B0;&#x8DE8;&#x5E73;&#x53F0;&#x529F;&#x80FD; &#x6BD4;&#x5982; <a href="_docs_tutorial_recent-documents.html">&#x6700;&#x8FD1;&#x6587;&#x6863;</a> &#x548C; <a href="_docs_tutorial_progress-bar.html">&#x5E94;&#x7528;&#x8FDB;&#x7A0B;</a>.</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-windows-&#x4EFB;&#x52A1;&#x680F;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h1 id="windows-taskbar"><a href="_docs.html#windows-taskbar">Windows Taskbar</a></h1>
+<p>Electron has APIs to configure the app&apos;s icon in the Windows taskbar. Supported
+are the <a href="_docs.html#jumplist">creation of a <code>JumpList</code></a>,
+<a href="_docs.html#thumbnail-toolbars">custom thumbnails and toolbars</a>,
+<a href="_docs.html#icon-overlays-in-taskbar">icon overlays</a>, and the so-called
+<a href="_docs.html#flash-frame">&quot;Flash Frame&quot; effect</a>, but
+Electron also uses the app&apos;s dock icon to implement cross-platform features
+like <a href="_docs_tutorial_recent-documents.html">recent documents</a> and
+<a href="_docs_tutorial_progress-bar.html">application progress</a>.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x5F39;&#x51FA;&#x5217;&#x8868;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x5F39;&#x51FA;&#x5217;&#x8868;"><a href="_docs.html#%E5%BC%B9%E5%87%BA%E5%88%97%E8%A1%A8">&#x5F39;&#x51FA;&#x5217;&#x8868;</a></h2>
+<p>Windows &#x5141;&#x8BB8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x4E0A;&#x4E0B;&#x6587;&#x83DC;&#x5355;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BE5;&#x83DC;&#x5355; &#x53F3;&#x952E;&#x5355;&#x51FB;&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x56FE;&#x6807;&#x3002; &#x8BE5;&#x4E0A;&#x4E0B;&#x6587;&#x83DC;&#x5355;&#x88AB;&#x6210;&#x4E3A; <code>&#x5F39;&#x51FA;&#x5217;&#x8868;</code>. &#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x5F39;&#x51FA;&#x5217;&#x8868;&#x7684; <code>Tasks</code> &#x7C7B;&#x522B;&#x4E2D;&#x6307;&#x5B9A;&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#xFF0C; &#x6765;&#x81EA; MSDN &#x7684;&#x5F15;&#x7528;&#xFF1A;</p>
+<blockquote>
+<p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;tasks&#x5E94;&#x8BE5;&#x662F;&#x57FA;&#x4E8E;&#x7A0B;&#x5E8F;&#x7684;&#x529F;&#x80FD;&#x548C;&#x7528;&#x6237;&#x80FD;&#x7528;&#x5B83;&#x505A;&#x4E00;&#x4E9B;&#x7684;&#x5173;&#x952E;&#x6027;&#x4E8B;&#x60C5;&#x6765;&#x5236;&#x5B9A;&#x7684;&#x3002; &#x4EFB;&#x52A1;&#x5E94;&#x5F53;&#x662F;&#x4E0A;&#x4E0B;&#x6587;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x9700;&#x8981;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5C31;&#x53EF;&#x4EE5;&#x5DE5;&#x4F5C; &#x800C;&#x4E14;&#x4ED6;&#x4EEC;&#x5E94;&#x8BE5;&#x662F;&#x7EDF;&#x8BA1;&#x4E0A;&#x7528;&#x6237;&#x5728;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x4E0A;&#x6700;&#x591A;&#x7684;&#x884C;&#x4E3A;&#x4F8B;&#x5982;: &#x64B0;&#x5199;&#x4E00;&#x5C01;&#x90AE;&#x4EF6;&#x6216;&#x8005;&#x5728;&#x90AE;&#x4EF6;&#x7A0B;&#x5E8F;&#x91CC;&#x6253;&#x5F00;&#x65E5;&#x5386;&#xFF0C;word&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#xFF0C;&#x4EE5;&#x67D0;&#x4E00;&#x79CD;&#x6A21;&#x5F0F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x67D0;&#x4E9B;&#x5B50;&#x547D;&#x4EE4;&#x3002; &#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x5E94;&#x5F53;&#x628A;&#x83DC;&#x5355;&#x7528;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x7684;&#x6216;&#x8005;&#x53EA;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x7684;&#x52A8;&#x4F5C;&#x4F8B;&#x5982;&#x6CE8;&#x518C;&#x7ED9;&#x5F04;&#x5F97;&#x6742;&#x4E71;&#x65E0;&#x7AE0;&#x3002; &#x4E0D;&#x8981;&#x5C06;tasks&#x529F;&#x80FD;&#x7528;&#x4E8E;&#x5E7F;&#x544A;&#x9879;&#x76EE;&#x4F8B;&#x5982;&#x5347;&#x7EA7;&#x6216;&#x8005;&#x7279;&#x4EF7;&#x4EA7;&#x54C1;&#x4E4B;&#x7C7B;&#x3002;</p>
+<p>&#x5F3A;&#x70C8;&#x63A8;&#x8350;task&#x5217;&#x8868;&#x5185;&#x5BB9;&#x662F;&#x9759;&#x6001;&#x7684;&#x3002; &#x4E0D;&#x7BA1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#x6216;&#x60C5;&#x5F62;&#xFF0C;&#x5B83;&#x90FD;&#x5E94;&#x8BE5;&#x662F;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x7684;&#x3002; &#x5C3D;&#x7BA1;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x662F;&#x52A8;&#x6001;&#x53EF;&#x53D8;&#x7684;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x8003;&#x8651;&#x5230;&#x6CA1;&#x60F3;&#x8FC7;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x4F1A;&#x53D8;&#x7684;&#x7528;&#x6237;&#x4F1A;&#x88AB;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x641E;&#x7CCA;&#x6D82;&#x3002;</p>
+</blockquote>
+<p><strong>Internet Explorer &#x7684; &#x4EFB;&#x52A1;:</strong></p>
+<p><img src="_dynimg_IC420539.png" alt="IE"></p>
+<p>&#x4E0D;&#x540C;&#x4E8E; macOS &#x7684;dock&#x83DC;&#x5355;&#xFF0C;Windows &#x4E0A;&#x7684;&#x7528;&#x6237;&#x4EFB;&#x52A1;&#x8868;&#x73B0;&#x5F97;&#x66F4;&#x50CF;&#x4E00;&#x4E2A;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5C06;&#x4F1A;&#x88AB;&#x4F20;&#x5165;&#x7279;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#x5E76;&#x4E14;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="_docs_api_app.html#appsetusertaskstasks-windows">app.setUserTasks</a> API &#x6765;&#x8BBE;&#x7F6E;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x7528;&#x6237;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+app.setUserTasks([
+  {
+    <span class="hljs-attr">program</span>: process.execPath,
+    <span class="hljs-attr">arguments</span>: <span class="hljs-string">&apos;--new-window&apos;</span>,
+    <span class="hljs-attr">iconPath</span>: process.execPath,
+    <span class="hljs-attr">iconIndex</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;New Window&apos;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&apos;Create a new window&apos;</span>
+  }
+])</code></pre>
+<p>&#x8C03;&#x7528; <code>app.setUserTasks</code> &#x5E76;&#x4F20;&#x5165;&#x7A7A;&#x6570;&#x7EC4;&#x5C31;&#x53EF;&#x4EE5;&#x6E05;&#x9664;&#x4F60;&#x7684;&#x4EFB;&#x52A1;&#x5217;&#x8868;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+app.setUserTasks([])</code></pre>
+<p>&#x5F53;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x5173;&#x95ED;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x4EFB;&#x52A1;&#x4ECD;&#x7136;&#x4F1A;&#x88AB;&#x663E;&#x793A;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x88AB;&#x5378;&#x8F7D;&#x4E4B;&#x524D;&#xFF0C;&#x4EFB;&#x52A1;&#x7684;&#x56FE;&#x6807;&#x548C;&#x7A0B;&#x5E8F;&#x7684;&#x8DEF;&#x5F84;&#x5FC5;&#x987B;&#x662F;&#x5B58;&#x5728;&#x7684;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x5F39;&#x51FA;&#x5217;&#x8868;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="jumplist"><a href="_docs.html#jumplist">JumpList</a></h2>
+<p>Windows allows apps to define a custom context menu that shows up when users
+right-click the app&apos;s icon in the task bar. That context menu is called
+<code>JumpList</code>. You specify custom actions in the <code>Tasks</code> category of JumpList,
+as quoted from MSDN:</p>
+<blockquote>
+<p>Applications define tasks based on both the program&apos;s features and the key
+things a user is expected to do with them. Tasks should be context-free, in
+that the application does not need to be running for them to work. They
+should also be the statistically most common actions that a normal user would
+perform in an application, such as compose an email message or open the
+calendar in a mail program, create a new document in a word processor, launch
+an application in a certain mode, or launch one of its subcommands. An
+application should not clutter the menu with advanced features that standard
+users won&apos;t need or one-time actions such as registration. Do not use tasks
+for promotional items such as upgrades or special offers.</p>
+<p>It is strongly recommended that the task list be static. It should remain the
+same regardless of the state or status of the application. While it is
+possible to vary the list dynamically, you should consider that this could
+confuse the user who does not expect that portion of the destination list to
+change.</p>
+</blockquote>
+<p><strong>Tasks of Internet Explorer:</strong></p>
+<p><img src="_dynimg_IC420539.png" alt="IE"></p>
+<p>Unlike the dock menu in macOS which is a real menu, user tasks in Windows work
+like application shortcuts such that when user clicks a task, a program will be
+executed with specified arguments.</p>
+<p>To set user tasks for your application, you can use
+<a href="_docs_api_app.html#appsetusertaskstasks-windows">app.setUserTasks</a> API:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+app.setUserTasks([
+  {
+    <span class="hljs-attr">program</span>: process.execPath,
+    <span class="hljs-attr">arguments</span>: <span class="hljs-string">&apos;--new-window&apos;</span>,
+    <span class="hljs-attr">iconPath</span>: process.execPath,
+    <span class="hljs-attr">iconIndex</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;New Window&apos;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&apos;Create a new window&apos;</span>
+  }
+])</code></pre>
+<p>To clean your tasks list, call <code>app.setUserTasks</code> with an empty array:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { app } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+app.setUserTasks([])</code></pre>
+<p>The user tasks will still show even after your application closes, so the icon
+and program path specified for a task should exist until your application is
+uninstalled.</p>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;"><a href="_docs.html#%E7%BC%A9%E7%95%A5%E5%9B%BE%E5%B7%A5%E5%85%B7%E6%A0%8F">&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;</a></h2>
+<p>&#x5728; Windows&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x52A1;&#x680F;&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x6765;&#x5F53;&#x4F5C;&#x5E94;&#x7528;&#x7684;&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;&#x3002; &#x5B83;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x8BBF;&#x95EE;&#x7279;&#x5B9A;&#x7A97;&#x53E3;&#x547D;&#x4EE4;&#x7684;&#x65B9;&#x5F0F;, &#x800C;&#x65E0;&#x9700;&#x8FD8;&#x539F;&#x6216;&#x6FC0;&#x6D3B;&#x8BE5;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x5728; MSDN&#xFF0C;&#x5B83;&#x7684;&#x8BF4;&#x660E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>&#x6B64;&#x5DE5;&#x5177;&#x680F;&#x53EA;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x6807;&#x51C6;&#x5DE5;&#x5177;&#x680F;&#x63A7;&#x4EF6;&#x3002; &#x5B83;&#x6700;&#x591A;&#x62E5;&#x6709;&#x4E03;&#x4E2A;&#x6309;&#x94AE;&#x3002; &#x6BCF;&#x4E2A;&#x6309;&#x94AE;&#x7684; ID&#x3001;&#x56FE;&#x50CF;&#x3001;&#x5DE5;&#x5177;&#x63D0;&#x793A;&#x548C;&#x72B6;&#x6001;&#x90FD;&#x5B9A;&#x4E49;&#x5728;&#x7ED3;&#x6784;&#x4E2D;, &#x7136;&#x540E;&#x4F20;&#x9012;&#x7ED9;&#x4EFB;&#x52A1;&#x680F;&#x3002; &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5176;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x7684;&#x8981;&#x6C42;, &#x663E;&#x793A;&#x3001;&#x542F;&#x7528;&#x3001;&#x7981;&#x7528;&#x6216;&#x9690;&#x85CF;&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;&#x4E2D;&#x7684;&#x6309;&#x94AE;&#x3002;</p>
+<p>&#x4F8B;&#x5982;, Windows &#x5A92;&#x4F53;&#x64AD;&#x653E;&#x673A;&#x53EF;&#x80FD;&#x63D0;&#x4F9B;&#x6807;&#x51C6;&#x7684;&#x5A92;&#x4F53;&#x4F20;&#x8F93;&#x63A7;&#x5236;, &#x5982;&#x64AD;&#x653E;&#x3001;&#x6682;&#x505C;&#x3001;&#x9759;&#x97F3;&#x548C;&#x505C;&#x6B62;&#x3002;</p>
+</blockquote>
+<p><strong>Windows Media Player &#x7684;&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;:</strong></p>
+<p><img src="_dynimg_IC420540.png" alt="player"></p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="_docs_api_browser-window.html#winsetthumbarbuttonsbuttons-windows">BrowserWindow.setThumbarButtons</a> &#x6765;&#x8BBE;&#x7F6E;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7684;&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;&#x3002;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>)
+
+<span class="hljs-keyword">const</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+
+win.setThumbarButtons([
+  {
+    <span class="hljs-attr">tooltip</span>: <span class="hljs-string">&apos;button1&apos;</span>,
+    <span class="hljs-attr">icon</span>: path.join(__dirname, <span class="hljs-string">&apos;button1.png&apos;</span>),
+    click () { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;button1 clicked&apos;</span>) }
+  }, {
+    <span class="hljs-attr">tooltip</span>: <span class="hljs-string">&apos;button2&apos;</span>,
+    <span class="hljs-attr">icon</span>: path.join(__dirname, <span class="hljs-string">&apos;button2.png&apos;</span>),
+    <span class="hljs-attr">flags</span>: [<span class="hljs-string">&apos;enabled&apos;</span>, <span class="hljs-string">&apos;dismissonclick&apos;</span>],
+    click () { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;button2 clicked.&apos;</span>) }
+  }
+])</code></pre>
+<p>&#x8C03;&#x7528; <code>BrowserWindow.setThumbarButtons</code> &#x5E76;&#x4F20;&#x5165;&#x7A7A;&#x6570;&#x7EC4;&#x5373;&#x53EF;&#x6E05;&#x7A7A;&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;&#xFF1A;</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-keyword">const</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.setThumbarButtons([])</code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x7F29;&#x7565;&#x56FE;&#x5DE5;&#x5177;&#x680F;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="thumbnail-toolbars"><a href="_docs.html#thumbnail-toolbars">Thumbnail Toolbars</a></h2>
+<p>On Windows you can add a thumbnail toolbar with specified buttons in a taskbar
+layout of an application window. It provides users a way to access to a
+particular window&apos;s command without restoring or activating the window.</p>
+<p>From MSDN, it&apos;s illustrated:</p>
+<blockquote>
+<p>This toolbar is the familiar standard toolbar common control. It has a
+maximum of seven buttons. Each button&apos;s ID, image, tooltip, and state are defined
+in a structure, which is then passed to the taskbar. The application can show,
+enable, disable, or hide buttons from the thumbnail toolbar as required by its
+current state.</p>
+<p>For example, Windows Media Player might offer standard media transport controls
+such as play, pause, mute, and stop.</p>
+</blockquote>
+<p><strong>Thumbnail toolbar of Windows Media Player:</strong></p>
+<p><img src="_dynimg_IC420540.png" alt="player"></p>
+<p>You can use <a href="_docs_api_browser-window.html#winsetthumbarbuttonsbuttons-windows">BrowserWindow.setThumbarButtons</a> to set
+thumbnail toolbar in your application:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>)
+
+<span class="hljs-keyword">const</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+
+win.setThumbarButtons([
+  {
+    <span class="hljs-attr">tooltip</span>: <span class="hljs-string">&apos;button1&apos;</span>,
+    <span class="hljs-attr">icon</span>: path.join(__dirname, <span class="hljs-string">&apos;button1.png&apos;</span>),
+    click () { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;button1 clicked&apos;</span>) }
+  }, {
+    <span class="hljs-attr">tooltip</span>: <span class="hljs-string">&apos;button2&apos;</span>,
+    <span class="hljs-attr">icon</span>: path.join(__dirname, <span class="hljs-string">&apos;button2.png&apos;</span>),
+    <span class="hljs-attr">flags</span>: [<span class="hljs-string">&apos;enabled&apos;</span>, <span class="hljs-string">&apos;dismissonclick&apos;</span>],
+    click () { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;button2 clicked.&apos;</span>) }
+  }
+])</code></pre>
+<p>To clean thumbnail toolbar buttons, just call <code>BrowserWindow.setThumbarButtons</code>
+with an empty array:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+
+<span class="hljs-keyword">const</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.setThumbarButtons([])</code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x56FE;&#x6807;&#x53E0;&#x52A0;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x56FE;&#x6807;&#x53E0;&#x52A0;"><a href="_docs.html#%E4%BB%BB%E5%8A%A1%E6%A0%8F%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87%E5%8F%A0%E5%8A%A0">&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x56FE;&#x6807;&#x53E0;&#x52A0;</a></h2>
+<p>&#x5728; Windows&#xFF0C;&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5C0F;&#x578B;&#x53E0;&#x52A0;&#x5C42;&#x663E;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F; &#x72B6;&#x6001;&#xFF0C;&#x5F15;&#x7528; MSDN &#x7684;&#x6587;&#x6863;&#xFF1A;</p>
+<blockquote>
+<p>&#x56FE;&#x6807;&#x53E0;&#x52A0;&#x4F5C;&#x4E3A;&#x72B6;&#x6001;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x901A;&#x77E5;, &#x65E8;&#x5728;&#x5426;&#x5B9A;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x901A;&#x77E5;&#x533A;&#x57DF;&#x72B6;&#x6001;&#x56FE;&#x6807;&#x6765;&#x5C06;&#x8BE5;&#x4FE1;&#x606F;&#x4F20;&#x8FBE;&#x7ED9;&#x7528;&#x6237;&#x3002; &#x4F8B;&#x5982;, &#x5F53;&#x524D;&#x5728;&#x901A;&#x77E5;&#x533A;&#x57DF;&#x4E2D;&#x663E;&#x793A;&#x7684; Microsoft Outlook &#x4E2D;&#x7684;&#x65B0;&#x90AE;&#x4EF6;&#x72B6;&#x6001;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x4E0A;&#x7684;&#x53E0;&#x52A0;&#x6765;&#x8868;&#x793A;&#x3002; &#x540C;&#x6837;, &#x60A8;&#x5FC5;&#x987B;&#x5728;&#x5F00;&#x53D1;&#x5468;&#x671F;&#x4E2D;&#x51B3;&#x5B9A;&#x54EA;&#x4E2A;&#x65B9;&#x6CD5;&#x6700;&#x9002;&#x5408;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002; &#x53E0;&#x52A0;&#x56FE;&#x6807;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;&#x91CD;&#x8981;&#x7684;&#x3001;&#x957F;&#x671F;&#x7684;&#x72B6;&#x6001;&#x6216;&#x901A;&#x77E5;, &#x5982;&#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x3001;messenger &#x72B6;&#x6001;&#x6216;&#x65B0;&#x90AE;&#x4EF6;&#x3002; &#x4E0D;&#x5E94;&#x5411;&#x7528;&#x6237;&#x663E;&#x793A;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#x7684;&#x53E0;&#x52A0;&#x6216;&#x52A8;&#x753B;&#x3002;</p>
+</blockquote>
+<p><strong>&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x7684;&#x53E0;&#x52A0;:</strong></p>
+<p><img src="_dynimg_IC420441.png" alt="&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x7684;&#x53E0;&#x52A0;"></p>
+<p>&#x8981;&#x8BBE;&#x7F6E;&#x7A97;&#x53E3;&#x7684;&#x53E0;&#x52A0;&#x5C42;&#x56FE;&#x6807;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="_docs_api_browser-window.html#winsetoverlayiconoverlay-description-windows">BrowserWindow.setOverlayIcon</a> API:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">let</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.setOverlayIcon(<span class="hljs-string">&apos;path/to/overlay.png&apos;</span>, <span class="hljs-string">&apos;Description for overlay&apos;</span>)</code></pre>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x4EFB;&#x52A1;&#x680F;&#x4E2D;&#x7684;&#x56FE;&#x6807;&#x53E0;&#x52A0;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="icon-overlays-in-taskbar"><a href="_docs.html#icon-overlays-in-taskbar">Icon Overlays in Taskbar</a></h2>
+<p>On Windows a taskbar button can use a small overlay to display application
+status, as quoted from MSDN:</p>
+<blockquote>
+<p>Icon overlays serve as a contextual notification of status, and are intended
+to negate the need for a separate notification area status icon to communicate
+that information to the user. For instance, the new mail status in Microsoft
+Outlook, currently shown in the notification area, can now be indicated
+through an overlay on the taskbar button. Again, you must decide during your
+development cycle which method is best for your application. Overlay icons are
+intended to supply important, long-standing status or notifications such as
+network status, messenger status, or new mail. The user should not be
+presented with constantly changing overlays or animations.</p>
+</blockquote>
+<p><strong>Overlay on taskbar button:</strong></p>
+<p><img src="_dynimg_IC420441.png" alt="Overlay on taskbar button"></p>
+<p>To set the overlay icon for a window, you can use the
+<a href="_docs_api_browser-window.html#winsetoverlayiconoverlay-description-windows">BrowserWindow.setOverlayIcon</a> API:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">let</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.setOverlayIcon(<span class="hljs-string">&apos;path/to/overlay.png&apos;</span>, <span class="hljs-string">&apos;Description for overlay&apos;</span>)</code></pre>
+
+    </div>
+  <div class="sub-section position-relative" data-name="-&#x95EA;&#x70C1;&#x6846;" data-lang="zh-CN">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+  <h2 id="&#x95EA;&#x70C1;&#x6846;"><a href="_docs.html#%E9%97%AA%E7%83%81%E6%A1%86">&#x95EA;&#x70C1;&#x6846;</a></h2>
+<p>&#x5728;Windows&#x4E0A;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7A81;&#x51FA;&#x663E;&#x793A;&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x4EE5;&#x83B7;&#x5F97;&#x7528;&#x6237;&#x7684;&#x5173;&#x6CE8;&#x3002; &#x8FD9;&#x4E0E;&#x5728;macOS&#x4E0A;&#x5F39;&#x8DF3;&#x505C;&#x9760;&#x680F;&#x56FE;&#x6807;&#x76F8;&#x4F3C;&#x3002; &#x6765;&#x81EA; MSDN &#x53C2;&#x8003;&#x6587;&#x6863;&#xFF1A;</p>
+<blockquote>
+<p>&#x901A;&#x5E38;, &#x4F1A;&#x95EA;&#x73B0;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;, &#x901A;&#x77E5;&#x7528;&#x6237;&#x8BE5;&#x7A97;&#x53E3;&#x9700;&#x8981;&#x6CE8;&#x610F;, &#x4F46;&#x662F;&#x8BE5;&#x7A97;&#x53E3;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x952E;&#x76D8;&#x7126;&#x70B9;&#x3002;</p>
+</blockquote>
+<p>&#x8981;&#x5728; BrowserWindow &#x7684;&#x4EFB;&#x52A1;&#x680F;&#x6309;&#x94AE;&#x7A81;&#x51FA;&#x663E;&#x793A;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="_docs_api_browser-window.html#winflashframeflag">BrowserWindow.flashFrame</a> API:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">let</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.once(<span class="hljs-string">&apos;focus&apos;</span>, () =&gt; win.flashFrame(<span class="hljs-literal">false</span>))
+win.flashFrame(<span class="hljs-literal">true</span>)</code></pre>
+<p>&#x4E0D;&#x8981;&#x5FD8;&#x8BB0;&#x8C03;&#x7528; <code>flashFrame</code> &#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x4E3A; <code>false</code> &#x6765;&#x5173;&#x95ED;&#x7A81;&#x51FA;&#x663E;&#x793A;&#x3002; &#x5728;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E2D;, &#x5F53;&#x7A97;&#x53E3;&#x8FDB;&#x5165;&#x7126;&#x70B9;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x5B83;, &#x4F46;&#x60A8;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;&#x7528;&#x8D85;&#x65F6;&#x6216;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x4E8B;&#x4EF6;&#x6765;&#x7981;&#x7528;&#x5B83;&#x3002;</p>
+
+</div>
+    <div class="sub-section position-relative hidden" data-name="-&#x95EA;&#x70C1;&#x6846;" data-lang="en-US">
+      <button class="btn-link position-absolute right-0 mr-2 mt-2 no-underline en-toggle" alt="toggle section language"><h5 class="m-0">EN</h5></button>
+      <h2 id="flash-frame"><a href="_docs.html#flash-frame">Flash Frame</a></h2>
+<p>On Windows you can highlight the taskbar button to get the user&apos;s attention.
+This is similar to bouncing the dock icon on macOS.
+From the MSDN reference documentation:</p>
+<blockquote>
+<p>Typically, a window is flashed to inform the user that the window requires
+attention but that it does not currently have the keyboard focus.</p>
+</blockquote>
+<p>To flash the BrowserWindow taskbar button, you can use the
+<a href="_docs_api_browser-window.html#winflashframeflag">BrowserWindow.flashFrame</a> API:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { BrowserWindow } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;electron&apos;</span>)
+<span class="hljs-keyword">let</span> win = <span class="hljs-keyword">new</span> BrowserWindow()
+win.once(<span class="hljs-string">&apos;focus&apos;</span>, () =&gt; win.flashFrame(<span class="hljs-literal">false</span>))
+win.flashFrame(<span class="hljs-literal">true</span>)</code></pre>
+<p>Don&apos;t forget to call the <code>flashFrame</code> method with <code>false</code> to turn off the flash. In
+the above example, it is called when the window comes into focus, but you might
+use a timeout or some other event to disable it.</p>
+
+    </div>
+
+    <hr>
+
+    <div class="doc-actions text-center">
+      <a class="mr-4 propose-change" href="https://github.com/electron/electron/tree/master/docs/tutorial/windows-taskbar.md">
+        <span class="octicon octicon-mark-github"></span>
+        &#x6539;&#x8FDB;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4 translate-on-crowdin" href="https://crowdin.com/translate/electron/176/en-zhcn">
+        <span class="octicon octicon-globe"></span>
+        &#x7FFB;&#x8BD1;&#x6B64;&#x6587;&#x6863;
+      </a>
+      
+      <a class="mr-4" href="_docs_tutorial_windows-taskbar_history.html">
+        <span class="octicon octicon-history"></span>
+        &#x7248;&#x672C;&#x5386;&#x53F2;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+    <div id="hits">
+      <div class="hits-container" id="api-hits" title="APIs"></div>
+      <div class="hits-container" id="tutorial-hits" title="Tutorials"></div>
+      <div class="hits-container" id="package-hits" title="Packages"></div>
+      <div class="hits-container" id="app-hits" title="Apps"></div>
+    </div>
+    <div id="refinement-list"></div>
+    <footer class="footer">
+  <div class="container">
+    <nav class="footer-nav">
+      <a class="footer-nav-item" href="/">Electron</a>
+      <a class="footer-nav-item" href="_docs.html">&#x6587;&#x6863;</a>
+      <a class="footer-nav-item" href="/blog">&#x535A;&#x5BA2;</a>
+      <a class="footer-nav-item" href="/community">&#x793E;&#x533A;</a>
+      <a class="footer-nav-item" href="/apps">&#x5E94;&#x7528;</a>
+      <a class="footer-nav-item" href="/releases">&#x7248;&#x672C;&#x53D1;&#x5E03;</a>
+      <a class="footer-nav-item" href="https://github.com/electron/electron/tree/master/CODE_OF_CONDUCT.md">&#x884C;&#x4E3A;&#x51C6;&#x5219;</a>
+      <a class="footer-nav-item" href="/languages">&#x8BED;&#x8A00;</a>
+      <a class="footer-nav-item" href="/contact">&#x8054;&#x7CFB;&#x6211;&#x4EEC;</a>
+    </nav>
+
+    <span class="footer-social">
+      <a class="footer-nav-item icon" href="https://github.com/electron" title="Github Organization"><i class="devicon-github-plain vertical-middle"></i></a>
+      <a class="footer-nav-item icon" href="https://twitter.com/electronjs" title="@electronjs on Twitter"><i class="devicon-twitter-plain vertical-middle"></i></a>
+    </span>
+  </div>
+</footer>
+    <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class='octicon octicon-link'></span>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+    <script>
+    if ('serviceWorker' in navigator && !window.Cypress) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+    </script>
+    <script src="_scripts_index.js"></script>
+  
+</body></html>

@@ -1,0 +1,1168 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <title>Prop &#x2014; Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/guide/components-props.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/components-props.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Prop &#x2014; Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prop &#x2014; Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="_font-awesome_4.7.0_css_font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="_css_page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="_js_vue.js"></script>
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "guide"
+    </script>
+
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46852172-3', 'cn.vuejs.org');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar">
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <img src="_images_logo.png" alt="vue logo">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">&#x5B66;&#x4E60;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="_v2_guide_.html" class="nav-link current">&#x6559;&#x7A0B;</a></li>
+      <li><a href="_v2_api_.html" class="nav-link">API</a></li>
+      <li><a href="_v2_style-guide_.html" class="nav-link">&#x98CE;&#x683C;&#x6307;&#x5357;</a></li>
+      <li><a href="_v2_examples_.html" class="nav-link">&#x793A;&#x4F8B;</a></li>
+      <li><a href="_v2_cookbook_.html" class="nav-link">Cookbook</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">&#x751F;&#x6001;&#x7CFB;&#x7EDF;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>&#x5E2E;&#x52A9;</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank">&#x8BBA;&#x575B;</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">&#x804A;&#x5929;&#x5BA4;</a></li>
+      <li><a href="https://www.vuemeetups.org/" class="nav-link" target="_blank">&#x805A;&#x4F1A;</a></li>
+    </ul></li>
+    <li><h4>&#x5DE5;&#x5177;</h4></li>
+    <li>
+      <ul>
+        <li><a href="https://github.com/vuejs/vue-devtools" class="nav-link" target="_blank">Devtools</a></li>
+        <li><a href="https://cli.vuejs.org/" class="nav-link" target="_blank">Vue CLI</a></li>
+        <li><a href="https://vue-loader.vuejs.org" class="nav-link" target="_blank">Vue Loader</a></li>
+      </ul>
+    </li>
+    <li><h4>&#x6838;&#x5FC3;&#x63D2;&#x4EF6;</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue &#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;</a></li>
+    </ul></li>
+    <li><h4>&#x4FE1;&#x606F;</h4></li>
+    <li><ul>
+      <li><a href="https://news.vuejs.org" class="nav-link" target="_blank">&#x5468;&#x520A;</a></li>
+      <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">Roadmap</a></li>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">&#x535A;&#x5BA2;</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">&#x5DE5;&#x4F5C;</a></li>
+    </ul></li>
+    <li><h4>&#x8D44;&#x6E90;&#x5217;&#x8868;</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">&#x5B98;&#x65B9;&#x4ED3;&#x5E93;</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue &#x4F18;&#x9009;</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue &#x8D44;&#x6E90;</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="_v2_guide_team.html" class="nav-link team">&#x56E2;&#x961F;</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a href="/support-vuejs/" class="nav-link">&#x652F;&#x6301; Vue</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">&#x4E00;&#x6B21;&#x6027;&#x8D5E;&#x52A9;</a></li>
+      <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">&#x5468;&#x671F;&#x6027;&#x8D5E;&#x52A9;</a></li>
+      <li><a href="https://www.smallsticker.com/%E8%B4%B4%E7%BA%B8/vue.html" class="nav-link">&#x8D34;&#x7EB8;</a></li>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">T &#x6064;&#x5546;&#x5E97;</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">&#x591A;&#x8BED;&#x8A00;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#x65E5;&#x672C;&#x8A9E;</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#x420;&#x443;&#x441;&#x441;&#x43A;&#x438;&#x439;</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#xD55C;&#xAD6D;&#xC5B4;</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Portugu&#xEA;s</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Fran&#xE7;ais</a></li>
+    <li><a href="https://vi.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Ti&#x1EBF;ng Vi&#x1EC7;t</a></li>
+  </ul>
+</li>
+
+<li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">&#x53C2;&#x4E0E;&#x7FFB;&#x8BD1;</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">&#x5B66;&#x4E60;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="_v2_guide_.html" class="nav-link current">&#x6559;&#x7A0B;</a></li>
+      <li><a href="_v2_api_.html" class="nav-link">API</a></li>
+      <li><a href="_v2_style-guide_.html" class="nav-link">&#x98CE;&#x683C;&#x6307;&#x5357;</a></li>
+      <li><a href="_v2_examples_.html" class="nav-link">&#x793A;&#x4F8B;</a></li>
+      <li><a href="_v2_cookbook_.html" class="nav-link">Cookbook</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">&#x751F;&#x6001;&#x7CFB;&#x7EDF;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>&#x5E2E;&#x52A9;</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank">&#x8BBA;&#x575B;</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">&#x804A;&#x5929;&#x5BA4;</a></li>
+      <li><a href="https://www.vuemeetups.org/" class="nav-link" target="_blank">&#x805A;&#x4F1A;</a></li>
+    </ul></li>
+    <li><h4>&#x5DE5;&#x5177;</h4></li>
+    <li>
+      <ul>
+        <li><a href="https://github.com/vuejs/vue-devtools" class="nav-link" target="_blank">Devtools</a></li>
+        <li><a href="https://cli.vuejs.org/" class="nav-link" target="_blank">Vue CLI</a></li>
+        <li><a href="https://vue-loader.vuejs.org" class="nav-link" target="_blank">Vue Loader</a></li>
+      </ul>
+    </li>
+    <li><h4>&#x6838;&#x5FC3;&#x63D2;&#x4EF6;</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue &#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;</a></li>
+    </ul></li>
+    <li><h4>&#x4FE1;&#x606F;</h4></li>
+    <li><ul>
+      <li><a href="https://news.vuejs.org" class="nav-link" target="_blank">&#x5468;&#x520A;</a></li>
+      <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">Roadmap</a></li>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">&#x535A;&#x5BA2;</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">&#x5DE5;&#x4F5C;</a></li>
+    </ul></li>
+    <li><h4>&#x8D44;&#x6E90;&#x5217;&#x8868;</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">&#x5B98;&#x65B9;&#x4ED3;&#x5E93;</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue &#x4F18;&#x9009;</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue &#x8D44;&#x6E90;</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="_v2_guide_team.html" class="nav-link team">&#x56E2;&#x961F;</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a href="/support-vuejs/" class="nav-link">&#x652F;&#x6301; Vue</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">&#x4E00;&#x6B21;&#x6027;&#x8D5E;&#x52A9;</a></li>
+      <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">&#x5468;&#x671F;&#x6027;&#x8D5E;&#x52A9;</a></li>
+      <li><a href="https://www.smallsticker.com/%E8%B4%B4%E7%BA%B8/vue.html" class="nav-link">&#x8D34;&#x7EB8;</a></li>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">T &#x6064;&#x5546;&#x5E97;</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">&#x591A;&#x8BED;&#x8A00;</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#x65E5;&#x672C;&#x8A9E;</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#x420;&#x443;&#x441;&#x441;&#x43A;&#x438;&#x439;</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">&#xD55C;&#xAD6D;&#xC5B4;</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Portugu&#xEA;s</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Fran&#xE7;ais</a></li>
+    <li><a href="https://vi.vuejs.org/v2/guide/components-props.html" class="nav-link" target="_blank">Ti&#x1EBF;ng Vi&#x1EC7;t</a></li>
+  </ul>
+</li>
+
+<li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">&#x53C2;&#x4E0E;&#x7FFB;&#x8BD1;</a></li>
+
+    </ul>
+    <div class="list">
+      <div id="sidebar-sponsors-special">
+  <div class="main-sponsor">
+    <span>&#x7279;&#x522B;&#x8D5E;&#x52A9;&#x5546;</span>
+    <div>
+    <a href="https://gitee.com/?from=vue" target="_blank" class="logo">
+      <img src="_images_gitee.png" alt="">
+    </a>
+    </div>
+  </div>
+</div>
+
+<!--
+<div id="sidebar-sponsors-platinum-left">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank" class="logo">
+      <img src="/images/bit-wide.png" alt="">
+    </a>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="/images/tooltwist.png" alt="tooltwist">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" class="logo">
+      <img src="/images/vueschool.png" alt="vue school">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="/images/vehikl.png" alt="vehikl">
+    </a>
+    <a href="https://www.nativescript.org/vue?utm_source=vue-js-org&utm_medium=website&utm_campaign=nativescript-awareness" target="_blank" class="logo">
+      <img src="/images/nativescript.png" alt="nativescript">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+-->
+
+      
+        <h2>
+          
+          &#x6559;&#x7A0B;
+          
+            <select class="version-select">
+              <option value="SELF" selected>2.x</option>
+              <option value="v1">1.0</option>
+              <option value="012">0.12</option>
+              <option value="011">0.11</option>
+            </select>
+          
+        </h2>
+        <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>&#x57FA;&#x7840;</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_installation.html" class="sidebar-link">&#x5B89;&#x88C5;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_index.html" class="sidebar-link">&#x4ECB;&#x7ECD;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_instance.html" class="sidebar-link">Vue &#x5B9E;&#x4F8B;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_syntax.html" class="sidebar-link">&#x6A21;&#x677F;&#x8BED;&#x6CD5;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_computed.html" class="sidebar-link">&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x548C;&#x4FA6;&#x542C;&#x5668;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_class-and-style.html" class="sidebar-link">Class &#x4E0E; Style &#x7ED1;&#x5B9A;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_conditional.html" class="sidebar-link">&#x6761;&#x4EF6;&#x6E32;&#x67D3;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_list.html" class="sidebar-link">&#x5217;&#x8868;&#x6E32;&#x67D3;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_events.html" class="sidebar-link">&#x4E8B;&#x4EF6;&#x5904;&#x7406;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_forms.html" class="sidebar-link">&#x8868;&#x5355;&#x8F93;&#x5165;&#x7ED1;&#x5B9A;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components.html" class="sidebar-link">&#x7EC4;&#x4EF6;&#x57FA;&#x7840;</a>
+    </li>
+  
+    
+    
+      
+      
+        <li><h3>&#x6DF1;&#x5165;&#x4E86;&#x89E3;&#x7EC4;&#x4EF6;</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-registration.html" class="sidebar-link">&#x7EC4;&#x4EF6;&#x6CE8;&#x518C;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-props.html" class="sidebar-link current">Prop</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-custom-events.html" class="sidebar-link">&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-slots.html" class="sidebar-link">&#x63D2;&#x69FD;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-dynamic-async.html" class="sidebar-link">&#x52A8;&#x6001;&#x7EC4;&#x4EF6; &amp; &#x5F02;&#x6B65;&#x7EC4;&#x4EF6;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_components-edge-cases.html" class="sidebar-link">&#x5904;&#x7406;&#x8FB9;&#x754C;&#x60C5;&#x51B5;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+        <li><h3>&#x8FC7;&#x6E21; &amp; &#x52A8;&#x753B;</h3></li>
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_transitions.html" class="sidebar-link">&#x8FDB;&#x5165;/&#x79BB;&#x5F00; &amp; &#x5217;&#x8868;&#x8FC7;&#x6E21;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_transitioning-state.html" class="sidebar-link">&#x72B6;&#x6001;&#x8FC7;&#x6E21;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+        <li><h3>&#x53EF;&#x590D;&#x7528;&#x6027; &amp; &#x7EC4;&#x5408;</h3></li>
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_mixins.html" class="sidebar-link">&#x6DF7;&#x5165;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_custom-directive.html" class="sidebar-link">&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_render-function.html" class="sidebar-link">&#x6E32;&#x67D3;&#x51FD;&#x6570; &amp; JSX</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_plugins.html" class="sidebar-link">&#x63D2;&#x4EF6;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_filters.html" class="sidebar-link">&#x8FC7;&#x6EE4;&#x5668;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+        <li><h3>&#x5DE5;&#x5177;</h3></li>
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_deployment.html" class="sidebar-link">&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x90E8;&#x7F72;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_single-file-components.html" class="sidebar-link">&#x5355;&#x6587;&#x4EF6;&#x7EC4;&#x4EF6;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_unit-testing.html" class="sidebar-link">&#x5355;&#x5143;&#x6D4B;&#x8BD5;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_typescript.html" class="sidebar-link">TypeScript &#x652F;&#x6301;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+        <li><h3>&#x89C4;&#x6A21;&#x5316;</h3></li>
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_routing.html" class="sidebar-link">&#x8DEF;&#x7531;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_state-management.html" class="sidebar-link">&#x72B6;&#x6001;&#x7BA1;&#x7406;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_ssr.html" class="sidebar-link">&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>&#x5185;&#x5728;</h3></li>
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_reactivity.html" class="sidebar-link">&#x6DF1;&#x5165;&#x54CD;&#x5E94;&#x5F0F;&#x539F;&#x7406;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>&#x8FC1;&#x79FB;</h3></li>
+      
+      
+    
+    <li>
+      <a href="_v2_guide_migration.html" class="sidebar-link">&#x4ECE; Vue 1.x &#x8FC1;&#x79FB;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_migration-vue-router.html" class="sidebar-link">&#x4ECE; Vue Router 0.7.x &#x8FC1;&#x79FB;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_migration-vuex.html" class="sidebar-link">&#x4ECE; Vuex 0.6.x &#x8FC1;&#x79FB;&#x5230; 1.0</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>&#x66F4;&#x591A;</h3></li>
+      
+    
+    <li>
+      <a href="_v2_guide_comparison.html" class="sidebar-link">&#x5BF9;&#x6BD4;&#x5176;&#x4ED6;&#x6846;&#x67B6;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_join.html" class="sidebar-link">&#x52A0;&#x5165; Vue.js &#x793E;&#x533A;</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    <li>
+      <a href="_v2_guide_team.html" class="sidebar-link">&#x8BA4;&#x8BC6;&#x56E2;&#x961F;</a>
+    </li>
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+<!--
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank" class="logo">
+      <img src="/images/bit-wide.png" alt="">
+    </a>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="/images/tooltwist.png" alt="tooltwist">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" class="logo">
+      <img src="/images/vueschool.png" alt="vue school">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="/images/vehikl.png" alt="vehikl">
+    </a>
+    <a href="https://www.nativescript.org/vue?utm_source=vue-js-org&utm_medium=website&utm_campaign=nativescript-awareness" target="_blank" class="logo">
+      <img src="/images/nativescript.png" alt="nativescript">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+-->
+
+
+<div class="content guide with-sidebar components-props-guide">
+  
+    
+      <div id="ad">
+  <!-- <a href="https://time.geekbang.org/column/intro/81?utm_source=website&utm_medium=vue&utm_campaign=81-onsell&utm_content=201805banner" target="_blank" rel="nofollow">
+    <img src="/images/geekbang5.gif" alt="极客时间">
+  </a> -->
+</div>
+
+    
+  
+  
+    <h1>Prop</h1>
+  
+  
+    <blockquote>
+<p>&#x8BE5;&#x9875;&#x9762;&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x9605;&#x8BFB;&#x8FC7;&#x4E86;<a href="_v2_guide_components.html">&#x7EC4;&#x4EF6;&#x57FA;&#x7840;</a>&#x3002;&#x5982;&#x679C;&#x4F60;&#x8FD8;&#x5BF9;&#x7EC4;&#x4EF6;&#x4E0D;&#x592A;&#x4E86;&#x89E3;&#xFF0C;&#x63A8;&#x8350;&#x4F60;&#x5148;&#x9605;&#x8BFB;&#x5B83;&#x3002;</p>
+</blockquote>
+<h2 id="Prop-&#x7684;&#x5927;&#x5C0F;&#x5199;-camelCase-vs-kebab-case"><a href="_v2_guide_components-props.html#Prop-%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99-camelCase-vs-kebab-case" class="headerlink" title="Prop &#x7684;&#x5927;&#x5C0F;&#x5199; (camelCase vs kebab-case)"></a>Prop &#x7684;&#x5927;&#x5C0F;&#x5199; (camelCase vs kebab-case)</h2><p>HTML &#x4E2D;&#x7684;&#x7279;&#x6027;&#x540D;&#x662F;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x5927;&#x5199;&#x5B57;&#x7B26;&#x89E3;&#x91CA;&#x4E3A;&#x5C0F;&#x5199;&#x5B57;&#x7B26;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5F53;&#x4F60;&#x4F7F;&#x7528; DOM &#x4E2D;&#x7684;&#x6A21;&#x677F;&#x65F6;&#xFF0C;camelCase (&#x9A7C;&#x5CF0;&#x547D;&#x540D;&#x6CD5;) &#x7684; prop &#x540D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5176;&#x7B49;&#x4EF7;&#x7684; kebab-case (&#x77ED;&#x6A2A;&#x7EBF;&#x5206;&#x9694;&#x547D;&#x540D;) &#x547D;&#x540D;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">Vue.component(<span class="string">&apos;blog-post&apos;</span>, {</span><br><span class="line">  <span class="comment">// &#x5728; JavaScript &#x4E2D;&#x662F; camelCase &#x7684;</span></span><br><span class="line">  props: [<span class="string">&apos;postTitle&apos;</span>],</span><br><span class="line">  template: <span class="string">&apos;&lt;h3&gt;{{ postTitle }}&lt;/h3&gt;&apos;</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x5728; HTML &#x4E2D;&#x662F; kebab-case &#x7684; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">post-title</span>=<span class="string">&quot;hello!&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x91CD;&#x7533;&#x4E00;&#x6B21;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x6A21;&#x677F;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x9650;&#x5236;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x4E86;&#x3002;</p>
+<h2 id="Prop-&#x7C7B;&#x578B;"><a href="_v2_guide_components-props.html#Prop-%E7%B1%BB%E5%9E%8B" class="headerlink" title="Prop &#x7C7B;&#x578B;"></a>Prop &#x7C7B;&#x578B;</h2><p>&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x770B;&#x5230;&#x4E86;&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;&#x5F62;&#x5F0F;&#x5217;&#x51FA;&#x7684; prop&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">props: [<span class="string">&apos;title&apos;</span>, <span class="string">&apos;likes&apos;</span>, <span class="string">&apos;isPublished&apos;</span>, <span class="string">&apos;commentIds&apos;</span>, <span class="string">&apos;author&apos;</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x901A;&#x5E38;&#x4F60;&#x5E0C;&#x671B;&#x6BCF;&#x4E2A; prop &#x90FD;&#x6709;&#x6307;&#x5B9A;&#x7684;&#x503C;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4EE5;&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;&#x5217;&#x51FA; prop&#xFF0C;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x79F0;&#x548C;&#x503C;&#x5206;&#x522B;&#x662F; prop &#x5404;&#x81EA;&#x7684;&#x540D;&#x79F0;&#x548C;&#x7C7B;&#x578B;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">props: {</span><br><span class="line">  title: <span class="built_in">String</span>,</span><br><span class="line">  likes: <span class="built_in">Number</span>,</span><br><span class="line">  isPublished: <span class="built_in">Boolean</span>,</span><br><span class="line">  commentIds: <span class="built_in">Array</span>,</span><br><span class="line">  author: <span class="built_in">Object</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x8FD9;&#x4E0D;&#x4EC5;&#x4E3A;&#x4F60;&#x7684;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x4E86;&#x6587;&#x6863;&#xFF0C;&#x8FD8;&#x4F1A;&#x5728;&#x5B83;&#x4EEC;&#x9047;&#x5230;&#x9519;&#x8BEF;&#x7684;&#x7C7B;&#x578B;&#x65F6;&#x4ECE;&#x6D4F;&#x89C8;&#x5668;&#x7684; JavaScript &#x63A7;&#x5236;&#x53F0;&#x63D0;&#x793A;&#x7528;&#x6237;&#x3002;&#x4F60;&#x4F1A;&#x5728;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x90E8;&#x5206;&#x770B;&#x5230;<a href="_v2_guide_components-props.html#Prop-%E9%AA%8C%E8%AF%81">&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x548C;&#x5176;&#x5B83; prop &#x9A8C;&#x8BC1;</a>&#x3002;</p>
+<h2 id="&#x4F20;&#x9012;&#x9759;&#x6001;&#x6216;&#x52A8;&#x6001;-Prop"><a href="_v2_guide_components-props.html#%E4%BC%A0%E9%80%92%E9%9D%99%E6%80%81%E6%88%96%E5%8A%A8%E6%80%81-Prop" class="headerlink" title="&#x4F20;&#x9012;&#x9759;&#x6001;&#x6216;&#x52A8;&#x6001; Prop"></a>&#x4F20;&#x9012;&#x9759;&#x6001;&#x6216;&#x52A8;&#x6001; Prop</h2><p>&#x50CF;&#x8FD9;&#x6837;&#xFF0C;&#x4F60;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;&#x53EF;&#x4EE5;&#x50CF;&#x8FD9;&#x6837;&#x7ED9; prop &#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x503C;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">&quot;My journey with Vue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4F60;&#x4E5F;&#x77E5;&#x9053; prop &#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>v-bind</code> &#x52A8;&#x6001;&#x8D4B;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x52A8;&#x6001;&#x8D4B;&#x4E88;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x503C; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:title</span>=<span class="string">&quot;post.title&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x52A8;&#x6001;&#x8D4B;&#x4E88;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:title</span>=<span class="string">&quot;post.title + &apos; by &apos; + post.author.name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x5728;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684;&#x503C;&#x90FD;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;<em>&#x4EFB;&#x4F55;</em>&#x7C7B;&#x578B;&#x7684;&#x503C;&#x90FD;&#x53EF;&#x4EE5;&#x4F20;&#x7ED9;&#x4E00;&#x4E2A; prop&#x3002;</p>
+<h3 id="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x5B57;"><a href="_v2_guide_components-props.html#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97" class="headerlink" title="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x5B57;"></a>&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x5B57;</h3><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x5373;&#x4FBF; `42` &#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x9700;&#x8981; `v-bind` &#x6765;&#x544A;&#x8BC9; Vue --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#x8FD9;&#x662F;&#x4E00;&#x4E2A; JavaScript &#x8868;&#x8FBE;&#x5F0F;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:likes</span>=<span class="string">&quot;42&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x7528;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8D4B;&#x503C;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:likes</span>=<span class="string">&quot;post.likes&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;"><a href="_v2_guide_components-props.html#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E5%B8%83%E5%B0%94%E5%80%BC" class="headerlink" title="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;"></a>&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;</h3><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x5305;&#x542B;&#x8BE5; prop &#x6CA1;&#x6709;&#x503C;&#x7684;&#x60C5;&#x51B5;&#x5728;&#x5185;&#xFF0C;&#x90FD;&#x610F;&#x5473;&#x7740; `true`&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">is-published</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x5373;&#x4FBF; `false` &#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x9700;&#x8981; `v-bind` &#x6765;&#x544A;&#x8BC9; Vue --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#x8FD9;&#x662F;&#x4E00;&#x4E2A; JavaScript &#x8868;&#x8FBE;&#x5F0F;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:is-published</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x7528;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8D4B;&#x503C;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:is-published</span>=<span class="string">&quot;post.isPublished&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;"><a href="_v2_guide_components-props.html#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84" class="headerlink" title="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;"></a>&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</h3><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x5373;&#x4FBF;&#x6570;&#x7EC4;&#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x9700;&#x8981; `v-bind` &#x6765;&#x544A;&#x8BC9; Vue --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#x8FD9;&#x662F;&#x4E00;&#x4E2A; JavaScript &#x8868;&#x8FBE;&#x5F0F;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:comment-ids</span>=<span class="string">&quot;[234, 266, 273]&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x7528;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8D4B;&#x503C;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:comment-ids</span>=<span class="string">&quot;post.commentIds&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;"><a href="_v2_guide_components-props.html#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1" class="headerlink" title="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;"></a>&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</h3><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x5373;&#x4FBF;&#x5BF9;&#x8C61;&#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x9700;&#x8981; `v-bind` &#x6765;&#x544A;&#x8BC9; Vue --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#x8FD9;&#x662F;&#x4E00;&#x4E2A; JavaScript &#x8868;&#x8FBE;&#x5F0F;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:author</span>=<span class="string">&quot;{ name: &apos;Veronica&apos;, company: &apos;Veridian Dynamics&apos; }&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x7528;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8D4B;&#x503C;&#x3002;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:author</span>=<span class="string">&quot;post.author&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;"><a href="_v2_guide_components-props.html#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7" class="headerlink" title="&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;"></a>&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;</h3><p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x5C06;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x90FD;&#x4F5C;&#x4E3A; prop &#x4F20;&#x5165;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x5E26;&#x53C2;&#x6570;&#x7684; <code>v-bind</code> (&#x53D6;&#x4EE3; <code>v-bind:prop-name</code>)&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x5BF9;&#x8C61; <code>post</code>&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">post: {</span><br><span class="line">  id: <span class="number">1</span>,</span><br><span class="line">  title: <span class="string">&apos;My Journey with Vue&apos;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4E0B;&#x9762;&#x7684;&#x6A21;&#x677F;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind</span>=<span class="string">&quot;post&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-bind:id</span>=<span class="string">&quot;post.id&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-bind:title</span>=<span class="string">&quot;post.title&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;"><a href="_v2_guide_components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81" class="headerlink" title="&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;"></a>&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;</h2><p>&#x6240;&#x6709;&#x7684; prop &#x90FD;&#x4F7F;&#x5F97;&#x5176;&#x7236;&#x5B50; prop &#x4E4B;&#x95F4;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x4E2A;<strong>&#x5355;&#x5411;&#x4E0B;&#x884C;&#x7ED1;&#x5B9A;</strong>&#xFF1A;&#x7236;&#x7EA7; prop &#x7684;&#x66F4;&#x65B0;&#x4F1A;&#x5411;&#x4E0B;&#x6D41;&#x52A8;&#x5230;&#x5B50;&#x7EC4;&#x4EF6;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;&#x53CD;&#x8FC7;&#x6765;&#x5219;&#x4E0D;&#x884C;&#x3002;&#x8FD9;&#x6837;&#x4F1A;&#x9632;&#x6B62;&#x4ECE;&#x5B50;&#x7EC4;&#x4EF6;&#x610F;&#x5916;&#x6539;&#x53D8;&#x7236;&#x7EA7;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x6D41;&#x5411;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x3002;</p>
+<p>&#x989D;&#x5916;&#x7684;&#xFF0C;&#x6BCF;&#x6B21;&#x7236;&#x7EA7;&#x7EC4;&#x4EF6;&#x53D1;&#x751F;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x5B50;&#x7EC4;&#x4EF6;&#x4E2D;&#x6240;&#x6709;&#x7684; prop &#x90FD;&#x5C06;&#x4F1A;&#x5237;&#x65B0;&#x4E3A;&#x6700;&#x65B0;&#x7684;&#x503C;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F60;<strong>&#x4E0D;</strong>&#x5E94;&#x8BE5;&#x5728;&#x4E00;&#x4E2A;&#x5B50;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x6539;&#x53D8; prop&#x3002;&#x5982;&#x679C;&#x4F60;&#x8FD9;&#x6837;&#x505A;&#x4E86;&#xFF0C;Vue &#x4F1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x53D1;&#x51FA;&#x8B66;&#x544A;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x8BD5;&#x56FE;&#x6539;&#x53D8;&#x4E00;&#x4E2A; prop &#x7684;&#x60C5;&#x5F62;&#xFF1A;</p>
+<ol>
+<li><p><strong>&#x8FD9;&#x4E2A; prop &#x7528;&#x6765;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x503C;&#xFF1B;&#x8FD9;&#x4E2A;&#x5B50;&#x7EC4;&#x4EF6;&#x63A5;&#x4E0B;&#x6765;&#x5E0C;&#x671B;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x7684; prop &#x6570;&#x636E;&#x6765;&#x4F7F;&#x7528;&#x3002;</strong>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6700;&#x597D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x7684; data &#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x8FD9;&#x4E2A; prop &#x7528;&#x4F5C;&#x5176;&#x521D;&#x59CB;&#x503C;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">props: [<span class="string">&apos;initialCounter&apos;</span>],</span><br><span class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> {</span><br><span class="line">    counter: <span class="keyword">this</span>.initialCounter</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><strong>&#x8FD9;&#x4E2A; prop &#x4EE5;&#x4E00;&#x79CD;&#x539F;&#x59CB;&#x7684;&#x503C;&#x4F20;&#x5165;&#x4E14;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x3002;</strong>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6700;&#x597D;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; prop &#x7684;&#x503C;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">props: [<span class="string">&apos;size&apos;</span>],</span><br><span class="line">computed: {</span><br><span class="line">  normalizedSize: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.size.trim().toLowerCase()</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p class="tip">&#x6CE8;&#x610F;&#x5728; JavaScript &#x4E2D;&#x5BF9;&#x8C61;&#x548C;&#x6570;&#x7EC4;&#x662F;&#x901A;&#x8FC7;&#x5F15;&#x7528;&#x4F20;&#x5165;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x6216;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684; prop &#x6765;&#x8BF4;&#xFF0C;&#x5728;&#x5B50;&#x7EC4;&#x4EF6;&#x4E2D;&#x6539;&#x53D8;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;&#x672C;&#x8EAB;<strong>&#x5C06;&#x4F1A;</strong>&#x5F71;&#x54CD;&#x5230;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+
+<h2 id="Prop-&#x9A8C;&#x8BC1;"><a href="_v2_guide_components-props.html#Prop-%E9%AA%8C%E8%AF%81" class="headerlink" title="Prop &#x9A8C;&#x8BC1;"></a>Prop &#x9A8C;&#x8BC1;</h2><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E3A;&#x7EC4;&#x4EF6;&#x7684; prop &#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x8981;&#x6C42;&#xFF0C;&#x4F8B;&#x5982;&#x4F60;&#x77E5;&#x9053;&#x7684;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x3002;&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#x6CA1;&#x6709;&#x88AB;&#x6EE1;&#x8DB3;&#xFF0C;&#x5219; Vue &#x4F1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x8B66;&#x544A;&#x4F60;&#x3002;&#x8FD9;&#x5728;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x522B;&#x4EBA;&#x7528;&#x5230;&#x7684;&#x7EC4;&#x4EF6;&#x65F6;&#x5C24;&#x5176;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5B9A;&#x5236; prop &#x7684;&#x9A8C;&#x8BC1;&#x65B9;&#x5F0F;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4E3A; <code>props</code> &#x4E2D;&#x7684;&#x503C;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x9A8C;&#x8BC1;&#x9700;&#x6C42;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">Vue.component(<span class="string">&apos;my-component&apos;</span>, {</span><br><span class="line">  props: {</span><br><span class="line">    <span class="comment">// &#x57FA;&#x7840;&#x7684;&#x7C7B;&#x578B;&#x68C0;&#x67E5; (`null` &#x5339;&#x914D;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;)</span></span><br><span class="line">    propA: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="comment">// &#x591A;&#x4E2A;&#x53EF;&#x80FD;&#x7684;&#x7C7B;&#x578B;</span></span><br><span class="line">    propB: [<span class="built_in">String</span>, <span class="built_in">Number</span>],</span><br><span class="line">    <span class="comment">// &#x5FC5;&#x586B;&#x7684;&#x5B57;&#x7B26;&#x4E32;</span></span><br><span class="line">    propC: {</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    },</span><br><span class="line">    <span class="comment">// &#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x6570;&#x5B57;</span></span><br><span class="line">    propD: {</span><br><span class="line">      type: <span class="built_in">Number</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="number">100</span></span><br><span class="line">    },</span><br><span class="line">    <span class="comment">// &#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x5BF9;&#x8C61;</span></span><br><span class="line">    propE: {</span><br><span class="line">      type: <span class="built_in">Object</span>,</span><br><span class="line">      <span class="comment">// &#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;&#x9ED8;&#x8BA4;&#x503C;&#x5FC5;&#x987B;&#x4ECE;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x83B7;&#x53D6;</span></span><br><span class="line">      <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">        <span class="keyword">return</span> { <span class="attr">message</span>: <span class="string">&apos;hello&apos;</span> }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    <span class="comment">// &#x81EA;&#x5B9A;&#x4E49;&#x9A8C;&#x8BC1;&#x51FD;&#x6570;</span></span><br><span class="line">    propF: {</span><br><span class="line">      validator: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>{</span><br><span class="line">        <span class="comment">// &#x8FD9;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x5339;&#x914D;&#x4E0B;&#x5217;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&apos;success&apos;</span>, <span class="string">&apos;warning&apos;</span>, <span class="string">&apos;danger&apos;</span>].indexOf(value) !== <span class="number">-1</span></span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x5F53; prop &#x9A8C;&#x8BC1;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#xFF0C;(&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;&#x7248;&#x672C;&#x7684;) Vue &#x5C06;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x8B66;&#x544A;&#x3002;</p>
+<p class="tip">&#x6CE8;&#x610F;&#x90A3;&#x4E9B; prop &#x4F1A;&#x5728;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x521B;&#x5EFA;<strong>&#x4E4B;&#x524D;</strong>&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x4F8B;&#x7684;&#x5C5E;&#x6027; (&#x5982; <code>data</code>&#x3001;<code>computed</code> &#x7B49;) &#x5728; <code>default</code> &#x6216; <code>validator</code> &#x51FD;&#x6570;&#x4E2D;&#x662F;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x3002;</p>
+
+<h3 id="&#x7C7B;&#x578B;&#x68C0;&#x67E5;"><a href="_v2_guide_components-props.html#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5" class="headerlink" title="&#x7C7B;&#x578B;&#x68C0;&#x67E5;"></a>&#x7C7B;&#x578B;&#x68C0;&#x67E5;</h3><p><code>type</code> &#x53EF;&#x4EE5;&#x662F;&#x4E0B;&#x5217;&#x539F;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li><code>String</code></li>
+<li><code>Number</code></li>
+<li><code>Boolean</code></li>
+<li><code>Array</code></li>
+<li><code>Object</code></li>
+<li><code>Date</code></li>
+<li><code>Function</code></li>
+<li><code>Symbol</code></li>
+</ul>
+<p>&#x989D;&#x5916;&#x7684;&#xFF0C;<code>type</code> &#x8FD8;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7; <code>instanceof</code> &#x6765;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x786E;&#x8BA4;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7ED9;&#x5B9A;&#x4E0B;&#x5217;&#x73B0;&#x6210;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">firstName, lastName</span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">Vue.component(<span class="string">&apos;blog-post&apos;</span>, {</span><br><span class="line">  props: {</span><br><span class="line">    author: Person</span><br><span class="line">  }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x6765;&#x9A8C;&#x8BC1; <code>author</code> prop &#x7684;&#x503C;&#x662F;&#x5426;&#x662F;&#x901A;&#x8FC7; <code>new Person</code> &#x521B;&#x5EFA;&#x7684;&#x3002;</p>
+<h2 id="&#x975E;-Prop-&#x7684;&#x7279;&#x6027;"><a href="_v2_guide_components-props.html#%E9%9D%9E-Prop-%E7%9A%84%E7%89%B9%E6%80%A7" class="headerlink" title="&#x975E; Prop &#x7684;&#x7279;&#x6027;"></a>&#x975E; Prop &#x7684;&#x7279;&#x6027;</h2><p>&#x4E00;&#x4E2A;&#x975E; prop &#x7279;&#x6027;&#x662F;&#x6307;&#x4F20;&#x5411;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x7EC4;&#x4EF6;&#x5E76;&#x6CA1;&#x6709;&#x76F8;&#x5E94; prop &#x5B9A;&#x4E49;&#x7684;&#x7279;&#x6027;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x663E;&#x5F0F;&#x5B9A;&#x4E49;&#x7684; prop &#x9002;&#x7528;&#x4E8E;&#x5411;&#x4E00;&#x4E2A;&#x5B50;&#x7EC4;&#x4EF6;&#x4F20;&#x5165;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x800C;&#x7EC4;&#x4EF6;&#x5E93;&#x7684;&#x4F5C;&#x8005;&#x5E76;&#x4E0D;&#x603B;&#x80FD;&#x9884;&#x89C1;&#x7EC4;&#x4EF6;&#x4F1A;&#x88AB;&#x7528;&#x4E8E;&#x600E;&#x6837;&#x7684;&#x573A;&#x666F;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4EFB;&#x610F;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x6839;&#x5143;&#x7D20;&#x4E0A;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x4F60;&#x901A;&#x8FC7;&#x4E00;&#x4E2A; Bootstrap &#x63D2;&#x4EF6;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x7684; <code>&lt;bootstrap-date-input&gt;</code> &#x7EC4;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x9700;&#x8981;&#x5728;&#x5176; <code>&lt;input&gt;</code> &#x4E0A;&#x7528;&#x5230;&#x4E00;&#x4E2A; <code>data-date-picker</code> &#x7279;&#x6027;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x4E0A;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bootstrap-date-input</span> <span class="attr">data-date-picker</span>=<span class="string">&quot;activated&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bootstrap-date-input</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x7136;&#x540E;&#x8FD9;&#x4E2A; <code>data-date-picker=&quot;activated&quot;</code> &#x7279;&#x6027;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x5230; <code>&lt;bootstrap-date-input&gt;</code> &#x7684;&#x6839;&#x5143;&#x7D20;&#x4E0A;&#x3002;</p>
+<h3 id="&#x66FF;&#x6362;-&#x5408;&#x5E76;&#x5DF2;&#x6709;&#x7684;&#x7279;&#x6027;"><a href="_v2_guide_components-props.html#%E6%9B%BF%E6%8D%A2-%E5%90%88%E5%B9%B6%E5%B7%B2%E6%9C%89%E7%9A%84%E7%89%B9%E6%80%A7" class="headerlink" title="&#x66FF;&#x6362;/&#x5408;&#x5E76;&#x5DF2;&#x6709;&#x7684;&#x7279;&#x6027;"></a>&#x66FF;&#x6362;/&#x5408;&#x5E76;&#x5DF2;&#x6709;&#x7684;&#x7279;&#x6027;</h3><p>&#x60F3;&#x8C61;&#x4E00;&#x4E0B; <code>&lt;bootstrap-date-input&gt;</code> &#x7684;&#x6A21;&#x677F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;date&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x4E3A;&#x4E86;&#x7ED9;&#x6211;&#x4EEC;&#x7684;&#x65E5;&#x671F;&#x9009;&#x62E9;&#x5668;&#x63D2;&#x4EF6;&#x5B9A;&#x5236;&#x4E00;&#x4E2A;&#x4E3B;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x50CF;&#x8FD9;&#x6837;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7279;&#x522B;&#x7684;&#x7C7B;&#x540D;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bootstrap-date-input</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-date-picker</span>=<span class="string">&quot;activated&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">&quot;date-picker-theme-dark&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">bootstrap-date-input</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684; <code>class</code> &#x7684;&#x503C;&#xFF1A;</p>
+<ul>
+<li><code>form-control</code>&#xFF0C;&#x8FD9;&#x662F;&#x5728;&#x7EC4;&#x4EF6;&#x7684;&#x6A21;&#x677F;&#x5185;&#x8BBE;&#x7F6E;&#x597D;&#x7684;</li>
+<li><code>date-picker-theme-dark</code>&#xFF0C;&#x8FD9;&#x662F;&#x4ECE;&#x7EC4;&#x4EF6;&#x7684;&#x7236;&#x7EA7;&#x4F20;&#x5165;&#x7684;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x7279;&#x6027;&#x6765;&#x8BF4;&#xFF0C;&#x4ECE;&#x5916;&#x90E8;&#x63D0;&#x4F9B;&#x7ED9;&#x7EC4;&#x4EF6;&#x7684;&#x503C;&#x4F1A;&#x66FF;&#x6362;&#x6389;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x8BBE;&#x7F6E;&#x597D;&#x7684;&#x503C;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F20;&#x5165; <code>type=&quot;text&quot;</code> &#x5C31;&#x4F1A;&#x66FF;&#x6362;&#x6389; <code>type=&quot;date&quot;</code> &#x5E76;&#x628A;&#x5B83;&#x7834;&#x574F;&#xFF01;&#x5E86;&#x5E78;&#x7684;&#x662F;&#xFF0C;<code>class</code> &#x548C; <code>style</code> &#x7279;&#x6027;&#x4F1A;&#x7A0D;&#x5FAE;&#x667A;&#x80FD;&#x4E00;&#x4E9B;&#xFF0C;&#x5373;&#x4E24;&#x8FB9;&#x7684;&#x503C;&#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x8D77;&#x6765;&#xFF0C;&#x4ECE;&#x800C;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x503C;&#xFF1A;<code>form-control date-picker-theme-dark</code>&#x3002;</p>
+<h3 id="&#x7981;&#x7528;&#x7279;&#x6027;&#x7EE7;&#x627F;"><a href="_v2_guide_components-props.html#%E7%A6%81%E7%94%A8%E7%89%B9%E6%80%A7%E7%BB%A7%E6%89%BF" class="headerlink" title="&#x7981;&#x7528;&#x7279;&#x6027;&#x7EE7;&#x627F;"></a>&#x7981;&#x7528;&#x7279;&#x6027;&#x7EE7;&#x627F;</h3><p>&#x5982;&#x679C;&#x4F60;<strong>&#x4E0D;</strong>&#x5E0C;&#x671B;&#x7EC4;&#x4EF6;&#x7684;&#x6839;&#x5143;&#x7D20;&#x7EE7;&#x627F;&#x7279;&#x6027;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x7EC4;&#x4EF6;&#x7684;&#x9009;&#x9879;&#x4E2D;&#x8BBE;&#x7F6E; <code>inheritAttrs: false</code>&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">Vue.component(<span class="string">&apos;my-component&apos;</span>, {</span><br><span class="line">  inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x8FD9;&#x5C24;&#x5176;&#x9002;&#x5408;&#x914D;&#x5408;&#x5B9E;&#x4F8B;&#x7684; <code>$attrs</code> &#x5C5E;&#x6027;&#x4F7F;&#x7528;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x5305;&#x542B;&#x4E86;&#x4F20;&#x9012;&#x7ED9;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x7279;&#x6027;&#x540D;&#x548C;&#x7279;&#x6027;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  class: &apos;username-input&apos;,</span><br><span class="line">  placeholder: <span class="string">&apos;Enter your username&apos;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x6709;&#x4E86; <code>inheritAttrs: false</code> &#x548C; <code>$attrs</code>&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x51B3;&#x5B9A;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4F1A;&#x88AB;&#x8D4B;&#x4E88;&#x54EA;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x5728;&#x64B0;&#x5199;<a href="_v2_style-guide_.html#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E5%90%8D-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90">&#x57FA;&#x7840;&#x7EC4;&#x4EF6;</a>&#x7684;&#x65F6;&#x5019;&#x662F;&#x5E38;&#x4F1A;&#x7528;&#x5230;&#x7684;&#xFF1A;</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">Vue.component(<span class="string">&apos;base-input&apos;</span>, {</span><br><span class="line">  inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">  props: [<span class="string">&apos;label&apos;</span>, <span class="string">&apos;value&apos;</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;label&gt;</span></span><br><span class="line"><span class="string">      {{ label }}</span></span><br><span class="line"><span class="string">      &lt;input</span></span><br><span class="line"><span class="string">        v-bind=&quot;$attrs&quot;</span></span><br><span class="line"><span class="string">        v-bind:value=&quot;value&quot;</span></span><br><span class="line"><span class="string">        v-on:input=&quot;$emit(&apos;input&apos;, $event.target.value)&quot;</span></span><br><span class="line"><span class="string">      &gt;</span></span><br><span class="line"><span class="string">    &lt;/label&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x5141;&#x8BB8;&#x4F60;&#x5728;&#x4F7F;&#x7528;&#x57FA;&#x7840;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x50CF;&#x662F;&#x4F7F;&#x7528;&#x539F;&#x59CB;&#x7684; HTML &#x5143;&#x7D20;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x62C5;&#x5FC3;&#x54EA;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x771F;&#x6B63;&#x7684;&#x6839;&#x5143;&#x7D20;&#xFF1A;</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-input</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-model</span>=<span class="string">&quot;username&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">&quot;username-input&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">placeholder</span>=<span class="string">&quot;Enter your username&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">base-input</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+  
+  
+    <div class="guide-links">
+      
+      
+        <span>&#x2190; <a href="_v2_guide_components-registration.html">&#x7EC4;&#x4EF6;&#x6CE8;&#x518C;</a></span>
+      
+      
+      
+        <span style="float: right;"><a href="_v2_guide_components-custom-events.html">&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</a> &#x2192;</span>
+      
+    </div>
+  
+  <div class="footer">
+      <script src="_monetization.js" type="text/javascript"></script>
+<div class="bsa-cpc"></div>
+<script>
+  (function(){
+    if(typeof _bsa !== 'undefined' && _bsa) {
+    _bsa.init('default', 'CKYD62QM', 'placement:vuejsorg', {
+      target: '.bsa-cpc',
+      align: 'horizontal',
+      disable_css: 'true'
+    });
+      }
+  })();
+</script>
+
+    &#x53D1;&#x73B0;&#x9519;&#x8BEF;&#xFF1F;&#x60F3;&#x53C2;&#x4E0E;&#x7F16;&#x8F91;&#xFF1F;
+    <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/guide/components-props.md" target="_blank">
+      &#x5728; GitHub &#x4E0A;&#x7F16;&#x8F91;&#x6B64;&#x9875;&#xFF01;
+    </a>
+  </div>
+</div>
+
+        
+      </div>
+      <script src="_js_smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="_js_css.escape.js"></script>
+    <script src="_js_common.js"></script>
+
+    <!-- search -->
+    <link href="_docsearch.js_1_docsearch.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="_css_search.css">
+    <script src="_docsearch.js_1_docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      // search index defaults to v2
+      var match = window.location.pathname.match(/^\/(v\d+)/)
+      var version = match ? match[1] : 'v2'
+      docsearch({
+      appId: 'BH4D9OD16A',
+      apiKey: '5638280abff9d207417bb03be05f0b25',
+      indexName: 'vuejs_cn2',
+      inputSelector: selector,
+      algoliaOptions: { facetFilters: ["version:" + version] }
+      })
+    })
+    </script>
+
+    <!-- fastclick -->
+    <script src="_ajax_libs_fastclick_1.0.6_fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  
+
+</body></html>
