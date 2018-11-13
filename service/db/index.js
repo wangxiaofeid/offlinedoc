@@ -5,9 +5,13 @@ const _ = require('lodash');
 const defaultPath = path.resolve(__dirname, '../../.cache/docList.json');
 let cacheData = [];
 
-if (!fs.existsSync(defaultPath)) {
-  fs.mkdirSync(defaultPath);
+try {
+  fs.accessSync(defaultPath, fs.constants.R_OK | fs.constants.W_OK);
+} catch (err) {
+  fs.mkdirSync(path.resolve(__dirname, '../../.cache'));
+  fs.appendFileSync(defaultPath, '[]');
 }
+
 try {
   const data = fs.readFileSync(defaultPath, 'utf8');
   cacheData = JSON.parse(data);

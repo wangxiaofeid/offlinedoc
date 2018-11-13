@@ -38,4 +38,34 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       '  Opening index.html over file:// won\'t work.\n'
     ))
   })
+
+  /*
+   * 打包服务端
+  **/
+  webpack({
+    context: path.resolve(__dirname, '../'),
+    target: 'node',
+    node: {
+      __dirname: true,
+      __filename: true
+    },
+    entry: {
+      index: './service/index.js'
+    },
+    output: {
+      path: path.resolve(__dirname, '../static/'),
+      filename: '[name].js',
+    },
+    externals: [
+      {
+        formidable: 'commonjs formidable',
+      },
+    ],
+  }, (err, stats) => {
+    if (stats.hasErrors()) {
+      console.log(chalk.red('  Build failed with errors.\n'))
+      process.exit(1)
+    }
+  })
+
 })

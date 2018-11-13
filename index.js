@@ -1,7 +1,11 @@
 const { app, BrowserWindow } = require('electron');
-const createService = require('./service');
+// const createService = require('./static/index.js');
+const createService = require('./service/index.js');
 
 function createWindow () {
+  // 创建服务端
+  createService(app);
+
   // 创建浏览器窗口
   const mainWindow = new BrowserWindow({ width: 1100, height: 768 })
   // mainWindow.setFullScreen(true)
