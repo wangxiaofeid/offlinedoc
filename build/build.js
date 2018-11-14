@@ -40,32 +40,32 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   })
 
   /*
-   * 打包服务端
+   * 打包服务端--服务端不需要打包
   **/
-  webpack({
-    context: path.resolve(__dirname, '../'),
-    target: 'node',
-    node: {
-      __dirname: true,
-      __filename: true
-    },
-    entry: {
-      index: './service/index.js'
-    },
-    output: {
-      path: path.resolve(__dirname, '../static/'),
-      filename: '[name].js',
-    },
-    externals: [
-      {
-        formidable: 'commonjs formidable',
-      },
-    ],
-  }, (err, stats) => {
-    if (stats.hasErrors()) {
-      console.log(chalk.red('  Build failed with errors.\n'))
-      process.exit(1)
-    }
-  })
+  // webpack({
+  //   context: path.resolve(__dirname, '../'),
+  //   target: 'node',
+  //   node: {
+  //     __dirname: true,
+  //     __filename: true
+  //   },
+  //   entry: {
+  //     index: './service/index.js'
+  //   },
+  //   output: {
+  //     path: path.resolve(__dirname, '../static/'),
+  //     filename: '[name].js',
+  //   },
+  //   externals: [
+  //     {
+  //       formidable: 'commonjs formidable',
+  //     },
+  //   ],
+  // }, (err, stats) => {
+  //   if (stats.hasErrors()) {
+  //     console.log(chalk.red('  Build failed with errors.\n'))
+  //     process.exit(1)
+  //   }
+  // })
 
 })
