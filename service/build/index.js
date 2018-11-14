@@ -24,7 +24,7 @@ class build {
     this.rule = rule || entry || '';
     this.cookie = cookie;
     this.replace = replace;
-    this.dirpath = path.resolve(__dirname, `../../.cache/doc/${this.config.dir}`);
+    this.dirpath = path.join(global.basePath, `/doc/${this.config.dir}`);
   }
 
   /**

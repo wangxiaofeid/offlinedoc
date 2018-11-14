@@ -6,21 +6,20 @@ const serve = require('koa-static');
 const koaBody = require('koa-body');
 const router = require('koa-router')();
 const cors = require('koa-cors');
+const { app, remote } = require('electron');
 const port = process.env.port || 3232;
+global.basePath = `${app.getPath('userData')}/.cache`;
 const Build = require('./build');
 const deleteDoc = require('./build/deleteDoc');
 
-function createServer(eApp) {
-  
-  // global.basePath = `${eApp.getPath('userData')}/offlinedoc/.cache`;
-
+function createServer() {
   const app = new Koa();
 
   app.use(logger());
   app.use(koaBody());
   app.use(serve(path.resolve(__dirname, '../public')));
-  app.use(serve(path.resolve(__dirname, '../.cache')));
-  // app.use(serve(path.resolve(__dirname, '../dist')));
+  // app.use(serve(path.resolve(__dirname, '../.cache')));
+  app.use(serve(path.resolve(global.basePath)));
   app.use(cors());
 
   const error = (ctx) => {
@@ -33,7 +32,7 @@ function createServer(eApp) {
 
   router.get('/api/menus', async (ctx, next) => {
     ctx.type = 'json';
-    ctx.body = fs.createReadStream(path.resolve(__dirname, '../.cache/docList.json'));
+    ctx.body = fs.createReadStream(path.join(global.basePath, './docList.json'));
   })
 
   router.post('/api/build', async (ctx, next) => {

@@ -2,13 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 
-const defaultPath = path.resolve(__dirname, '../../.cache/docList.json');
+const defaultPath = path.join(global.basePath, './docList.json');
 let cacheData = [];
 
 try {
   fs.accessSync(defaultPath, fs.constants.R_OK | fs.constants.W_OK);
 } catch (err) {
-  fs.mkdirSync(path.resolve(__dirname, '../../.cache'));
+  fs.mkdirSync(path.resolve(global.basePath), { recursive: true });
   fs.appendFileSync(defaultPath, '[]');
 }
 
