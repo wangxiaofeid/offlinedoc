@@ -2,6 +2,7 @@
   <div class="manage">
     <div style="margin-bottom: 20px">
       <el-button type="primary" @click="dialogVisible=true">新建文档</el-button>
+      <el-button type="primary" @click="reloadList">重新拉去</el-button>
     </div>
     <el-table
       :data="menus"
@@ -87,6 +88,9 @@ export default {
     commitBuild() {
       this.dialogVisible = false;
       this.$store.dispatch('buildDoc', this.buildData);
+    },
+    reloadList() {
+      this.$store.dispatch('getMenus');
     }
   }
 }

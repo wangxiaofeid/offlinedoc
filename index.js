@@ -8,7 +8,7 @@ function createWindow () {
   createService(app);
 
   // 创建浏览器窗口
-  const mainWindow = new BrowserWindow({ width: 1100, height: 768 })
+  const mainWindow = new BrowserWindow({ width: 1250, height: 800 })
 
   // mainWindow.webContents.openDevTools()
   // mainWindow.setFullScreen(true)
